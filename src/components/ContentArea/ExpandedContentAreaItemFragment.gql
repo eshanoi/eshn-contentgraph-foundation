@@ -1,0 +1,9 @@
+fragment ExpandedContentAreaItem on ContentAreaItemModelSearch {
+  ContentLink {
+    GuidValue
+    Expanded {
+      ...HeroBlock
+      ...StandardPagePartial
+    }
+  }
+}

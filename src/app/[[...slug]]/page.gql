@@ -1,0 +1,8 @@
+query Page($pathname: String!) {
+  Content(where: { RelativePath: { eq: $pathname } }) {
+    items {
+      ...HomePage
+      # POI: When you define fragment for a new page type, use it here
+    }
+  }
+}

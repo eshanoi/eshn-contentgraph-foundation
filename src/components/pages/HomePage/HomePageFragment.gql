@@ -1,0 +1,10 @@
+fragment HomePage on HomePage {
+  __typename
+  MetaTitle
+  MainBody
+  MainContentArea {
+    ...ExpandedContentAreaItem
+  }
+  HideSiteHeader
+  Url
+}

@@ -1,0 +1,22 @@
+fragment StandardPagePartial on StandardPage {
+  __typename
+  TeaserColorTheme
+  TeaserRatio
+  Padding
+  Margin
+  DisplayAsCard
+  PageImage {
+    Url
+  }
+  TeaserVideo {
+    Url
+  }
+  Name
+  TeaserText
+  Url
+  TeaserButtonStyle
+  TeaserButtonText
+  ApplyHoverEffect
+  TeaserTextAlignment
+  MainBody
+}

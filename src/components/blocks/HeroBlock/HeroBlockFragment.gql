@@ -1,0 +1,22 @@
+fragment HeroBlock on HeroBlock {
+  __typename
+  BlockRatio
+  BackgroundImage {
+    Url
+  }
+  MainBackgroundVideo {
+    Url
+  }
+  BackgroundColor
+  BlockOpacity
+  Callout {
+    CalloutPosition
+    Padding
+    Margin
+    CalloutTextColor
+    CalloutContentAlignment
+    CalloutContent
+    BackgroundColorBehindText
+  }
+  Link
+}

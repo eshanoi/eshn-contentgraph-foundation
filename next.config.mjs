@@ -1,4 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+// @ts-check
+import NodeSassGlobImporter from 'node-sass-glob-importer'
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  sassOptions: {
+    importer: NodeSassGlobImporter(),
+  },
+}
+
+export default nextConfig

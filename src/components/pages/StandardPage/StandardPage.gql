@@ -1,0 +1,4 @@
+fragment StandardPage on StandardPage {
+  __typename
+  Name
+}
