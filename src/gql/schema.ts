@@ -38289,7 +38289,6 @@ export type HomePage = IContent & IData & {
   Created: Maybe<Scalars['Date']['output']>;
   Css: Maybe<Scalars['String']['output']>;
   CssFiles: Maybe<Array<Maybe<LinkItemNode>>>;
-  CustomProp: Scalars['String']['output'];
   DisableIndexing: Maybe<Scalars['Bool']['output']>;
   DisplayAsCard: Maybe<Scalars['Bool']['output']>;
   /** This will determine whether or not to show on search */
@@ -38438,7 +38437,6 @@ export type HomePageAutocomplete = {
   ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Css: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   CssFiles: Maybe<LinkItemNodeAutocomplete>;
-  CustomProp: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
   Language: Maybe<ContentLanguageModelAutocomplete>;
   Margin: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -38473,12 +38471,6 @@ export type HomePageAutocompleteContentTypeArgs = {
 
 
 export type HomePageAutocompleteCssArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type HomePageAutocompleteCustomPropArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -38569,7 +38561,6 @@ export type HomePageFacet = {
   Created: Maybe<Array<Maybe<DateFacet>>>;
   Css: Maybe<Array<Maybe<StringFacet>>>;
   CssFiles: Maybe<LinkItemNodeFacet>;
-  CustomProp: Maybe<Array<Maybe<StringFacet>>>;
   DisableIndexing: Maybe<Array<Maybe<StringFacet>>>;
   DisplayAsCard: Maybe<Array<Maybe<StringFacet>>>;
   ExcludeFromSearch: Maybe<Array<Maybe<StringFacet>>>;
@@ -38657,14 +38648,6 @@ export type HomePageFacetCreatedArgs = {
 
 
 export type HomePageFacetCssArgs = {
-  filters: InputMaybe<Array<Scalars['String']['input']>>;
-  limit?: Scalars['Int']['input'];
-  orderBy?: InputMaybe<OrderBy>;
-  orderType?: InputMaybe<OrderByFacetType>;
-};
-
-
-export type HomePageFacetCustomPropArgs = {
   filters: InputMaybe<Array<Scalars['String']['input']>>;
   limit?: Scalars['Int']['input'];
   orderBy?: InputMaybe<OrderBy>;
@@ -38926,7 +38909,6 @@ export type HomePageOrderByInput = {
   Created: InputMaybe<OrderBy>;
   Css: InputMaybe<OrderBy>;
   CssFiles: InputMaybe<LinkItemNodeOrderByInput>;
-  CustomProp: InputMaybe<OrderBy>;
   DisableIndexing: InputMaybe<OrderBy>;
   DisplayAsCard: InputMaybe<OrderBy>;
   ExcludeFromSearch: InputMaybe<OrderBy>;
@@ -38996,7 +38978,6 @@ export type HomePageWhereInput = {
   Created: InputMaybe<DateFilterInput>;
   Css: InputMaybe<StringFilterInput>;
   CssFiles: InputMaybe<LinkItemNodeWhereInput>;
-  CustomProp: InputMaybe<StringFilterInput>;
   DisableIndexing: InputMaybe<BoolFilterInput>;
   DisplayAsCard: InputMaybe<BoolFilterInput>;
   ExcludeFromSearch: InputMaybe<BoolFilterInput>;
@@ -41669,8 +41650,7 @@ export enum Locales {
   All = 'ALL',
   Neutral = 'NEUTRAL',
   En = 'en',
-  Fr = 'fr',
-  Sv = 'sv'
+  Fr = 'fr'
 }
 
 /** Used to display the details of a location */

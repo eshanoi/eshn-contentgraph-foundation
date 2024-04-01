@@ -4,6 +4,7 @@ fragment ExpandedContentAreaItem on ContentAreaItemModelSearch {
     Expanded {
       ...HeroBlock
       ...StandardPagePartial
+      ...TextBlock
     }
   }
 }
