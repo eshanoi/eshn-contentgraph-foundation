@@ -9,8 +9,7 @@
     "codegen": "graphql-codegen --require dotenv/config --config graphql.config.ts dotenv_config_path=.env.local"
   },
   "engines": {
-    "node": "20.x",
-    "pnpm": "8.x"
+    "node": "20.x"
   },
   "dependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
@@ -37,7 +36,9 @@
     "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+    "eslint-config-prettier": "^9.1.0",
     "node-sass-glob-importer": "^5.3.3",
+    "prettier": "3.2.5",
     "sass": "^1.72.0",
     "typescript": "^5"
   }
