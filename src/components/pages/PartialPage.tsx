@@ -1,8 +1,11 @@
-import type { StandardPagePartialFragment } from './StandardPage/StandardPagePartialFragment.gql.g'
+import type { StandardPagePartialFragment } from './StandardPage/StandardPagePartialFragment.gql.g';
+import BackgroundImageComponent from '@/components/BackgroundImage';
+import MediaSource from '@/components/MediaSource';
+import { convertStaticFileHost } from '@/utils/convertStaticFileHost';
 
 type Props = {
-  page: StandardPagePartialFragment
-}
+  page: StandardPagePartialFragment;
+};
 
 export default function PartialPage({ page }: Props) {
   const {
@@ -20,71 +23,71 @@ export default function PartialPage({ page }: Props) {
     TeaserButtonText,
     ApplyHoverEffect,
     TeaserTextAlignment,
-  } = page
-  let textStyle = ''
+  } = page;
+  let textStyle = '';
   if (TeaserColorTheme) {
     if (TeaserColorTheme === 'Light') {
-      textStyle = 'teaser-text--white'
+      textStyle = 'teaser-text--white';
     } else {
-      textStyle = 'teaser-text--black'
+      textStyle = 'teaser-text--black';
     }
   }
 
-  let ThemeCssClass = ''
+  let ThemeCssClass = '';
   switch (TeaserColorTheme) {
     case 'Light':
-      ThemeCssClass = 'teaser-theme--light'
-      break
+      ThemeCssClass = 'teaser-theme--light';
+      break;
     case 'Dark':
-      ThemeCssClass = 'teaser-theme--dark'
-      break
+      ThemeCssClass = 'teaser-theme--dark';
+      break;
   }
 
-  let AlignmentCssClass = ''
+  let AlignmentCssClass = '';
   switch (TeaserTextAlignment) {
     case 'Left':
-      AlignmentCssClass = 'teaser-content-align--left'
-      break
+      AlignmentCssClass = 'teaser-content-align--left';
+      break;
     case 'Right':
-      AlignmentCssClass = 'teaser-content-align--right'
-      break
+      AlignmentCssClass = 'teaser-content-align--right';
+      break;
     case 'Center':
-      AlignmentCssClass = 'teaser-content-align--center'
-      break
+      AlignmentCssClass = 'teaser-content-align--center';
+      break;
   }
 
-  let teaserRatio = 50
+  let teaserRatio = 50;
   switch (TeaserRatio) {
     case '5:1':
-      teaserRatio = 20
-      break
+      teaserRatio = 20;
+      break;
     case '4:1':
-      teaserRatio = 25
-      break
+      teaserRatio = 25;
+      break;
     case '3:1':
-      teaserRatio = 33
-      break
+      teaserRatio = 33;
+      break;
     case '16:9':
-      teaserRatio = 55
-      break
+      teaserRatio = 55;
+      break;
     case '3:2':
-      teaserRatio = 65
-      break
+      teaserRatio = 65;
+      break;
     case '4:3':
-      teaserRatio = 75
-      break
+      teaserRatio = 75;
+      break;
     case '1:1':
-      teaserRatio = 100
-      break
+      teaserRatio = 100;
+      break;
     case '2:3':
-      teaserRatio = 150
-      break
+      teaserRatio = 150;
+      break;
     case '9:16':
-      teaserRatio = 175
-      break
+      teaserRatio = 175;
+      break;
     default:
-      teaserRatio = 50
-      break
+      teaserRatio = 50;
+      break;
   }
 
   return (
@@ -98,16 +101,20 @@ export default function PartialPage({ page }: Props) {
             paddingBottom: `${teaserRatio}%`,
           }}
         >
-          <div
-            className="teaser__image"
-            style={{
-              backgroundImage: `url(${PageImage?.Url})`,
-            }}
-          ></div>
+          {PageImage?.Url && (
+            <BackgroundImageComponent
+              url={PageImage.Url}
+              className="teaser__image"
+            />
+          )}
+
           {TeaserVideo?.Url && !PageImage?.Url && (
             <div className="teaser__video">
               <video autoPlay loop playsInline muted>
-                <source src={TeaserVideo.Url} type="video/mp4" />
+                <MediaSource
+                  type="video/mp4"
+                  src={convertStaticFileHost(TeaserVideo.Url)}
+                />
               </video>
             </div>
           )}
@@ -127,5 +134,5 @@ export default function PartialPage({ page }: Props) {
         </div>
       )}
     </div>
-  )
+  );
 }

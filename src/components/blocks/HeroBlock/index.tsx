@@ -1,5 +1,8 @@
-import type { HeroBlockFragment } from './HeroBlockFragment.gql.g'
-import HeroBlockLink from './HeroBlockLink'
+import type { HeroBlockFragment } from './HeroBlockFragment.gql.g';
+import HeroBlockLink from './HeroBlockLink';
+import { convertStaticFileHost } from '@/utils/convertStaticFileHost';
+import BackgroundImageComponent from '@/components/BackgroundImage';
+import MediaSource from '../../MediaSource';
 
 const blockRatios: Record<string, number> = {
   '5:1': 20,
@@ -11,7 +14,7 @@ const blockRatios: Record<string, number> = {
   '1:1': 100,
   '2:3': 150,
   '9:16': 175,
-}
+};
 
 export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
   const {
@@ -22,7 +25,7 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
     BlockOpacity,
     Callout,
     Link,
-  } = block
+  } = block;
   const {
     CalloutPosition,
     Padding,
@@ -31,9 +34,9 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
     CalloutContentAlignment,
     CalloutContent,
     BackgroundColorBehindText,
-  } = Callout ?? {}
+  } = Callout ?? {};
 
-  const blockRatio = blockRatios[BlockRatio ?? ''] ?? 50
+  const blockRatio = blockRatios[BlockRatio ?? ''] ?? 50;
 
   return (
     <>
@@ -44,19 +47,20 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
             paddingBottom: `${blockRatio}%`,
           }}
         >
-          {BackgroundImage && (
-            <div
+          {BackgroundImage?.Url && (
+            <BackgroundImageComponent
+              url={BackgroundImage.Url}
               className="hero-block__image"
-              style={{
-                backgroundImage: `url('${BackgroundImage.Url}')`,
-              }}
-            ></div>
+            />
           )}
 
           {MainBackgroundVideo?.Url && !BackgroundImage && (
             <div className="hero-block__video">
               <video autoPlay loop playsInline muted>
-                <source src={MainBackgroundVideo.Url} type="video/mp4" />
+                <MediaSource
+                  type="video/mp4"
+                  src={convertStaticFileHost(MainBackgroundVideo.Url)}
+                />
               </video>
             </div>
           )}
@@ -91,5 +95,5 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
         </div>
       </div>
     </>
-  )
+  );
 }
