@@ -1,58 +1,164 @@
 .top-header {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    background: #000;
-    color: #fff;
-    position: relative;
-    z-index: 2000;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  background: #000;
+  color: #fff;
+  position: relative;
+  z-index: 2000;
 
-    &__banner-text {
-        flex-grow: 1;
-        text-align: center;
+  &__banner-text {
+    flex-grow: 1;
+    text-align: center;
 
-        > p {
-            margin-bottom: 0;
-        }
+    > p {
+      margin-bottom: 0;
     }
+  }
+
+  .currency-list__label, .language-list__label, .market-list__label {
+    padding: 7px 0 7px 15px;
+    user-select: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #ddd
+  }
+
+  .currency-list__label > p, .language-list__label > p, .market-list__label > p {
+    margin-bottom: 0
+  }
+
+  .currency-list__currency-text, .language-list__language-text {
+    padding: 7px 0 7px 25px;
+    cursor: pointer
+  }
+
+  .currency-list__currency-text:hover, .language-list__language-text:hover {
+    background: #f5f5f5
+  }
+
+  .language-list__language-text {
+    display: block;
+  }
+
+
+  .market-selector {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-40%);
+    right: 15px;
+    user-select: none;
+    outline: none
+  }
+
+  .market-selector__wrapper {
+    display: flex;
+    top: 8px;
+    right: 20px;
+    cursor: pointer
+  }
+
+  .market-selector__market-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin: 2px 6px 0 0
+  }
+
+  .market-selector__market-text {
+    text-transform: uppercase;
+    margin-bottom: 0
+  }
+
+  .market-selector__dropdown-icon {
+    margin-left: 15px;
+    margin-right: 8px
+  }
+
+  .market-panel {
+    width: 195px;
+    border-radius: 0;
+    box-sizing: border-box;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .25);
+    padding: 0;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-left: -10px;
+    font-size: inherit;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .market-list__list {
+    max-height: 140px;
+    overflow: auto
+  }
+
+  .market-list__list > .market-selector__wrapper {
+    padding: 7px 0 7px 25px;
+    user-select: none
+  }
+
+  .market-list__list > .market-selector__wrapper > p {
+    margin-bottom: 0
+  }
+
+  .market-list__list > .market-selector__wrapper:hover {
+    background: #f5f5f5
+  }
+
+  .language-list__list {
+    max-height: 140px;
+    overflow: auto
+  }
+
+  .currency-list__list {
+    max-height: 140px;
+    overflow: auto
+  }
+
 }
 
 .header {
-    background-color: white;
-    height: auto;
-    margin-bottom: 25px;
+  background-color: white;
+  height: auto;
+  margin-bottom: 25px;
 
-    &__wrapper {
-        border-bottom: 1px solid #eee;
+  &__wrapper {
+    border-bottom: 1px solid #eee;
+  }
+
+  &__logo {
+    text-align: center;
+    vertical-align: middle;
+    line-height: $navigation-height;
+  }
+
+  &__right {
+    .dropdown {
+      outline: 0;
+    }
+  }
+
+  &__icon-menus {
+    display: inline-flex;
+    float: right;
+
+    > .icon-menu:not(:last-child) {
+      border-left: 1px solid #eee;
     }
 
-    &__logo {
-        text-align: center;
-        vertical-align: middle;
-        line-height: $navigation-height;
+    > .icon-menu:last-child {
+      border-left: 1px solid #eee;
+      border-right: 1px solid #eee;
     }
-
-    &__right {
-        .dropdown {
-            outline: 0;
-        }
-    }
-
-    &__icon-menus {
-        display: inline-flex;
-        float: right;
-
-        > .icon-menu:not(:last-child) {
-            border-left: 1px solid #eee;
-        }
-
-        > .icon-menu:last-child {
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
-        }
-    }
+  }
 }
 
 .container.large-header-menu {
-    max-width: 1750px;
+  max-width: 1750px;
 }
