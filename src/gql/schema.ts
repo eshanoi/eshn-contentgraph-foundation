@@ -675,6 +675,8 @@ export type AddressBookPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -1219,6 +1221,8 @@ export type AddressesElementBlockOrderByInput = {
   StreetLabel: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -1647,6 +1651,8 @@ export type AssetsDownloadLinksBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -1971,6 +1977,8 @@ export type AssociationsOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -2388,6 +2396,8 @@ export type BlogCommentBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -3113,6 +3123,8 @@ export type BlogItemPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -3982,6 +3994,8 @@ export type BlogListPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Template: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -4724,6 +4738,8 @@ export type BookmarksPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -5334,6 +5350,8 @@ export type BootstrapCardBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -5774,6 +5792,8 @@ export type BreadcrumbBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -6485,6 +6505,8 @@ export type BudgetingPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -6957,6 +6979,8 @@ export type BundleContentOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -7743,6 +7767,8 @@ export type ButtonBlockOrderByInput = {
   TextColorOverdrive: InputMaybe<OrderBy>;
   TextPadding: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -8196,6 +8222,8 @@ export type CalendarBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   ViewMode: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -8944,6 +8972,8 @@ export type CalendarEventPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -9840,6 +9870,8 @@ export type CallToActionBlockOrderByInput = {
   TextColor: InputMaybe<OrderBy>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -10239,6 +10271,8 @@ export type CaptchaElementBlockOrderByInput = {
   TextLength: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -10738,6 +10772,8 @@ export type CarouselBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -11134,6 +11170,8 @@ export type CarouselControlsOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Theme: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -11864,6 +11902,8 @@ export type CartPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -12323,6 +12363,8 @@ export type CatalogContentOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   WeightBase: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -12646,6 +12688,8 @@ export type CategoriesOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -13051,6 +13095,8 @@ export type CategoryBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -13826,6 +13872,8 @@ export type CheckoutPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -14269,6 +14317,8 @@ export type ChoiceElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -14652,6 +14702,8 @@ export type CodingFileOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -15419,6 +15471,8 @@ export type CollectionPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
   Video: InputMaybe<ContentModelReferenceOrderByInput>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -15900,6 +15954,8 @@ export type CommentsBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -17014,6 +17070,8 @@ export type CommunityPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -17709,6 +17767,8 @@ export type ContainerBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -17814,6 +17874,26 @@ export type ContentAreaItemModel = {
   DisplayOption: Maybe<Scalars['String']['output']>;
   InlineBlock: Maybe<InlineBlockPropertyModel>;
   Tag: Maybe<Scalars['String']['output']>;
+};
+
+export type ContentAreaItemModelAutocomplete = {
+  __typename: 'ContentAreaItemModelAutocomplete';
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  DisplayOption: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  InlineBlock: Maybe<InlineBlockPropertyModelAutocomplete>;
+  Tag: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type ContentAreaItemModelAutocompleteDisplayOptionArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ContentAreaItemModelAutocompleteTagArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
 };
 
 export type ContentAreaItemModelFacet = {
@@ -18273,6 +18353,7 @@ export type ContentModelReference = {
 export type ContentModelReferenceAutocomplete = {
   __typename: 'ContentModelReferenceAutocomplete';
   GuidValue: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
   ProviderName: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
@@ -18471,6 +18552,8 @@ export type ContentOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -18850,6 +18933,8 @@ export type CouponDataOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -19565,6 +19650,8 @@ export type CreditCardPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -19963,6 +20050,8 @@ export type CustomViewConfigurationBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -20327,6 +20416,8 @@ export type DamAssetOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -20689,6 +20780,8 @@ export type DamImageAssetOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -21051,6 +21144,8 @@ export type DamVideoAssetOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -21122,6 +21217,8 @@ export type Data_LinkArgs = {
 };
 
 export type DataOrderByInput = {
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -21559,6 +21656,8 @@ export type DateTimeElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -21995,6 +22094,8 @@ export type DateTimeRangeElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -22342,6 +22443,8 @@ export type DiscountItemsOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -23212,6 +23315,8 @@ export type DynamicProductOrderByInput = {
   Url: InputMaybe<OrderBy>;
   VariantsReference: InputMaybe<ContentModelReferenceOrderByInput>;
   Warranty: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -23634,6 +23739,7 @@ export type DynamicVariantAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<DynamicVariantSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -23666,6 +23772,12 @@ export type DynamicVariantAutocompleteRouteSegmentArgs = {
 
 
 export type DynamicVariantAutocompleteSeoUriArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type DynamicVariantAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -24161,6 +24273,8 @@ export type DynamicVariantOrderByInput = {
   VirtualProductMode: InputMaybe<OrderBy>;
   VirtualProductRole: InputMaybe<OrderBy>;
   Weight: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -24748,6 +24862,8 @@ export type ElevatedRoleBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -25093,6 +25209,8 @@ export type ExistsFilterBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -25511,6 +25629,8 @@ export type FacebookBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Width: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -25956,6 +26076,8 @@ export type FeedBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -26388,6 +26510,8 @@ export type FileUploadElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -26814,6 +26938,8 @@ export type FilterActivitiesBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -27239,6 +27365,8 @@ export type FilterContinentsBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -27664,6 +27792,8 @@ export type FilterDistancesBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -28089,6 +28219,8 @@ export type FilterTemperaturesBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -28443,6 +28575,8 @@ export type FixedPricePurchaseQuantityOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -28790,6 +28924,8 @@ export type FolderPageOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -29378,6 +29514,8 @@ export type FormContainerBlockOrderByInput = {
   SubmitSuccessMessage: InputMaybe<OrderBy>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -29790,6 +29928,8 @@ export type FormStepBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -30231,6 +30371,8 @@ export type FoundationPdfFileOrderByInput = {
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -30847,6 +30989,8 @@ export type GenericBundleOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -31537,6 +31681,8 @@ export type GenericNodeOrderByInput = {
   Teaser: InputMaybe<OrderBy>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -31842,6 +31988,7 @@ export type GenericPackageAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<GenericPackageSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -31874,6 +32021,12 @@ export type GenericPackageAutocompleteRouteSegmentArgs = {
 
 
 export type GenericPackageAutocompleteSeoUriArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type GenericPackageAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -32291,6 +32444,8 @@ export type GenericPackageOrderByInput = {
   TrackInventory: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Weight: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -33328,6 +33483,8 @@ export type GenericProductOrderByInput = {
   Url: InputMaybe<OrderBy>;
   VariantsReference: InputMaybe<ContentModelReferenceOrderByInput>;
   Warranty: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -33750,6 +33907,7 @@ export type GenericVariantAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<GenericVariantSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -33782,6 +33940,12 @@ export type GenericVariantAutocompleteRouteSegmentArgs = {
 
 
 export type GenericVariantAutocompleteSeoUriArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type GenericVariantAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -34277,6 +34441,8 @@ export type GenericVariantOrderByInput = {
   VirtualProductMode: InputMaybe<OrderBy>;
   VirtualProductRole: InputMaybe<OrderBy>;
   Weight: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -35157,6 +35323,8 @@ export type GiftCardPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -35611,6 +35779,8 @@ export type GoogleMapsBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -35984,6 +36154,8 @@ export type GroupAdmissionBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -36335,6 +36507,8 @@ export type GroupCreationBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -36709,6 +36883,8 @@ export type HcaptchaElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -37142,6 +37318,8 @@ export type HealthChatbotBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -37761,6 +37939,8 @@ export type HeroBlockCalloutOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -38210,6 +38390,8 @@ export type HeroBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -38948,6 +39130,8 @@ export type HomePageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -39518,6 +39702,8 @@ export type ImageChoiceElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -40253,6 +40439,8 @@ export type ImageMediaDataOrderByInput = {
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -40331,6 +40519,17 @@ export type ImageMediaDataWhereInput = {
 export type InlineBlockPropertyModel = {
   __typename: 'InlineBlockPropertyModel';
   ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type InlineBlockPropertyModelAutocomplete = {
+  __typename: 'InlineBlockPropertyModelAutocomplete';
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type InlineBlockPropertyModelAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
 };
 
 export type InlineBlockPropertyModelFacet = {
@@ -41074,6 +41273,8 @@ export type LandingPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -41487,6 +41688,8 @@ export type LikeButtonBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -42446,6 +42649,8 @@ export type LocationItemPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
   YearlyPassengers: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -43198,6 +43403,8 @@ export type LocationListPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -43647,6 +43854,8 @@ export type MembershipAffiliationBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -44092,6 +44301,8 @@ export type MembershipDisplayBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -44496,6 +44707,8 @@ export type MenuItemBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   TeaserText: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -45052,6 +45265,8 @@ export type ModalBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -45405,6 +45620,8 @@ export type MonetaryRewardOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   UseAmounts: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -45812,6 +46029,8 @@ export type NavigationBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -46574,6 +46793,8 @@ export type NewProductsPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -47017,6 +47238,8 @@ export type NodeContentOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -47510,6 +47733,8 @@ export type NumberElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -47887,6 +48112,8 @@ export type NumericFilterBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -48318,6 +48545,8 @@ export type OdpListConsentFormBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -48674,6 +48903,8 @@ export type OdpListFormBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -49406,6 +49637,8 @@ export type OrderConfirmationMailPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -50181,6 +50414,8 @@ export type OrderConfirmationPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -50915,6 +51150,8 @@ export type OrderDetailsPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -51336,6 +51573,8 @@ export type OrderHistoryBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -52045,6 +52284,8 @@ export type OrderHistoryPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -52776,6 +53017,8 @@ export type OrderPadsPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -53188,6 +53431,8 @@ export type OrderSearchBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -53896,6 +54141,8 @@ export type OrdersPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -54627,6 +54874,8 @@ export type OrganizationPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -54818,6 +55067,7 @@ export type PackageContentAutocomplete = {
   RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SeoInformation: Maybe<PackageContentSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -54850,6 +55100,12 @@ export type PackageContentAutocompleteRouteSegmentArgs = {
 
 
 export type PackageContentAutocompleteSeoUriArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PackageContentAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -55161,6 +55417,8 @@ export type PackageContentOrderByInput = {
   TrackInventory: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Weight: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -55889,6 +56147,8 @@ export type PageListBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Template: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -56291,6 +56551,8 @@ export type ParagraphTextElementBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -56655,6 +56917,8 @@ export type PdfFileOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -57361,6 +57625,8 @@ export type PersonListOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -58198,6 +58464,8 @@ export type PersonPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -58565,6 +58833,8 @@ export type PredefinedHiddenElementBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -59010,6 +59280,8 @@ export type ProductContentOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   VariantsReference: InputMaybe<ContentModelReferenceOrderByInput>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -59650,6 +59922,8 @@ export type ProductHeroBlockCalloutOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Text: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -60223,6 +60497,8 @@ export type ProductHeroBlockImageOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -60307,6 +60583,8 @@ export type ProductHeroBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -60433,6 +60711,7 @@ export type ProductHeroBlockProductHeroBlockImage = {
 export type ProductHeroBlockProductHeroBlockImageAutocomplete = {
   __typename: 'ProductHeroBlockProductHeroBlockImageAutocomplete';
   ImagePosition: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Product: Maybe<ContentAreaItemModelAutocomplete>;
 };
 
 
@@ -61042,6 +61321,8 @@ export type ProductSearchBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -61762,6 +62043,8 @@ export type ProfilePageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -62139,6 +62422,8 @@ export type PromotionScheduleOrderByInput = {
   UseCampaignDate: InputMaybe<OrderBy>;
   ValidFrom: InputMaybe<OrderBy>;
   ValidUntil: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -62467,6 +62752,8 @@ export type PurchaseAmountOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -62815,6 +63102,8 @@ export type PurchaseQuantityOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -67133,6 +67422,8 @@ export type QuickOrderBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -67837,6 +68128,8 @@ export type QuickOrderPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -68278,6 +68571,8 @@ export type RangeElementBlockOrderByInput = {
   Step: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -68721,6 +69016,8 @@ export type RatingBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -69101,6 +69398,8 @@ export type RecaptchaElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -69445,6 +69744,8 @@ export type RedemptionLimitsDataOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -69764,6 +70065,8 @@ export type RelationsOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -70118,6 +70421,8 @@ export type ReportingMediaDataOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -70469,6 +70774,8 @@ export type ResetButtonElementBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -71191,6 +71498,8 @@ export type ResetPasswordMailPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -71923,6 +72232,8 @@ export type ResetPasswordPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -72410,6 +72721,8 @@ export type RssReaderBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -73175,6 +73488,8 @@ export type SalesPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -73933,6 +74248,8 @@ export type SearchResultPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -74429,6 +74746,8 @@ export type SelectionElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -74802,6 +75121,8 @@ export type SeoInformationOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -75508,6 +75829,8 @@ export type SharedCartPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -75876,6 +76199,8 @@ export type ShippingDimensionsOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Width: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -76165,6 +76490,8 @@ export type SiteDefinitionOrderByInput = {
   Languages: InputMaybe<SiteDefinitionLanguageModelOrderByInput>;
   Name: InputMaybe<OrderBy>;
   Status: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -76585,6 +76912,8 @@ export type StandardFileOrderByInput = {
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -77367,6 +77696,8 @@ export type StandardPageOrderByInput = {
   TitleColor: InputMaybe<OrderBy>;
   TopPaddingMode: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -78104,6 +78435,8 @@ export type StorePageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -78494,6 +78827,8 @@ export type StringFilterBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -79224,6 +79559,8 @@ export type SubOrganizationPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -79671,6 +80008,8 @@ export type SubmitButtonElementBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -80090,6 +80429,8 @@ export type SubscriptionBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -80800,6 +81141,8 @@ export type SubscriptionDetailPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -81531,6 +81874,8 @@ export type SubscriptionHistoryPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -82313,6 +82658,8 @@ export type TagPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -82957,6 +83304,8 @@ export type TeaserBlockOrderByInput = {
   Text: InputMaybe<OrderBy>;
   TextColor: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -83382,6 +83731,8 @@ export type TextBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -83800,6 +84151,8 @@ export type TextareaElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -84235,6 +84588,8 @@ export type TextboxElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -84997,6 +85352,8 @@ export type ThreeColumnLandingPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -85440,6 +85797,8 @@ export type TwitterBlockOrderByInput = {
   Status: InputMaybe<OrderBy>;
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -86184,6 +86543,8 @@ export type TwoColumnLandingPageOrderByInput = {
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   TopContentArea: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -86636,6 +86997,8 @@ export type UrlElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Validators: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -87346,6 +87709,8 @@ export type UsersPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -87535,6 +87900,7 @@ export type VariationContentAutocomplete = {
   RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SeoInformation: Maybe<VariationContentSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -87567,6 +87933,12 @@ export type VariationContentAutocompleteRouteSegmentArgs = {
 
 
 export type VariationContentAutocompleteSeoUriArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type VariationContentAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -87876,6 +88248,8 @@ export type VariationContentOrderByInput = {
   TrackInventory: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Weight: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -88759,6 +89133,8 @@ export type VectorImageMediaDataOrderByInput = {
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -89176,6 +89552,8 @@ export type VideoBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   Video: InputMaybe<ContentModelReferenceOrderByInput>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -89584,6 +89962,8 @@ export type VideoFileOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -90033,6 +90413,8 @@ export type VimeoBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   VimeoVideoLink: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -90374,6 +90756,8 @@ export type VisitorDataHiddenElementBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   VisitorDataSources: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -91102,6 +91486,8 @@ export type WebImageMediaDataOrderByInput = {
   Thumbnail: InputMaybe<BlobModelOrderByInput>;
   Title: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -91493,6 +91879,8 @@ export type WidgetBlockOrderByInput = {
   Url: InputMaybe<OrderBy>;
   Value: InputMaybe<OrderBy>;
   WidgetType: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -92199,6 +92587,8 @@ export type WishListPageOrderByInput = {
   TeaserTextAlignment: InputMaybe<OrderBy>;
   TeaserVideo: InputMaybe<ContentModelReferenceOrderByInput>;
   Url: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 
@@ -92664,6 +93054,8 @@ export type YouTubeBlockOrderByInput = {
   StopPublish: InputMaybe<OrderBy>;
   Url: InputMaybe<OrderBy>;
   YouTubeLink: InputMaybe<OrderBy>;
+  _minimumScore: InputMaybe<Scalars['Float']['input']>;
+  _modified: InputMaybe<OrderBy>;
   _ranking: InputMaybe<Ranking>;
 };
 

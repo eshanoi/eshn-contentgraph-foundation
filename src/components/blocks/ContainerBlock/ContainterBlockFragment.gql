@@ -1,0 +1,23 @@
+fragment ContainerBlock on ContainerBlock {
+  __typename
+  Margin
+  Padding
+  BackgroundColor
+  BlockOpacity
+  MainContentArea {
+    ContentLink {
+      GuidValue
+      Id
+      __typename
+      Expanded {
+        ContentType
+        __typename
+        Name
+        ... on ContainerBlock @recursive(depth: 10) {
+          __typename
+        }
+        ...AllChildBlocks
+      }
+    }
+  }
+}

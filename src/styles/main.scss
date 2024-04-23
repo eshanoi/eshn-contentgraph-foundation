@@ -1,22 +1,22 @@
 ﻿@charset 'UTF-8';
 
 // 1. Configuration and helpers
-@import 'abstracts/**/*.scss';
+@import "abstracts/**/*.scss";
 
 // 2. Vendors
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // 3. Base stuff
-@import 'base/**/*.scss';
+@import "base/**/*.scss";
 
 // 4. Layout-related sections
-@import 'layout/**/*.scss';
+@import "layout/**/*.scss";
 
 // 5. Components
-@import 'components/**/*.scss';
+@import "components/**/*.scss";
 
 // 6. Page and block specific styles
-@import '../components/**/*.scss';
+@import "../components/**/*.scss";
 
 // 7. Themes
-@import 'themes/**/*.scss';
+@import "themes/**/*.scss";
