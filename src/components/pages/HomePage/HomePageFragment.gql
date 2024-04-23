@@ -5,6 +5,9 @@ fragment HomePage on HomePage {
   MainContentArea {
     ...ExpandedContentAreaItem
   }
+  BottomContentArea {
+    ...ExpandedContentAreaItem
+  }
   HideSiteHeader
   Url
 }

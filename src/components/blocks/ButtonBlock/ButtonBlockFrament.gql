@@ -1,0 +1,30 @@
+fragment ButtonBlock on ButtonBlock {
+  __typename
+  Padding
+  Margin
+  BackgroundColor
+  BlockOpacity
+  TextColorOverdrive
+  BackgroundColorOverdrive
+  ButtonTextUppercase
+  ButtonText
+  TextPadding
+  ShowTransparentBackground
+  BorderStyle
+  ButtonLink
+  FontSize
+  ButtonBackgroundColor
+  BorderWidth
+  BorderRadius
+  ButtonStyle
+  ButtonBackgroundHoverColor
+  ButtonBorderColor
+  ButtonCaption
+  ButtonBorderHoverColor
+  BorderStyleOverdrive
+  ButtonTextColor
+  ButtonTextHoverColor
+  ContentLink @include(if: $optional) {
+    Id
+  }
+}

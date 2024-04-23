@@ -1,9 +1,14 @@
 fragment ExpandedContentAreaItem on ContentAreaItemModelSearch {
   ContentLink {
     GuidValue
+    Id
+    __typename
     Expanded {
-      ...HeroBlock
-      ...StandardPagePartial
+      ContentType
+      __typename
+      Name
+      ...ContainerBlock
+      ...AllChildBlocks
     }
   }
 }

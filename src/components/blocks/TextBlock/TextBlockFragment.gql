@@ -1,0 +1,8 @@
+fragment TextBlock on TextBlock {
+  __typename
+  MainBody
+  Padding
+  Margin
+  BackgroundColor
+  BlockOpacity
+}

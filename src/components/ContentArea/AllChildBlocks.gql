@@ -1,0 +1,7 @@
+fragment AllChildBlocks on IContent {
+  ...HeroBlock
+  ...StandardPagePartial
+  ...TextBlock
+  ...CallToActionBlock
+  ...StandardPagePartial
+}

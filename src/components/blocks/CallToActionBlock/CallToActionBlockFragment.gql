@@ -1,0 +1,44 @@
+fragment CallToActionBlock on CallToActionBlock {
+  __typename
+  Title
+  Subtext
+  TextColor
+  BackgroundImage {
+    Url
+  }
+  BackgroundImageSetting
+  Button {
+    ...CallToActionBlockButtonBlock
+  }
+  Padding
+  Margin
+  BackgroundColor
+  BlockOpacity
+}
+
+fragment CallToActionBlockButtonBlock on CallToActionBlockButtonBlock {
+  Padding
+  Margin
+  BackgroundColor
+  BlockOpacity
+  TextColorOverdrive
+  BackgroundColorOverdrive
+  ButtonTextUppercase
+  ButtonText
+  TextPadding
+  ShowTransparentBackground
+  BorderStyle
+  ButtonLink
+  FontSize
+  ButtonBackgroundColor
+  BorderWidth
+  BorderRadius
+  ButtonStyle
+  ButtonBackgroundHoverColor
+  ButtonBorderColor
+  ButtonCaption
+  ButtonBorderHoverColor
+  BorderStyleOverdrive
+  ButtonTextColor
+  ButtonTextHoverColor
+}

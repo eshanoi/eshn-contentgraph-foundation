@@ -1,8 +1,8 @@
-import ContentArea from '@/components/ContentArea'
-import type { HomePageFragment } from './HomePageFragment.gql.g'
+import ContentArea from "@/components/ContentArea";
+import type { HomePageFragment } from "./HomePageFragment.gql.g";
 
 export default function HomePage({ page }: { page: HomePageFragment }) {
-  const { MainBody, MainContentArea } = page
+  const { MainBody, MainContentArea, BottomContentArea } = page;
 
   return (
     <div className="home-page row no-gutters">
@@ -13,6 +13,11 @@ export default function HomePage({ page }: { page: HomePageFragment }) {
           <ContentArea contentArea={MainContentArea} />
         </div>
       )}
+      {BottomContentArea && (
+        <div className="col-12">
+          <ContentArea contentArea={BottomContentArea} />
+        </div>
+      )}
     </div>
-  )
+  );
 }

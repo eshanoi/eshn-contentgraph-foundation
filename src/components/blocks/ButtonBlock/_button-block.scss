@@ -1,0 +1,12 @@
+.button-block {
+  a {
+    @extend %button-base;
+  }
+
+  & a:hover {
+    cursor: pointer;
+    background-color: var(--button-background-hover-color) !important;
+    border-color: var(--button-border-hover-color) !important;
+    color: var(--button-text-hover-color) !important;
+  }
+}
