@@ -1,0 +1,26 @@
+.collapse-toggle {
+  display: block;
+  position: relative;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
+
+  &:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: inherit;
+    cursor: pointer;
+    opacity: .8;
+    content: url("/icons/common/chevron-up.svg");
+  }
+
+  &.collapsed {
+    &:after {
+      content: url("/icons/common/chevron-down.svg");
+    }
+  }
+}
