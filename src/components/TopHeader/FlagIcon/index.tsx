@@ -1,21 +1,18 @@
 import type { FC } from 'react';
-import Image from 'next/image';
 
 type Props = {
-  src: string;
-  countryName: string;
+  flagCode: string;
 };
 
-const FlagIcon: FC<Props> = ({ src, countryName }) => {
+const FlagIcon: FC<Props> = ({ flagCode }) => {
   return (
-    <Image
+    <svg
       width={16}
       height={16}
       className="market-selector__market-icon ls-is-cached lazyloaded"
-      data-src={src}
-      src={src}
-      alt={`${countryName} flag`}
-    />
+    >
+      <use xlinkHref={`/icons/flags.svg#${flagCode}`} />
+    </svg>
   );
 };
 

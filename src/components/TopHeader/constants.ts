@@ -13,7 +13,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Australia',
-        flagSrc: '/icons/flags/australia.svg',
+        flagCode: 'australia',
       },
     ],
     currencies: [
@@ -37,8 +37,8 @@ export const MARKETS: MarketType[] = [
     name: 'Brazil',
     countries: [
       {
-        name: 'Australia',
-        flagSrc: '/icons/flags/brazil.svg',
+        name: 'Brazil',
+        flagCode: 'brazil',
       },
     ],
     currencies: [
@@ -63,7 +63,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Canada',
-        flagSrc: '/icons/flags/canada.svg',
+        flagCode: 'canada',
       },
     ],
     currencies: [
@@ -88,7 +88,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Chile',
-        flagSrc: '/icons/flags/chile.svg',
+        flagCode: 'chile',
       },
     ],
     currencies: [
@@ -113,7 +113,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Germany',
-        flagSrc: '/icons/flags/germany.svg',
+        flagCode: 'germany',
       },
     ],
     currencies: [
@@ -138,7 +138,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Spain',
-        flagSrc: '/icons/flags/spain.svg',
+        flagCode: 'spain',
       },
     ],
     currencies: [
@@ -163,7 +163,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'France',
-        flagSrc: '/icons/flags/france.svg',
+        flagCode: 'france',
       },
     ],
     currencies: [
@@ -188,7 +188,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Japan',
-        flagSrc: '/icons/flags/japan.svg',
+        flagCode: 'japan',
       },
     ],
     currencies: [
@@ -213,7 +213,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Netherlands',
-        flagSrc: '/icons/flags/netherlands.svg',
+        flagCode: 'netherlands',
       },
     ],
     currencies: [
@@ -238,7 +238,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Norway',
-        flagSrc: '/icons/flags/norway.svg',
+        flagCode: 'norway',
       },
     ],
     currencies: [
@@ -263,7 +263,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Saudi Arabia',
-        flagSrc: '/icons/flags/saudi-arabia.svg',
+        flagCode: 'saudi-arabia',
       },
     ],
     currencies: [
@@ -288,7 +288,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'Sweden',
-        flagSrc: '/icons/flags/sweden.svg',
+        flagCode: 'sweden',
       },
     ],
     currencies: [
@@ -322,7 +322,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'United Kingdom',
-        flagSrc: '/icons/flags/united-kingdom.svg',
+        flagCode: 'united-kingdom',
       },
     ],
     currencies: [
@@ -348,7 +348,7 @@ export const MARKETS: MarketType[] = [
     countries: [
       {
         name: 'United States',
-        flagSrc: '/icons/flags/united-states-of-america.svg',
+        flagCode: 'united-states-of-america',
       },
     ],
     currencies: [
