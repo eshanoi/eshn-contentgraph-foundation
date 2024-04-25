@@ -4,7 +4,7 @@ type MarketCommonFields = {
 };
 
 export type CountryType = {
-  flagSrc: string;
+  flagCode: string;
 } & Pick<MarketCommonFields, 'name'>;
 
 export type CurrencyType = {

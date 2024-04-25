@@ -19,12 +19,7 @@ const LanguageSwitchButton: FC<Props> = ({
       data-flip="false"
       aria-expanded="false"
     >
-      {currentCountry && (
-        <FlagIcon
-          src={currentCountry?.flagSrc}
-          countryName={currentCountry.name}
-        />
-      )}
+      {currentCountry && <FlagIcon flagCode={currentCountry.flagCode} />}
       <p className="market-selector__market-text">
         | {currentLanguage?.code || ''} | {currentCurrency?.symbol || ''}
       </p>

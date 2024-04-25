@@ -29,10 +29,7 @@ const MarketList: FC<Props> = ({ currentMarketName }) => {
             className="market-selector__wrapper"
             onClick={() => onChangeMarket(market.id)}
           >
-            <FlagIcon
-              src={market.countries[0].flagSrc}
-              countryName={market.countries[0].name}
-            />
+            <FlagIcon flagCode={market.countries[0].flagCode} />
             <p className="market-selector__market-text">{market.name}</p>
           </a>
         ))}
