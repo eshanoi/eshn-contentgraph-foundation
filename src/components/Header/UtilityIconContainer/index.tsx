@@ -18,6 +18,7 @@ type Props = {
   badgeCount?: number;
   className?: string;
   id?: string;
+  onClick?: VoidFunction;
 };
 
 const UtilityIconContainer: FC<Props> = ({

@@ -1,12 +1,11 @@
-import { GraphQLClient } from 'graphql-request'
-import { ok } from 'node:assert'
+import { GraphQLClient } from 'graphql-request';
 
-ok(process.env.GRAPHQL_ENDPOINT)
-ok(process.env.GRAPHQL_CLIENT_KEY)
+const endpoint = new URL('https://cg.optimizely.com/content/v2');
+endpoint.searchParams.set(
+  'auth',
+  'YOGC3MvqMyZkcJNQZPWlKWveXpjUyJINJ1V1SDqFMEKyq0i0',
+);
 
-const endpoint = new URL(process.env.GRAPHQL_ENDPOINT)
-endpoint.searchParams.set('auth', process.env.GRAPHQL_CLIENT_KEY)
+const client = new GraphQLClient(endpoint.href);
 
-const client = new GraphQLClient(endpoint.href)
-
-export default client
+export default client;

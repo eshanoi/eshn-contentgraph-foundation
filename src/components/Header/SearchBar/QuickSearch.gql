@@ -1,0 +1,21 @@
+query QuickSearch($search: String, $contentType: String, $limit: Int = 5, $synonyms: [SynonymSlot] = ONE, $language: String) {
+  contents: Content(
+    where: {
+      _fulltext: { contains: $search, synonyms: $synonyms }
+      _or: [{ Language: { Name: { eq: $language } } }]
+      ContentType: { eq: $contentType }
+    }
+    limit: $limit
+  ) {
+    items {
+      ...Content
+    }
+  }
+}
+
+fragment Content on StandardPage {
+  _id
+  __typename
+  Name
+  RelativePath
+}

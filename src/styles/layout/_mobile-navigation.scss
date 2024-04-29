@@ -32,6 +32,11 @@
 
   &__right {
     display: flex;
+
+    .searchbox-popover {
+      width: 100%;
+      transform: translate(0px, 110px);
+    }
   }
 
   &__search-text {
