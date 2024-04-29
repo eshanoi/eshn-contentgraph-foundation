@@ -1,8 +1,8 @@
-query QuickSearch($search: String, $contentType: String, $limit: Int = 5, $synonyms: [SynonymSlot] = ONE, $language: String) {
+query QuickSearch($search: String, $contentType: String, $limit: Int = 5, $synonyms: [SynonymSlot] = ONE, $locale: Locales) {
   contents: Content(
+    locale:[$locale],
     where: {
       _fulltext: { contains: $search, synonyms: $synonyms }
-      _or: [{ Language: { Name: { eq: $language } } }]
       ContentType: { eq: $contentType }
     }
     limit: $limit

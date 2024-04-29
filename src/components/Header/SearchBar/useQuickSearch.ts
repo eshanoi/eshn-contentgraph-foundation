@@ -7,9 +7,10 @@ import {
 } from '@/components/Header/SearchBar/QuickSearch.gql.g';
 import { getCookie } from 'cookies-next';
 import { MARKET_COOKIES } from '@/components/TopHeader/constants';
+import { Locales } from '@/gql/schema';
 
 const useQuickSearch = (isOpen: boolean) => {
-  const language = getCookie(MARKET_COOKIES.Language) || 'en';
+  const locale = (getCookie(MARKET_COOKIES.Language) as Locales) || Locales.En;
   const [search, setSearch] = useState<string>('');
   const [searchData, setSearchData] = useState<QuickSearchQuery | null>(null);
 
@@ -23,11 +24,11 @@ const useQuickSearch = (isOpen: boolean) => {
     const response = await client.request(QuickSearchDocument, {
       search,
       contentType: 'StandardPage',
-      language,
+      locale,
     });
 
     setSearchData(response);
-  }, [language, search]);
+  }, [locale, search]);
 
   const onQuickSearchDebounced = useDebounce(onQuickSearch);
 
