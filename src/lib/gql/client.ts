@@ -1,11 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
+import { cgEndpoint } from '@/lib/gql/constants.mjs';
 
-const endpoint = new URL('https://cg.optimizely.com/content/v2');
-endpoint.searchParams.set(
-  'auth',
-  'YOGC3MvqMyZkcJNQZPWlKWveXpjUyJINJ1V1SDqFMEKyq0i0',
-);
-
-const client = new GraphQLClient(endpoint.href);
+const client = new GraphQLClient(cgEndpoint.href);
 
 export default client;

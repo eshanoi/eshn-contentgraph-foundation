@@ -1,6 +1,11 @@
 import { useDebounce } from '@/hooks/useDebounce';
-import { type ChangeEvent, useCallback, useEffect, useState } from 'react';
-import client from '@/lib/gql/client';
+import {
+  type ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {
   QuickSearchDocument,
   type QuickSearchQuery,
@@ -8,35 +13,39 @@ import {
 import { getCookie } from 'cookies-next';
 import { MARKET_COOKIES } from '@/components/TopHeader/constants';
 import { Locales } from '@/gql/schema';
+import useGraphqlClient from '@/hooks/useGraphqlClient';
 
 const useQuickSearch = (isOpen: boolean) => {
   const locale = (getCookie(MARKET_COOKIES.Language) as Locales) || Locales.En;
   const [search, setSearch] = useState<string>('');
   const [searchData, setSearchData] = useState<QuickSearchQuery | null>(null);
-
   const onChange = useCallback(async (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearch(value);
   }, []);
 
+  const client = useGraphqlClient();
+
+  const searchTrimmed = useMemo(() => search.trim(), [search]);
+
   const onQuickSearch = useCallback(async () => {
-    if (!search) return;
+    if (!searchTrimmed) return;
     const response = await client.request(QuickSearchDocument, {
-      search,
+      search: searchTrimmed,
       contentType: 'StandardPage',
       locale,
     });
 
     setSearchData(response);
-  }, [locale, search]);
+  }, [client, locale, searchTrimmed]);
 
   const onQuickSearchDebounced = useDebounce(onQuickSearch);
 
   useEffect(() => {
-    if (search) {
+    if (searchTrimmed) {
       onQuickSearchDebounced();
     }
-  }, [onQuickSearchDebounced, search]);
+  }, [onQuickSearchDebounced, searchTrimmed]);
 
   useEffect(() => {
     if (!isOpen && search) {
