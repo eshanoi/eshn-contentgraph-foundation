@@ -4,7 +4,7 @@ import FooterSection from '@/components/Footer/FooterSection';
 const Footer = () => {
   return (
     <>
-      <hr className="bottom-line"></hr>
+      <hr className="bottom-line" />
       <footer className="footer">
         <div className="container">
           <h5 className="footer__introduction">
