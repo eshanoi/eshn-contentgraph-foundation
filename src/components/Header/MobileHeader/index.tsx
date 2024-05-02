@@ -1,9 +1,8 @@
-import UtilityIconContainer from '@/components/Header/UtilityIconContainer';
-import { SearchIcon } from '@/components/Header/UtilityIcons';
 import Logo from '@/components/Header/Logo';
 import { LOGO_SRC } from '@/components/Header/constants';
 import MobileNavigationDrawer from '@/components/Header/MobileHeader/MobileNavigationDrawer';
 import MobileSignUpModal from '@/components/Header/MobileHeader/MobileSignUpModal';
+import MobileSearch from '@/components/Header/MobileHeader/MobileSearch';
 
 const MobileHeader = () => {
   return (
@@ -29,9 +28,7 @@ const MobileHeader = () => {
               <Logo content={{ src: LOGO_SRC }} />
             </div>
           </div>
-          <div className="mobile-navigation__right">
-            <UtilityIconContainer Icon={<SearchIcon />} className="icon-menu" />
-          </div>
+          <MobileSearch />
         </div>
       </div>
       <MobileNavigationDrawer />
