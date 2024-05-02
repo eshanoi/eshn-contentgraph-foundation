@@ -2,7 +2,7 @@ import type {
   ListItem,
   NestedListType,
 } from '@/components/common/NestedList/types';
-import type { FC, ReactNode } from 'react';
+import { type FC, Fragment, type ReactNode } from 'react';
 
 type Props = {
   list: NestedListType;
@@ -18,22 +18,24 @@ const NestedList: FC<Props> = ({ list, Item, Title, className = '' }) => {
       {list.items &&
         list?.items.map((item) => {
           return (
-            <>
-              <Item item={item} key={`${item.name}-${list.title}`} />
+            <Fragment key={`${item.name}-${list.title}-${item.href}`}>
+              <Item item={item} />
               {item.items && (
                 <>
-                  {item.items.map((nestedItem) => (
-                    <NestedList
-                      key={`${nestedItem.title}-${list.title}`}
-                      list={nestedItem}
-                      Item={Item}
-                      Title={Title}
-                      className="nested-list__child"
-                    />
-                  ))}
+                  {item.items.map((nestedItem) => {
+                    return (
+                      <NestedList
+                        key={`${nestedItem.title}-${list.title}-$${item.href}`}
+                        list={nestedItem}
+                        Item={Item}
+                        Title={Title}
+                        className="nested-list__child"
+                      />
+                    );
+                  })}
                 </>
               )}
-            </>
+            </Fragment>
           );
         })}
     </ul>
