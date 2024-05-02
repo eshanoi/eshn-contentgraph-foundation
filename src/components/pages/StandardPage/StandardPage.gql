@@ -1,4 +1,21 @@
 fragment StandardPage on StandardPage {
   __typename
   Name
+  MainBody
+  MainContentArea {
+    ...ExpandedContentAreaItem
+  }
+  TitleColor
+  BackgroundColor
+  BackgroundOpacity
+  BackgroundImage {
+    Url
+  }
+  BackgroundVideo {
+    Url
+  }
+  PageImage {
+    Url
+  }
+  TopPaddingMode
 }

@@ -1,20 +1,19 @@
-import type { CallToActionBlockFragment } from "./CallToActionBlockFragment.gql.g";
-import { type CSSProperties } from "react";
-import { Button } from "../ButtonBlock";
-import { consoleLog } from "@/logger";
+import type { CallToActionBlockFragment } from './CallToActionBlockFragment.gql.g';
+import { type CSSProperties } from 'react';
+import { Button } from '../ButtonBlock';
 
 const backgroundSetting: { [key: string]: any } = {
-  "image-fit-width": { backgroundRepeat: "no-repeat", backgroundSize: "cover" },
-  "image-fit-height": {
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "auto 100%",
+  'image-fit-width': { backgroundRepeat: 'no-repeat', backgroundSize: 'cover' },
+  'image-fit-height': {
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'auto 100%',
   },
-  "image-tile": { backgroundRepeat: "repeat", backgroundSize: "auto" },
-  "image-stretch": {
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
+  'image-tile': { backgroundRepeat: 'repeat', backgroundSize: 'auto' },
+  'image-stretch': {
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
   },
-  "image-default": { backgroundRepeat: "no-repeat", backgroundSize: "auto" },
+  'image-default': { backgroundRepeat: 'no-repeat', backgroundSize: 'auto' },
 };
 
 export default function CallToActionBlock({
