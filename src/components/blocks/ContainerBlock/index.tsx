@@ -1,6 +1,5 @@
-import ContentArea from "@/components/ContentArea";
-import type { ContainerBlockFragment } from "./ContainterBlockFragment.gql.g";
-import { consoleLog } from "@/logger";
+import ContentArea from '@/components/ContentArea';
+import type { ContainerBlockFragment } from './ContainterBlockFragment.gql.g';
 
 export default function ContainerBlock({
   block,
@@ -11,7 +10,6 @@ export default function ContainerBlock({
     block;
 
   const className = `${Padding} ${Margin}`;
-  consoleLog.info("ContainerBlock", JSON.stringify(block));
 
   const blockStyle = {
     backgroundColor: BackgroundColor ?? undefined,
