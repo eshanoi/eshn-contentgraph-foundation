@@ -1,23 +1,8 @@
 import Collapse from '@/components/common/Collapse';
-import NestedList from '@/components/common/NestedList';
 import { NAVIGATIONS } from '@/components/Header/constants';
-import Link from 'next/link';
-import type { FC } from 'react';
 import convertNavigationIntoNestedList from '@/components/Header/MobileHeader/MobileNavigation/convertNavigationIntoNestedList';
-
-type NavigationItemProps = {
-  href?: string;
-  name: string;
-  className?: string;
-};
-
-const NavigationItem: FC<NavigationItemProps> = ({ name, href, className }) => {
-  return (
-    <li className={`offside-navbar--menu__item ${className}`}>
-      <Link href={href || ''}>{name}</Link>
-    </li>
-  );
-};
+import MobileNavigationNestedList from '@/components/Header/MobileHeader/MobileNavigation/MobileNavigationNestedList';
+import NavigationItem from '@/components/Header/MobileHeader/MobileNavigation/MobileNavigationItem';
 
 const MobileNavigation = () => {
   return (
@@ -36,20 +21,9 @@ const MobileNavigation = () => {
                   navigation?.items?.subNavigations,
                 ).map((subNavigation) => {
                   return (
-                    <NestedList
-                      key={`${subNavigation.title}-${navigation.name}`}
-                      className="offside-navbar--menu child-menu"
-                      list={subNavigation}
-                      Title={({ title }) => (
-                        <NavigationItem
-                          name={title}
-                          href="#"
-                          className="main-category"
-                        />
-                      )}
-                      Item={({ item }) => (
-                        <NavigationItem name={item.name} href={item.href} />
-                      )}
+                    <MobileNavigationNestedList
+                      subNavigation={subNavigation}
+                      key={`${subNavigation.title}-${navigation.name}-${navigation.href}`}
                     />
                   );
                 })}
