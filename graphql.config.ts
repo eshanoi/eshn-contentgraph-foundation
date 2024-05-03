@@ -1,17 +1,14 @@
-import type { CodegenConfig } from '@graphql-codegen/cli'
-import { ok } from 'node:assert'
+import type { CodegenConfig } from '@graphql-codegen/cli';
+import { cgEndpoint } from './src/lib/gql/constants.mjs';
 
-const comments = ['/* eslint-disable */', '/* GENERATED FILE. DO NOT MODIFY. */']
-
-ok(process.env.GRAPHQL_ENDPOINT)
-ok(process.env.GRAPHQL_CLIENT_KEY)
-
-const endpoint = new URL(process.env.GRAPHQL_ENDPOINT)
-endpoint.searchParams.set('auth', process.env.GRAPHQL_CLIENT_KEY)
+const comments = [
+  '/* eslint-disable */',
+  '/* GENERATED FILE. DO NOT MODIFY. */',
+];
 
 export default {
   /* Options for GraphQL.vscode-graphql and @graphql-codegen */
-  schema: endpoint.href,
+  schema: cgEndpoint.href,
   documents: 'src/**/*.gql',
 
   /* Options for @graphql-codegen */
@@ -25,7 +22,12 @@ export default {
         },
       ],
       config: {
-        avoidOptionals: true,
+        avoidOptionals: {
+          field: true,
+          inputValue: false,
+          object: true,
+          defaultValue: true,
+        },
         nonOptionalTypename: true,
       },
     },
@@ -45,8 +47,8 @@ export default {
       config: {
         avoidOptionals: true,
         inlineFragmentTypes: 'combine',
-        useTypeImports: true
+        useTypeImports: true,
       },
     },
   },
-} satisfies CodegenConfig
+} satisfies CodegenConfig;
