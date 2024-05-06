@@ -1,21 +1,19 @@
 import { useMemo } from 'react';
-import { PAGE_SIZES } from '@/components/pages/SearchPage/constants';
+import { DEFAULT_SEARCH_CRITERIA } from '@/components/pages/SearchPage/constants';
 
 type Props = {
   current: number;
 };
 
 const useGetLimiter = ({ current }: Props) => {
-  return useMemo(
-    () => [
-      current === PAGE_SIZES['15'] ? PAGE_SIZES['20'] : PAGE_SIZES['15'],
-      current === PAGE_SIZES['30'] || current === PAGE_SIZES['35']
-        ? PAGE_SIZES['20']
-        : PAGE_SIZES['30'],
-      current === PAGE_SIZES['30'] ? PAGE_SIZES['35'] : PAGE_SIZES['30'],
-    ],
-    [current],
-  );
+  return useMemo(() => {
+    let values = [15, 30, 35];
+    if (current !== DEFAULT_SEARCH_CRITERIA.limit) {
+      values = [15, 20, 30, 35];
+    }
+
+    return values.filter((limit) => limit !== current);
+  }, [current]);
 };
 
 export default useGetLimiter;
