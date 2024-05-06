@@ -1,4 +1,4 @@
-import Drawer from '@/components/Drawer';
+import Drawer from '../../../common/Drawer';
 import MobileNavigationTabs from '@/components/Header/MobileHeader/MobileNavigationTabs';
 
 const MobileNavigationDrawer = () => {
