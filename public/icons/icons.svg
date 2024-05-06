@@ -1,0 +1,27 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display:none"
+>
+    <symbol id="arrow-down" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+        <path d="M12 5v14m7-7-7 7-7-7"/>
+    </symbol>
+    <symbol id="arrow-up" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+        <path d="M12 19V5m-7 7 7-7 7 7"/>
+    </symbol>
+
+    <symbol id="chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+    <symbol id="chevron-up" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            viewBox="0 0 24 24"
+            stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6"/>
+    </symbol>
+    <symbol id="grid" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3h7v7H3zm11 0h7v7h-7zm0 11h7v7h-7zM3 14h7v7H3z"/>
+    </symbol>
+    <symbol id="list" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+    </symbol>
+</svg>

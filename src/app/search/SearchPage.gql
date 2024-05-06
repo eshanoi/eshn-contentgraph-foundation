@@ -1,0 +1,25 @@
+query SearchPage($search: String, $contentType: String, $limit: Int = 20, $synonyms: [SynonymSlot] = ONE, $locale: Locales, $orderBy: ContentOrderByInput, $skip: Int) {
+  contents: Content(
+    locale: [$locale]
+    where: {
+      _fulltext: { contains: $search, synonyms: $synonyms }
+      ContentType: { eq: $contentType }
+    }
+    limit: $limit
+    skip: $skip
+    orderBy: $orderBy
+  ) {
+    items {
+      ...FullSearchContent
+    }
+    total
+  }
+}
+
+fragment FullSearchContent on StandardPage {
+  __typename
+  _id
+  Name
+  RelativePath
+  TeaserText
+}
