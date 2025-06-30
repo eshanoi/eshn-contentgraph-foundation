@@ -2,7 +2,7 @@ import type { CallToActionBlockFragment } from './CallToActionBlockFragment.gql.
 import { type CSSProperties } from 'react';
 import { Button } from '../ButtonBlock';
 
-const backgroundSetting: { [key: string]: any } = {
+const backgroundSetting: Record<string, CSSProperties> = {
   'image-fit-width': { backgroundRepeat: 'no-repeat', backgroundSize: 'cover' },
   'image-fit-height': {
     backgroundRepeat: 'no-repeat',
