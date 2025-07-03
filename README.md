@@ -3,6 +3,7 @@
 1.  Create `.env.local` in the project root.
 2.  Copy content from `.env.example` to `.env.local`.
 3.  Update `GRAPHQL_CLIENT_KEY` with your actual key.
+4.  Add `.env.local` to `.gitignore` to prevent committing sensitive keys.
 
 ### Codegen (GraphQL Code Generation)
 
