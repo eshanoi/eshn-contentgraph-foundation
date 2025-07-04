@@ -72,6 +72,7 @@ export type AddressBookPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -678,6 +679,8 @@ export type AddressBookPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type AddressBookPageOutput = {
@@ -685,6 +688,7 @@ export type AddressBookPageOutput = {
   autocomplete: Maybe<AddressBookPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<AddressBookPageFacet>;
+  item: Maybe<AddressBookPage>;
   items: Maybe<Array<Maybe<AddressBookPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -788,6 +792,7 @@ export type AddressesElementBlock = IContent & IData & {
   StreetLabel: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -1012,6 +1017,10 @@ export type AddressesElementBlockFacetCityLabelArgs = {
 
 
 export type AddressesElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -1063,11 +1072,19 @@ export type AddressesElementBlockFacetLabelArgs = {
 
 
 export type AddressesElementBlockFacetMapHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type AddressesElementBlockFacetMapWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -1224,6 +1241,8 @@ export type AddressesElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type AddressesElementBlockOutput = {
@@ -1231,6 +1250,7 @@ export type AddressesElementBlockOutput = {
   autocomplete: Maybe<AddressesElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<AddressesElementBlockFacet>;
+  item: Maybe<AddressesElementBlock>;
   items: Maybe<Array<Maybe<AddressesElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -1283,6 +1303,409 @@ export type AddressesElementBlockWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<AddressesElementBlockWhereInput>>>;
 };
 
+/** Announcements */
+export type Announcements = IContent & IData & {
+  __typename: 'Announcements';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  BackgroundColor: Maybe<Scalars['String']['output']>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureImage: Maybe<ContentModelReference>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  SecondaryTitle: Maybe<Scalars['String']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Announcements */
+export type AnnouncementsBackgroundColorArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type AnnouncementsFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type AnnouncementsNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type AnnouncementsSecondaryTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type AnnouncementsTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type Announcements_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Announcements */
+export type Announcements_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type AnnouncementsAutocomplete = {
+  __typename: 'AnnouncementsAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  FeatureImage: Maybe<ContentModelReferenceAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type AnnouncementsAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type AnnouncementsAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type AnnouncementsFacet = {
+  __typename: 'AnnouncementsFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  BackgroundColor: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureImage: Maybe<ContentModelReferenceFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  SecondaryTitle: Maybe<Array<Maybe<StringFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type AnnouncementsFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetBackgroundColorArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AnnouncementsFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AnnouncementsFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AnnouncementsFacetSecondaryTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AnnouncementsFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AnnouncementsFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type AnnouncementsFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type AnnouncementsOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  BackgroundColor?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  SecondaryTitle?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type AnnouncementsOutput = {
+  __typename: 'AnnouncementsOutput';
+  autocomplete: Maybe<AnnouncementsAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<AnnouncementsFacet>;
+  item: Maybe<Announcements>;
+  items: Maybe<Array<Maybe<Announcements>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type AnnouncementsOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type AnnouncementsWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  BackgroundColor?: InputMaybe<SearchableStringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  SecondaryTitle?: InputMaybe<SearchableStringFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<AnnouncementsWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<AnnouncementsWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<AnnouncementsWhereInput>>>;
+};
+
 /** Blocks to show links for assets to download */
 export type AssetsDownloadLinksBlock = IContent & IData & {
   __typename: 'AssetsDownloadLinksBlock';
@@ -1317,6 +1740,7 @@ export type AssetsDownloadLinksBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -1487,6 +1911,10 @@ export type AssetsDownloadLinksBlockFacetBackgroundColorArgs = {
 
 
 export type AssetsDownloadLinksBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -1506,6 +1934,10 @@ export type AssetsDownloadLinksBlockFacetContentTypeArgs = {
 
 
 export type AssetsDownloadLinksBlockFacetCountArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -1654,6 +2086,8 @@ export type AssetsDownloadLinksBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type AssetsDownloadLinksBlockOutput = {
@@ -1661,6 +2095,7 @@ export type AssetsDownloadLinksBlockOutput = {
   autocomplete: Maybe<AssetsDownloadLinksBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<AssetsDownloadLinksBlockFacet>;
+  item: Maybe<AssetsDownloadLinksBlock>;
   items: Maybe<Array<Maybe<AssetsDownloadLinksBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -1730,6 +2165,7 @@ export type Associations = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -1980,6 +2416,8 @@ export type AssociationsOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type AssociationsOutput = {
@@ -1987,6 +2425,7 @@ export type AssociationsOutput = {
   autocomplete: Maybe<AssociationsAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<AssociationsFacet>;
+  item: Maybe<Associations>;
   items: Maybe<Array<Maybe<Associations>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -2023,6 +2462,342 @@ export type AssociationsWhereInput = {
   _modified?: InputMaybe<DateFilterInput>;
   _not?: InputMaybe<Array<InputMaybe<AssociationsWhereInput>>>;
   _or?: InputMaybe<Array<InputMaybe<AssociationsWhereInput>>>;
+};
+
+/** Banner block */
+export type BannerBlock = IContent & IData & {
+  __typename: 'BannerBlock';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Banner: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Banner block */
+export type BannerBlockBannerArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Banner block */
+export type BannerBlockNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Banner block */
+export type BannerBlock_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Banner block */
+export type BannerBlock_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type BannerBlockAutocomplete = {
+  __typename: 'BannerBlockAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type BannerBlockAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type BannerBlockAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type BannerBlockFacet = {
+  __typename: 'BannerBlockFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Banner: Maybe<ContentAreaItemModelSearchFacet>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type BannerBlockFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type BannerBlockFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type BannerBlockFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type BannerBlockFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type BannerBlockFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type BannerBlockFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type BannerBlockFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type BannerBlockOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Banner?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type BannerBlockOutput = {
+  __typename: 'BannerBlockOutput';
+  autocomplete: Maybe<BannerBlockAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<BannerBlockFacet>;
+  item: Maybe<BannerBlock>;
+  items: Maybe<Array<Maybe<BannerBlock>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type BannerBlockOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type BannerBlockWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Banner?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<BannerBlockWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<BannerBlockWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<BannerBlockWhereInput>>>;
 };
 
 export type BlobModel = {
@@ -2111,6 +2886,7 @@ export type BlogCommentBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -2250,6 +3026,10 @@ export type BlogCommentBlockFacetChangedArgs = {
 
 
 export type BlogCommentBlockFacetCommentsPerPageArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -2285,21 +3065,37 @@ export type BlogCommentBlockFacetNameArgs = {
 
 
 export type BlogCommentBlockFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type BlogCommentBlockFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type BlogCommentBlockFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type BlogCommentBlockFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -2399,6 +3195,8 @@ export type BlogCommentBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BlogCommentBlockOutput = {
@@ -2406,6 +3204,7 @@ export type BlogCommentBlockOutput = {
   autocomplete: Maybe<BlogCommentBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BlogCommentBlockFacet>;
+  item: Maybe<BlogCommentBlock>;
   items: Maybe<Array<Maybe<BlogCommentBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -2504,6 +3303,7 @@ export type BlogItemPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -3126,6 +3926,8 @@ export type BlogItemPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BlogItemPageOutput = {
@@ -3133,6 +3935,7 @@ export type BlogItemPageOutput = {
   autocomplete: Maybe<BlogItemPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BlogItemPageFacet>;
+  item: Maybe<BlogItemPage>;
   items: Maybe<Array<Maybe<BlogItemPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -3268,6 +4071,7 @@ export type BlogListPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   Template: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -3846,6 +4650,10 @@ export type BlogListPageFacetSiteIdArgs = {
 
 
 export type BlogListPageFacetSortOrderArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -3997,6 +4805,8 @@ export type BlogListPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BlogListPageOutput = {
@@ -4004,6 +4814,7 @@ export type BlogListPageOutput = {
   autocomplete: Maybe<BlogListPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BlogListPageFacet>;
+  item: Maybe<BlogListPage>;
   items: Maybe<Array<Maybe<BlogListPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -4135,6 +4946,7 @@ export type BookmarksPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -4741,6 +5553,8 @@ export type BookmarksPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BookmarksPageOutput = {
@@ -4748,6 +5562,7 @@ export type BookmarksPageOutput = {
   autocomplete: Maybe<BookmarksPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BookmarksPageFacet>;
+  item: Maybe<BookmarksPage>;
   items: Maybe<Array<Maybe<BookmarksPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -4873,6 +5688,7 @@ export type BootstrapCardBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -5109,6 +5925,10 @@ export type BootstrapCardBlockFacetBackgroundColorArgs = {
 
 
 export type BootstrapCardBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -5353,6 +6173,8 @@ export type BootstrapCardBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BootstrapCardBlockOutput = {
@@ -5360,6 +6182,7 @@ export type BootstrapCardBlockOutput = {
   autocomplete: Maybe<BootstrapCardBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BootstrapCardBlockFacet>;
+  item: Maybe<BootstrapCardBlock>;
   items: Maybe<Array<Maybe<BootstrapCardBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -5449,6 +6272,7 @@ export type BreadcrumbBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -5633,6 +6457,10 @@ export type BreadcrumbBlockFacetBackgroundColorArgs = {
 
 
 export type BreadcrumbBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -5795,6 +6623,8 @@ export type BreadcrumbBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BreadcrumbBlockOutput = {
@@ -5802,6 +6632,7 @@ export type BreadcrumbBlockOutput = {
   autocomplete: Maybe<BreadcrumbBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BreadcrumbBlockFacet>;
+  item: Maybe<BreadcrumbBlock>;
   items: Maybe<Array<Maybe<BreadcrumbBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -5902,6 +6733,7 @@ export type BudgetingPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -6508,6 +7340,8 @@ export type BudgetingPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BudgetingPageOutput = {
@@ -6515,6 +7349,7 @@ export type BudgetingPageOutput = {
   autocomplete: Maybe<BudgetingPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BudgetingPageFacet>;
+  item: Maybe<BudgetingPage>;
   items: Maybe<Array<Maybe<BudgetingPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -6613,6 +7448,7 @@ export type BundleContent = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -6814,6 +7650,10 @@ export type BundleContentFacetAncestorsArgs = {
 
 
 export type BundleContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -6863,6 +7703,10 @@ export type BundleContentFacetIsCommonDraftArgs = {
 
 
 export type BundleContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -6982,6 +7826,8 @@ export type BundleContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type BundleContentOutput = {
@@ -6989,6 +7835,7 @@ export type BundleContentOutput = {
   autocomplete: Maybe<BundleContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<BundleContentFacet>;
+  item: Maybe<BundleContent>;
   items: Maybe<Array<Maybe<BundleContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -7189,6 +8036,7 @@ export type ButtonBlock = IContent & IData & {
   TextColorOverdrive: Maybe<Scalars['Bool']['output']>;
   TextPadding: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -7456,11 +8304,19 @@ export type ButtonBlockFacetBackgroundColorOverdriveArgs = {
 
 
 export type ButtonBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ButtonBlockFacetBorderRadiusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -7482,6 +8338,10 @@ export type ButtonBlockFacetBorderStyleOverdriveArgs = {
 
 
 export type ButtonBlockFacetBorderWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -7595,6 +8455,10 @@ export type ButtonBlockFacetCreatedArgs = {
 
 
 export type ButtonBlockFacetFontSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -7770,6 +8634,8 @@ export type ButtonBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ButtonBlockOutput = {
@@ -7777,6 +8643,7 @@ export type ButtonBlockOutput = {
   autocomplete: Maybe<ButtonBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ButtonBlockFacet>;
+  item: Maybe<ButtonBlock>;
   items: Maybe<Array<Maybe<ButtonBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -7875,6 +8742,7 @@ export type CalendarBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   ViewMode: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -8048,6 +8916,10 @@ export type CalendarBlockFacetBackgroundColorArgs = {
 
 
 export type CalendarBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -8067,6 +8939,10 @@ export type CalendarBlockFacetContentTypeArgs = {
 
 
 export type CalendarBlockFacetCountArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -8225,6 +9101,8 @@ export type CalendarBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CalendarBlockOutput = {
@@ -8232,6 +9110,7 @@ export type CalendarBlockOutput = {
   autocomplete: Maybe<CalendarBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CalendarBlockFacet>;
+  item: Maybe<CalendarBlock>;
   items: Maybe<Array<Maybe<CalendarBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -8337,6 +9216,7 @@ export type CalendarEventPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -8975,6 +9855,8 @@ export type CalendarEventPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CalendarEventPageOutput = {
@@ -8982,6 +9864,7 @@ export type CalendarEventPageOutput = {
   autocomplete: Maybe<CalendarEventPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CalendarEventPageFacet>;
+  item: Maybe<CalendarEventPage>;
   items: Maybe<Array<Maybe<CalendarEventPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -9088,6 +9971,7 @@ export type CallToActionBlock = IContent & IData & {
   /** Title displayed */
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -9412,11 +10296,19 @@ export type CallToActionBlockButtonBlockFacetBackgroundColorOverdriveArgs = {
 
 
 export type CallToActionBlockButtonBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CallToActionBlockButtonBlockFacetBorderRadiusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -9438,6 +10330,10 @@ export type CallToActionBlockButtonBlockFacetBorderStyleOverdriveArgs = {
 
 
 export type CallToActionBlockButtonBlockFacetBorderWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -9531,6 +10427,10 @@ export type CallToActionBlockButtonBlockFacetButtonTextUppercaseArgs = {
 
 
 export type CallToActionBlockButtonBlockFacetFontSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -9692,6 +10592,10 @@ export type CallToActionBlockFacetBackgroundImageSettingArgs = {
 
 
 export type CallToActionBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -9873,6 +10777,8 @@ export type CallToActionBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CallToActionBlockOutput = {
@@ -9880,6 +10786,7 @@ export type CallToActionBlockOutput = {
   autocomplete: Maybe<CallToActionBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CallToActionBlockFacet>;
+  item: Maybe<CallToActionBlock>;
   items: Maybe<Array<Maybe<CallToActionBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -9958,6 +10865,7 @@ export type CaptchaElementBlock = IContent & IData & {
   TextLength: Maybe<Scalars['Int']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -10132,11 +11040,19 @@ export type CaptchaElementBlockFacetDescriptionArgs = {
 
 
 export type CaptchaElementBlockFacetImageHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CaptchaElementBlockFacetImageWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -10224,6 +11140,10 @@ export type CaptchaElementBlockFacetStopPublishArgs = {
 
 
 export type CaptchaElementBlockFacetTextLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -10274,6 +11194,8 @@ export type CaptchaElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CaptchaElementBlockOutput = {
@@ -10281,6 +11203,7 @@ export type CaptchaElementBlockOutput = {
   autocomplete: Maybe<CaptchaElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CaptchaElementBlockFacet>;
+  item: Maybe<CaptchaElementBlock>;
   items: Maybe<Array<Maybe<CaptchaElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -10359,6 +11282,7 @@ export type CarouselBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -10527,6 +11451,10 @@ export type CarouselBlockCarouselControlsFacetFadeArgs = {
 
 
 export type CarouselBlockCarouselControlsFacetIntervalArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -10622,6 +11550,10 @@ export type CarouselBlockFacetBackgroundColorArgs = {
 
 
 export type CarouselBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -10775,6 +11707,8 @@ export type CarouselBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CarouselBlockOutput = {
@@ -10782,6 +11716,7 @@ export type CarouselBlockOutput = {
   autocomplete: Maybe<CarouselBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CarouselBlockFacet>;
+  item: Maybe<CarouselBlock>;
   items: Maybe<Array<Maybe<CarouselBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -10861,6 +11796,7 @@ export type CarouselControls = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Theme: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -11033,6 +11969,10 @@ export type CarouselControlsFacetFadeArgs = {
 
 
 export type CarouselControlsFacetIntervalArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -11173,6 +12113,8 @@ export type CarouselControlsOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CarouselControlsOutput = {
@@ -11180,6 +12122,7 @@ export type CarouselControlsOutput = {
   autocomplete: Maybe<CarouselControlsAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CarouselControlsFacet>;
+  item: Maybe<CarouselControls>;
   items: Maybe<Array<Maybe<CarouselControls>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -11281,6 +12224,7 @@ export type CartPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -11905,6 +12849,8 @@ export type CartPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CartPageOutput = {
@@ -11912,6 +12858,7 @@ export type CartPageOutput = {
   autocomplete: Maybe<CartPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CartPageFacet>;
+  item: Maybe<CartPage>;
   items: Maybe<Array<Maybe<CartPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -12010,6 +12957,7 @@ export type CatalogContent = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   WeightBase: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -12176,6 +13124,10 @@ export type CatalogContentFacetAncestorsArgs = {
 
 
 export type CatalogContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -12241,6 +13193,10 @@ export type CatalogContentFacetLengthBaseArgs = {
 
 
 export type CatalogContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -12366,6 +13322,8 @@ export type CatalogContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CatalogContentOutput = {
@@ -12373,6 +13331,7 @@ export type CatalogContentOutput = {
   autocomplete: Maybe<CatalogContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CatalogContentFacet>;
+  item: Maybe<CatalogContent>;
   items: Maybe<Array<Maybe<CatalogContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -12441,6 +13400,7 @@ export type Categories = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -12691,6 +13651,8 @@ export type CategoriesOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CategoriesOutput = {
@@ -12698,6 +13660,7 @@ export type CategoriesOutput = {
   autocomplete: Maybe<CategoriesAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CategoriesFacet>;
+  item: Maybe<Categories>;
   items: Maybe<Array<Maybe<Categories>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -12768,6 +13731,7 @@ export type CategoryBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -12937,6 +13901,10 @@ export type CategoryBlockFacetBackgroundColorArgs = {
 
 
 export type CategoryBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -13098,6 +14066,8 @@ export type CategoryBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CategoryBlockOutput = {
@@ -13105,6 +14075,7 @@ export type CategoryBlockOutput = {
   autocomplete: Maybe<CategoryBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CategoryBlockFacet>;
+  item: Maybe<CategoryBlock>;
   items: Maybe<Array<Maybe<CategoryBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -13192,6 +14163,10 @@ export type CategoryModelFacetDescriptionArgs = {
 
 
 export type CategoryModelFacetIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -13269,6 +14244,7 @@ export type CheckoutPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -13875,6 +14851,8 @@ export type CheckoutPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CheckoutPageOutput = {
@@ -13882,6 +14860,7 @@ export type CheckoutPageOutput = {
   autocomplete: Maybe<CheckoutPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CheckoutPageFacet>;
+  item: Maybe<CheckoutPage>;
   items: Maybe<Array<Maybe<CheckoutPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -13978,6 +14957,7 @@ export type ChoiceElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -14149,6 +15129,10 @@ export type ChoiceElementBlockFacetChangedArgs = {
 
 
 export type ChoiceElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -14320,6 +15304,8 @@ export type ChoiceElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ChoiceElementBlockOutput = {
@@ -14327,6 +15313,7 @@ export type ChoiceElementBlockOutput = {
   autocomplete: Maybe<ChoiceElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ChoiceElementBlockFacet>;
+  item: Maybe<ChoiceElementBlock>;
   items: Maybe<Array<Maybe<ChoiceElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -14400,6 +15387,7 @@ export type CodingFile = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -14705,6 +15693,8 @@ export type CodingFileOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CodingFileOutput = {
@@ -14712,6 +15702,7 @@ export type CodingFileOutput = {
   autocomplete: Maybe<CodingFileAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CodingFileFacet>;
+  item: Maybe<CodingFile>;
   items: Maybe<Array<Maybe<CodingFile>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -14814,6 +15805,7 @@ export type CollectionPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
   Video: Maybe<ContentModelReference>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -15474,6 +16466,8 @@ export type CollectionPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CollectionPageOutput = {
@@ -15481,6 +16475,7 @@ export type CollectionPageOutput = {
   autocomplete: Maybe<CollectionPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CollectionPageFacet>;
+  item: Maybe<CollectionPage>;
   items: Maybe<Array<Maybe<CollectionPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -15589,6 +16584,7 @@ export type CommentsBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -15761,6 +16757,10 @@ export type CommentsBlockFacetBackgroundColorArgs = {
 
 
 export type CommentsBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -15772,16 +16772,28 @@ export type CommentsBlockFacetChangedArgs = {
 
 
 export type CommentsBlockFacetCommentBoxRowsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CommentsBlockFacetCommentMaxLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CommentsBlockFacetCommentsDisplayMaxArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -15957,6 +16969,8 @@ export type CommentsBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CommentsBlockOutput = {
@@ -15964,6 +16978,7 @@ export type CommentsBlockOutput = {
   autocomplete: Maybe<CommentsBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CommentsBlockFacet>;
+  item: Maybe<CommentsBlock>;
   items: Maybe<Array<Maybe<CommentsBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -16077,6 +17092,7 @@ export type CommunityPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -16361,21 +17377,37 @@ export type CommunityPageCommentsBlockFacetBackgroundColorArgs = {
 
 
 export type CommunityPageCommentsBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CommunityPageCommentsBlockFacetCommentBoxRowsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CommunityPageCommentsBlockFacetCommentMaxLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type CommunityPageCommentsBlockFacetCommentsDisplayMaxArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -16943,6 +17975,10 @@ export type CommunityPageMembershipDisplayBlockFacetBackgroundColorArgs = {
 
 
 export type CommunityPageMembershipDisplayBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -16972,6 +18008,10 @@ export type CommunityPageMembershipDisplayBlockFacetMarginArgs = {
 
 
 export type CommunityPageMembershipDisplayBlockFacetNumberOfMembersArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -17073,6 +18113,8 @@ export type CommunityPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CommunityPageOutput = {
@@ -17080,6 +18122,7 @@ export type CommunityPageOutput = {
   autocomplete: Maybe<CommunityPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CommunityPageFacet>;
+  item: Maybe<CommunityPage>;
   items: Maybe<Array<Maybe<CommunityPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -17156,6 +18199,10 @@ export type CommunityPageRatingBlockFacetBackgroundColorArgs = {
 
 
 export type CommunityPageRatingBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -17286,6 +18333,10 @@ export type CommunityPageSubscriptionBlockFacetBackgroundColorArgs = {
 
 
 export type CommunityPageSubscriptionBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -17435,6 +18486,7 @@ export type ContainerBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -17609,6 +18661,10 @@ export type ContainerBlockFacetBackgroundColorArgs = {
 
 
 export type ContainerBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -17770,6 +18826,8 @@ export type ContainerBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ContainerBlockOutput = {
@@ -17777,6 +18835,7 @@ export type ContainerBlockOutput = {
   autocomplete: Maybe<ContainerBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ContainerBlockFacet>;
+  item: Maybe<ContainerBlock>;
   items: Maybe<Array<Maybe<ContainerBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -17844,6 +18903,7 @@ export type Content = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -18396,6 +19456,10 @@ export type ContentModelReferenceFacetGuidValueArgs = {
 
 
 export type ContentModelReferenceFacetIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -18417,6 +19481,10 @@ export type ContentModelReferenceFacetUrlArgs = {
 
 
 export type ContentModelReferenceFacetWorkIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -18480,6 +19548,10 @@ export type ContentModelReferenceSearchFacetGuidValueArgs = {
 
 
 export type ContentModelReferenceSearchFacetIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -18501,6 +19573,10 @@ export type ContentModelReferenceSearchFacetUrlArgs = {
 
 
 export type ContentModelReferenceSearchFacetWorkIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -18555,6 +19631,8 @@ export type ContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ContentOutput = {
@@ -18562,6 +19640,7 @@ export type ContentOutput = {
   autocomplete: Maybe<ContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ContentFacet>;
+  item: Maybe<IContent>;
   items: Maybe<Array<Maybe<IContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -18671,6 +19750,7 @@ export type CouponData = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -18936,6 +20016,8 @@ export type CouponDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CouponDataOutput = {
@@ -18943,6 +20025,7 @@ export type CouponDataOutput = {
   autocomplete: Maybe<CouponDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CouponDataFacet>;
+  item: Maybe<CouponData>;
   items: Maybe<Array<Maybe<CouponData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -19037,6 +20120,7 @@ export type CreditCardPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -19653,6 +20737,8 @@ export type CreditCardPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CreditCardPageOutput = {
@@ -19660,6 +20746,7 @@ export type CreditCardPageOutput = {
   autocomplete: Maybe<CreditCardPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CreditCardPageFacet>;
+  item: Maybe<CreditCardPage>;
   items: Maybe<Array<Maybe<CreditCardPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -19761,6 +20848,7 @@ export type CustomViewConfigurationBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -19992,6 +21080,10 @@ export type CustomViewConfigurationBlockFacetSiteIdArgs = {
 
 
 export type CustomViewConfigurationBlockFacetSortOrderArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -20053,6 +21145,8 @@ export type CustomViewConfigurationBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type CustomViewConfigurationBlockOutput = {
@@ -20060,6 +21154,7 @@ export type CustomViewConfigurationBlockOutput = {
   autocomplete: Maybe<CustomViewConfigurationBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<CustomViewConfigurationBlockFacet>;
+  item: Maybe<CustomViewConfigurationBlock>;
   items: Maybe<Array<Maybe<CustomViewConfigurationBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -20130,6 +21225,7 @@ export type DamAsset = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -20419,6 +21515,8 @@ export type DamAssetOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DamAssetOutput = {
@@ -20426,6 +21524,7 @@ export type DamAssetOutput = {
   autocomplete: Maybe<DamAssetAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DamAssetFacet>;
+  item: Maybe<DamAsset>;
   items: Maybe<Array<Maybe<DamAsset>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -20494,6 +21593,7 @@ export type DamImageAsset = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -20783,6 +21883,8 @@ export type DamImageAssetOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DamImageAssetOutput = {
@@ -20790,6 +21892,7 @@ export type DamImageAssetOutput = {
   autocomplete: Maybe<DamImageAssetAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DamImageAssetFacet>;
+  item: Maybe<DamImageAsset>;
   items: Maybe<Array<Maybe<DamImageAsset>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -20858,6 +21961,7 @@ export type DamVideoAsset = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -21147,6 +22251,8 @@ export type DamVideoAssetOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DamVideoAssetOutput = {
@@ -21154,6 +22260,7 @@ export type DamVideoAssetOutput = {
   autocomplete: Maybe<DamVideoAssetAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DamVideoAssetFacet>;
+  item: Maybe<DamVideoAsset>;
   items: Maybe<Array<Maybe<DamVideoAsset>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -21197,6 +22304,7 @@ export type DamVideoAssetWhereInput = {
 
 export type Data = IData & {
   __typename: 'Data';
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -21220,11 +22328,14 @@ export type DataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DataOutput = {
   __typename: 'DataOutput';
   cursor: Maybe<Scalars['String']['output']>;
+  item: Maybe<IData>;
   items: Maybe<Array<Maybe<IData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -21260,8 +22371,12 @@ export enum DateFacetUnit {
 export type DateFilterInput = {
   /** `boost` influences the weight of a field by boosting a match with a number (default: 1) — counts more towards the eventual relevance score which can be projected with `_score` — at query time. Note that `boost` cannot be a negative number. */
   boost?: InputMaybe<Scalars['Int']['input']>;
+  /** `decay` influences the weight of the score with a decay function. For example, results that have a more recent datetime will be ranked higher. The `origin` will be `now()` in case not specified. The `scale` is by default 10. The `rate` must be in the range `[0..1]`. */
+  decay?: InputMaybe<Decay>;
   /** `eq` matches on an exact value, but the value is case-insensitive. */
   eq?: InputMaybe<Scalars['Date']['input']>;
+  /** `exist` matches results that have this field. */
+  exist?: InputMaybe<Scalars['Boolean']['input']>;
   /** `gt` retrieves results with matches that have a value which is `greater than` it. */
   gt?: InputMaybe<Scalars['Date']['input']>;
   /** `gte` retrieves results with matches that have a value which is `greater than or equal to` it. */
@@ -21305,6 +22420,7 @@ export type DateTimeElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -21474,6 +22590,10 @@ export type DateTimeElementBlockFacetChangedArgs = {
 
 
 export type DateTimeElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -21525,6 +22645,10 @@ export type DateTimeElementBlockFacetNameArgs = {
 
 
 export type DateTimeElementBlockFacetPickerTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -21659,6 +22783,8 @@ export type DateTimeElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DateTimeElementBlockOutput = {
@@ -21666,6 +22792,7 @@ export type DateTimeElementBlockOutput = {
   autocomplete: Maybe<DateTimeElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DateTimeElementBlockFacet>;
+  item: Maybe<DateTimeElementBlock>;
   items: Maybe<Array<Maybe<DateTimeElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -21743,6 +22870,7 @@ export type DateTimeRangeElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -21912,6 +23040,10 @@ export type DateTimeRangeElementBlockFacetChangedArgs = {
 
 
 export type DateTimeRangeElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -21963,6 +23095,10 @@ export type DateTimeRangeElementBlockFacetNameArgs = {
 
 
 export type DateTimeRangeElementBlockFacetPickerTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -22097,6 +23233,8 @@ export type DateTimeRangeElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DateTimeRangeElementBlockOutput = {
@@ -22104,6 +23242,7 @@ export type DateTimeRangeElementBlockOutput = {
   autocomplete: Maybe<DateTimeRangeElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DateTimeRangeElementBlockFacet>;
+  item: Maybe<DateTimeRangeElementBlock>;
   items: Maybe<Array<Maybe<DateTimeRangeElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -22150,6 +23289,13 @@ export type DateTimeRangeElementBlockWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<DateTimeRangeElementBlockWhereInput>>>;
 };
 
+/** Decay influences the weight of the score based on field values with a decay function */
+export type Decay = {
+  origin?: InputMaybe<Scalars['Date']['input']>;
+  rate?: InputMaybe<Scalars['Float']['input']>;
+  scale?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type DiscountItems = IContent & IData & {
   __typename: 'DiscountItems';
   Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -22176,6 +23322,7 @@ export type DiscountItems = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -22341,6 +23488,10 @@ export type DiscountItemsFacetMatchRecursiveArgs = {
 
 
 export type DiscountItemsFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -22446,6 +23597,8 @@ export type DiscountItemsOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DiscountItemsOutput = {
@@ -22453,6 +23606,7 @@ export type DiscountItemsOutput = {
   autocomplete: Maybe<DiscountItemsAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DiscountItemsFacet>;
+  item: Maybe<DiscountItems>;
   items: Maybe<Array<Maybe<DiscountItems>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -22559,6 +23713,7 @@ export type DynamicProduct = IContent & IData & {
   Url: Maybe<Scalars['String']['output']>;
   VariantsReference: Maybe<ContentModelReference>;
   Warranty: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -22924,6 +24079,10 @@ export type DynamicProductFacetAssociationsTitleArgs = {
 
 
 export type DynamicProductFacetBoostArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -22945,6 +24104,10 @@ export type DynamicProductFacetBuryArgs = {
 
 
 export type DynamicProductFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -23066,6 +24229,10 @@ export type DynamicProductFacetManufacturerPartsWarrantyDescriptionArgs = {
 
 
 export type DynamicProductFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -23318,6 +24485,8 @@ export type DynamicProductOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DynamicProductOutput = {
@@ -23325,6 +24494,7 @@ export type DynamicProductOutput = {
   autocomplete: Maybe<DynamicProductAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DynamicProductFacet>;
+  item: Maybe<DynamicProduct>;
   items: Maybe<Array<Maybe<DynamicProduct>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -23561,6 +24731,7 @@ export type DynamicVariant = IContent & IData & {
   VirtualProductMode: Maybe<Scalars['String']['output']>;
   VirtualProductRole: Maybe<Scalars['String']['output']>;
   Weight: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -23739,7 +24910,6 @@ export type DynamicVariantAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<DynamicVariantSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -23772,12 +24942,6 @@ export type DynamicVariantAutocompleteRouteSegmentArgs = {
 
 
 export type DynamicVariantAutocompleteSeoUriArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type DynamicVariantAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -23910,6 +25074,10 @@ export type DynamicVariantFacetAssociationsTitleArgs = {
 
 
 export type DynamicVariantFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -23999,16 +25167,28 @@ export type DynamicVariantFacetIsCommonDraftArgs = {
 
 
 export type DynamicVariantFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type DynamicVariantFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type DynamicVariantFacetMinQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24092,6 +25272,10 @@ export type DynamicVariantFacetSeoUriArgs = {
 
 
 export type DynamicVariantFacetShippingPackageIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24165,6 +25349,10 @@ export type DynamicVariantFacetSubscriptionLengthArgs = {
 
 
 export type DynamicVariantFacetTaxCategoryIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24210,6 +25398,10 @@ export type DynamicVariantFacetVirtualProductRoleArgs = {
 
 
 export type DynamicVariantFacetWeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24276,6 +25468,8 @@ export type DynamicVariantOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DynamicVariantOutput = {
@@ -24283,6 +25477,7 @@ export type DynamicVariantOutput = {
   autocomplete: Maybe<DynamicVariantAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<DynamicVariantFacet>;
+  item: Maybe<DynamicVariant>;
   items: Maybe<Array<Maybe<DynamicVariant>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -24406,16 +25601,28 @@ export type DynamicVariantShippingDimensionsFacet = {
 
 
 export type DynamicVariantShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type DynamicVariantShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type DynamicVariantShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24498,6 +25705,1118 @@ export type DynamicVariantWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<DynamicVariantWhereInput>>>;
 };
 
+export type EktronPage = IContent & IData & {
+  __typename: 'EktronPage';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ApplyHoverEffect: Maybe<Scalars['Bool']['output']>;
+  AuthorMetaData: Maybe<Scalars['String']['output']>;
+  /** Categories associated with this content. */
+  Categories: Maybe<Array<Maybe<ContentModelReference>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  Css: Maybe<Scalars['String']['output']>;
+  CssFiles: Maybe<Array<Maybe<LinkItemNode>>>;
+  DisableIndexing: Maybe<Scalars['Bool']['output']>;
+  DisplayAsCard: Maybe<Scalars['Bool']['output']>;
+  /** This will determine whether or not to show on search */
+  ExcludeFromSearch: Maybe<Scalars['Bool']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  HideSiteFooter: Maybe<Scalars['Bool']['output']>;
+  HideSiteHeader: Maybe<Scalars['Bool']['output']>;
+  Highlight: Maybe<Scalars['Bool']['output']>;
+  Html: Maybe<Scalars['String']['output']>;
+  Industry: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Keywords: Maybe<Scalars['String']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MainBody: Maybe<Scalars['String']['output']>;
+  MainContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  Margin: Maybe<Scalars['String']['output']>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  MetaContentType: Maybe<Scalars['String']['output']>;
+  MetaTitle: Maybe<Scalars['String']['output']>;
+  Name: Maybe<Scalars['String']['output']>;
+  Padding: Maybe<Scalars['String']['output']>;
+  PageDescription: Maybe<Scalars['String']['output']>;
+  PageImage: Maybe<ContentModelReference>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  TeaserButtonStyle: Maybe<Scalars['String']['output']>;
+  TeaserButtonText: Maybe<Scalars['String']['output']>;
+  TeaserColorTheme: Maybe<Scalars['String']['output']>;
+  TeaserRatio: Maybe<Scalars['String']['output']>;
+  TeaserText: Maybe<Scalars['String']['output']>;
+  TeaserTextAlignment: Maybe<Scalars['String']['output']>;
+  TeaserVideo: Maybe<ContentModelReference>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+export type EktronPageAuthorMetaDataArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageHtmlArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageIndustryArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageKeywordsArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageMainBodyArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageMainContentAreaArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageMetaContentTypeArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageMetaTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPagePageDescriptionArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageTeaserButtonTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPageTeaserTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPage_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+export type EktronPage_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type EktronPageAutocomplete = {
+  __typename: 'EktronPageAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Categories: Maybe<ContentModelReferenceAutocomplete>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Css: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  CssFiles: Maybe<LinkItemNodeAutocomplete>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  Margin: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  Padding: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  PageImage: Maybe<ContentModelReferenceAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  TeaserButtonStyle: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  TeaserColorTheme: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  TeaserRatio: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  TeaserTextAlignment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  TeaserVideo: Maybe<ContentModelReferenceAutocomplete>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type EktronPageAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteCssArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteMarginArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompletePaddingArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteTeaserButtonStyleArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteTeaserColorThemeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteTeaserRatioArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteTeaserTextAlignmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type EktronPageAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type EktronPageFacet = {
+  __typename: 'EktronPageFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  ApplyHoverEffect: Maybe<Array<Maybe<StringFacet>>>;
+  AuthorMetaData: Maybe<Array<Maybe<StringFacet>>>;
+  Categories: Maybe<ContentModelReferenceFacet>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  Css: Maybe<Array<Maybe<StringFacet>>>;
+  CssFiles: Maybe<LinkItemNodeFacet>;
+  DisableIndexing: Maybe<Array<Maybe<StringFacet>>>;
+  DisplayAsCard: Maybe<Array<Maybe<StringFacet>>>;
+  ExcludeFromSearch: Maybe<Array<Maybe<StringFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  HideSiteFooter: Maybe<Array<Maybe<StringFacet>>>;
+  HideSiteHeader: Maybe<Array<Maybe<StringFacet>>>;
+  Highlight: Maybe<Array<Maybe<StringFacet>>>;
+  Html: Maybe<Array<Maybe<StringFacet>>>;
+  Industry: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Keywords: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MainBody: Maybe<Array<Maybe<StringFacet>>>;
+  MainContentArea: Maybe<ContentAreaItemModelSearchFacet>;
+  Margin: Maybe<Array<Maybe<StringFacet>>>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  MetaContentType: Maybe<Array<Maybe<StringFacet>>>;
+  MetaTitle: Maybe<Array<Maybe<StringFacet>>>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  Padding: Maybe<Array<Maybe<StringFacet>>>;
+  PageDescription: Maybe<Array<Maybe<StringFacet>>>;
+  PageImage: Maybe<ContentModelReferenceFacet>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  TeaserButtonStyle: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserButtonText: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserColorTheme: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserRatio: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserText: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserTextAlignment: Maybe<Array<Maybe<StringFacet>>>;
+  TeaserVideo: Maybe<ContentModelReferenceFacet>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type EktronPageFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetApplyHoverEffectArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetAuthorMetaDataArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type EktronPageFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type EktronPageFacetCssArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetDisableIndexingArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetDisplayAsCardArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetExcludeFromSearchArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetHideSiteFooterArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetHideSiteHeaderArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetHighlightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetHtmlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetIndustryArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetKeywordsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetMainBodyArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetMarginArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetMetaContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetMetaTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetPaddingArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetPageDescriptionArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type EktronPageFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type EktronPageFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type EktronPageFacetTeaserButtonStyleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetTeaserButtonTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetTeaserColorThemeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetTeaserRatioArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetTeaserTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetTeaserTextAlignmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type EktronPageFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type EktronPageOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  ApplyHoverEffect?: InputMaybe<OrderBy>;
+  AuthorMetaData?: InputMaybe<OrderBy>;
+  Categories?: InputMaybe<ContentModelReferenceOrderByInput>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  Css?: InputMaybe<OrderBy>;
+  CssFiles?: InputMaybe<LinkItemNodeOrderByInput>;
+  DisableIndexing?: InputMaybe<OrderBy>;
+  DisplayAsCard?: InputMaybe<OrderBy>;
+  ExcludeFromSearch?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  HideSiteFooter?: InputMaybe<OrderBy>;
+  HideSiteHeader?: InputMaybe<OrderBy>;
+  Highlight?: InputMaybe<OrderBy>;
+  Html?: InputMaybe<OrderBy>;
+  Industry?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Keywords?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MainBody?: InputMaybe<OrderBy>;
+  MainContentArea?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  Margin?: InputMaybe<OrderBy>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MetaContentType?: InputMaybe<OrderBy>;
+  MetaTitle?: InputMaybe<OrderBy>;
+  Name?: InputMaybe<OrderBy>;
+  Padding?: InputMaybe<OrderBy>;
+  PageDescription?: InputMaybe<OrderBy>;
+  PageImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  TeaserButtonStyle?: InputMaybe<OrderBy>;
+  TeaserButtonText?: InputMaybe<OrderBy>;
+  TeaserColorTheme?: InputMaybe<OrderBy>;
+  TeaserRatio?: InputMaybe<OrderBy>;
+  TeaserText?: InputMaybe<OrderBy>;
+  TeaserTextAlignment?: InputMaybe<OrderBy>;
+  TeaserVideo?: InputMaybe<ContentModelReferenceOrderByInput>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type EktronPageOutput = {
+  __typename: 'EktronPageOutput';
+  autocomplete: Maybe<EktronPageAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<EktronPageFacet>;
+  item: Maybe<EktronPage>;
+  items: Maybe<Array<Maybe<EktronPage>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type EktronPageOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type EktronPageWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  ApplyHoverEffect?: InputMaybe<BoolFilterInput>;
+  AuthorMetaData?: InputMaybe<SearchableStringFilterInput>;
+  Categories?: InputMaybe<ContentModelReferenceWhereInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  Css?: InputMaybe<StringFilterInput>;
+  CssFiles?: InputMaybe<LinkItemNodeWhereInput>;
+  DisableIndexing?: InputMaybe<BoolFilterInput>;
+  DisplayAsCard?: InputMaybe<BoolFilterInput>;
+  ExcludeFromSearch?: InputMaybe<BoolFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  HideSiteFooter?: InputMaybe<BoolFilterInput>;
+  HideSiteHeader?: InputMaybe<BoolFilterInput>;
+  Highlight?: InputMaybe<BoolFilterInput>;
+  Html?: InputMaybe<SearchableStringFilterInput>;
+  Industry?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Keywords?: InputMaybe<SearchableStringFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MainBody?: InputMaybe<SearchableStringFilterInput>;
+  MainContentArea?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  Margin?: InputMaybe<StringFilterInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  MetaContentType?: InputMaybe<SearchableStringFilterInput>;
+  MetaTitle?: InputMaybe<SearchableStringFilterInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  Padding?: InputMaybe<StringFilterInput>;
+  PageDescription?: InputMaybe<SearchableStringFilterInput>;
+  PageImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  TeaserButtonStyle?: InputMaybe<StringFilterInput>;
+  TeaserButtonText?: InputMaybe<SearchableStringFilterInput>;
+  TeaserColorTheme?: InputMaybe<StringFilterInput>;
+  TeaserRatio?: InputMaybe<StringFilterInput>;
+  TeaserText?: InputMaybe<SearchableStringFilterInput>;
+  TeaserTextAlignment?: InputMaybe<StringFilterInput>;
+  TeaserVideo?: InputMaybe<ContentModelReferenceWhereInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<EktronPageWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<EktronPageWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<EktronPageWhereInput>>>;
+};
+
+/** ElectricandWater */
+export type ElectricandWater = IContent & IData & {
+  __typename: 'ElectricandWater';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  Link: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWaterFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWaterLinkArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWaterNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWaterTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWater_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** ElectricandWater */
+export type ElectricandWater_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type ElectricandWaterAutocomplete = {
+  __typename: 'ElectricandWaterAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type ElectricandWaterAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ElectricandWaterAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type ElectricandWaterFacet = {
+  __typename: 'ElectricandWaterFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  Link: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type ElectricandWaterFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ElectricandWaterFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ElectricandWaterFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ElectricandWaterFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ElectricandWaterFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ElectricandWaterFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ElectricandWaterFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type ElectricandWaterOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ElectricandWaterOutput = {
+  __typename: 'ElectricandWaterOutput';
+  autocomplete: Maybe<ElectricandWaterAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<ElectricandWaterFacet>;
+  item: Maybe<ElectricandWater>;
+  items: Maybe<Array<Maybe<ElectricandWater>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type ElectricandWaterOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ElectricandWaterWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<ElectricandWaterWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<ElectricandWaterWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<ElectricandWaterWhereInput>>>;
+};
+
 /** Elevated Role Block that uses access rights for read */
 export type ElevatedRoleBlock = IContent & IData & {
   __typename: 'ElevatedRoleBlock';
@@ -24530,6 +26849,7 @@ export type ElevatedRoleBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -24704,6 +27024,10 @@ export type ElevatedRoleBlockFacetBackgroundColorArgs = {
 
 
 export type ElevatedRoleBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -24865,6 +27189,8 @@ export type ElevatedRoleBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ElevatedRoleBlockOutput = {
@@ -24872,6 +27198,7 @@ export type ElevatedRoleBlockOutput = {
   autocomplete: Maybe<ElevatedRoleBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ElevatedRoleBlockFacet>;
+  item: Maybe<ElevatedRoleBlock>;
   items: Maybe<Array<Maybe<ElevatedRoleBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -24943,6 +27270,7 @@ export type ExistsFilterBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -25212,6 +27540,8 @@ export type ExistsFilterBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ExistsFilterBlockOutput = {
@@ -25219,6 +27549,7 @@ export type ExistsFilterBlockOutput = {
   autocomplete: Maybe<ExistsFilterBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ExistsFilterBlockFacet>;
+  item: Maybe<ExistsFilterBlock>;
   items: Maybe<Array<Maybe<ExistsFilterBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -25291,6 +27622,7 @@ export type FacebookBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Width: Maybe<Scalars['Int']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -25468,6 +27800,10 @@ export type FacebookBlockFacetBackgroundColorArgs = {
 
 
 export type FacebookBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -25493,6 +27829,10 @@ export type FacebookBlockFacetCreatedArgs = {
 
 
 export type FacebookBlockFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -25596,6 +27936,10 @@ export type FacebookBlockFacetUrlArgs = {
 
 
 export type FacebookBlockFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -25632,6 +27976,8 @@ export type FacebookBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FacebookBlockOutput = {
@@ -25639,6 +27985,7 @@ export type FacebookBlockOutput = {
   autocomplete: Maybe<FacebookBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FacebookBlockFacet>;
+  item: Maybe<FacebookBlock>;
   items: Maybe<Array<Maybe<FacebookBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -25685,6 +28032,19 @@ export type FacebookBlockWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<FacebookBlockWhereInput>>>;
 };
 
+export enum FactorModifier {
+  /** Add 1 to the field value and take the natural logarithm */
+  Log = 'LOG',
+  /** Do not apply any multiplier to the field value */
+  None = 'NONE',
+  /** Reciprocate the field value, same as 1/x where x is the field's value */
+  Reciprocal = 'RECIPROCAL',
+  /** Take the square root of the field value */
+  Sqrt = 'SQRT',
+  /** Square the field value (multiply it by itself) */
+  Square = 'SQUARE'
+}
+
 /** Configures the properties of a feed block frontend view */
 export type FeedBlock = IContent & IData & {
   __typename: 'FeedBlock';
@@ -25719,6 +28079,7 @@ export type FeedBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -25895,6 +28256,10 @@ export type FeedBlockFacetBackgroundColorArgs = {
 
 
 export type FeedBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -25920,6 +28285,10 @@ export type FeedBlockFacetCreatedArgs = {
 
 
 export type FeedBlockFacetFeedDisplayMaxArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -26079,6 +28448,8 @@ export type FeedBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FeedBlockOutput = {
@@ -26086,6 +28457,7 @@ export type FeedBlockOutput = {
   autocomplete: Maybe<FeedBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FeedBlockFacet>;
+  item: Maybe<FeedBlock>;
   items: Maybe<Array<Maybe<FeedBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -26164,6 +28536,7 @@ export type FileUploadElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -26336,6 +28709,10 @@ export type FileUploadElementBlockFacetChangedArgs = {
 
 
 export type FileUploadElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -26363,6 +28740,10 @@ export type FileUploadElementBlockFacetDescriptionArgs = {
 
 
 export type FileUploadElementBlockFacetFileSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -26513,6 +28894,8 @@ export type FileUploadElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FileUploadElementBlockOutput = {
@@ -26520,6 +28903,7 @@ export type FileUploadElementBlockOutput = {
   autocomplete: Maybe<FileUploadElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FileUploadElementBlockFacet>;
+  item: Maybe<FileUploadElementBlock>;
   items: Maybe<Array<Maybe<FileUploadElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -26598,6 +28982,7 @@ export type FilterActivitiesBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -26780,6 +29165,10 @@ export type FilterActivitiesBlockFacetBackgroundColorArgs = {
 
 
 export type FilterActivitiesBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -26941,6 +29330,8 @@ export type FilterActivitiesBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FilterActivitiesBlockOutput = {
@@ -26948,6 +29339,7 @@ export type FilterActivitiesBlockOutput = {
   autocomplete: Maybe<FilterActivitiesBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FilterActivitiesBlockFacet>;
+  item: Maybe<FilterActivitiesBlock>;
   items: Maybe<Array<Maybe<FilterActivitiesBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -27025,6 +29417,7 @@ export type FilterContinentsBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -27207,6 +29600,10 @@ export type FilterContinentsBlockFacetBackgroundColorArgs = {
 
 
 export type FilterContinentsBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -27368,6 +29765,8 @@ export type FilterContinentsBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FilterContinentsBlockOutput = {
@@ -27375,6 +29774,7 @@ export type FilterContinentsBlockOutput = {
   autocomplete: Maybe<FilterContinentsBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FilterContinentsBlockFacet>;
+  item: Maybe<FilterContinentsBlock>;
   items: Maybe<Array<Maybe<FilterContinentsBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -27452,6 +29852,7 @@ export type FilterDistancesBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -27634,6 +30035,10 @@ export type FilterDistancesBlockFacetBackgroundColorArgs = {
 
 
 export type FilterDistancesBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -27795,6 +30200,8 @@ export type FilterDistancesBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FilterDistancesBlockOutput = {
@@ -27802,6 +30209,7 @@ export type FilterDistancesBlockOutput = {
   autocomplete: Maybe<FilterDistancesBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FilterDistancesBlockFacet>;
+  item: Maybe<FilterDistancesBlock>;
   items: Maybe<Array<Maybe<FilterDistancesBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -27879,6 +30287,7 @@ export type FilterTemperaturesBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -28061,6 +30470,10 @@ export type FilterTemperaturesBlockFacetBackgroundColorArgs = {
 
 
 export type FilterTemperaturesBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -28222,6 +30635,8 @@ export type FilterTemperaturesBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FilterTemperaturesBlockOutput = {
@@ -28229,6 +30644,7 @@ export type FilterTemperaturesBlockOutput = {
   autocomplete: Maybe<FilterTemperaturesBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FilterTemperaturesBlockFacet>;
+  item: Maybe<FilterTemperaturesBlock>;
   items: Maybe<Array<Maybe<FilterTemperaturesBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -28301,6 +30717,7 @@ export type FixedPricePurchaseQuantity = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -28475,6 +30892,10 @@ export type FixedPricePurchaseQuantityFacetNameArgs = {
 
 
 export type FixedPricePurchaseQuantityFacetPartiallyFulfilledThresholdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -28488,6 +30909,10 @@ export type FixedPricePurchaseQuantityFacetRelativePathArgs = {
 
 
 export type FixedPricePurchaseQuantityFacetRequiredQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -28578,6 +31003,8 @@ export type FixedPricePurchaseQuantityOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FixedPricePurchaseQuantityOutput = {
@@ -28585,6 +31012,7 @@ export type FixedPricePurchaseQuantityOutput = {
   autocomplete: Maybe<FixedPricePurchaseQuantityAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FixedPricePurchaseQuantityFacet>;
+  item: Maybe<FixedPricePurchaseQuantity>;
   items: Maybe<Array<Maybe<FixedPricePurchaseQuantity>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -28634,6 +31062,8 @@ export type FloatFilterInput = {
   eq?: InputMaybe<Scalars['Float']['input']>;
   /** `exist` matches results that have this field. */
   exist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** `Factor` allows you to use a number value in a field to influence the `_score` directly. If used on a multi-valued field, then only the lowest value of the field is used in calculations. Default for `value` is `1`. Default for `modifier` is `NONE`. */
+  factor?: InputMaybe<NumberFactor>;
   /** `gt` retrieves results with matches that have a value which is `greater than` it. */
   gt?: InputMaybe<Scalars['Float']['input']>;
   /** `gte` retrieves results with matches that have a value which is `greater than or equal to` it. */
@@ -28674,6 +31104,7 @@ export type FolderPage = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -28927,6 +31358,8 @@ export type FolderPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FolderPageOutput = {
@@ -28934,6 +31367,7 @@ export type FolderPageOutput = {
   autocomplete: Maybe<FolderPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FolderPageFacet>;
+  item: Maybe<FolderPage>;
   items: Maybe<Array<Maybe<FolderPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -29013,6 +31447,7 @@ export type FormContainerBlock = IContent & IData & {
   SubmitSuccessMessage: Maybe<Scalars['String']['output']>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -29517,6 +31952,8 @@ export type FormContainerBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FormContainerBlockOutput = {
@@ -29524,6 +31961,7 @@ export type FormContainerBlockOutput = {
   autocomplete: Maybe<FormContainerBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FormContainerBlockFacet>;
+  item: Maybe<FormContainerBlock>;
   items: Maybe<Array<Maybe<FormContainerBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -29609,6 +32047,7 @@ export type FormStepBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -29791,6 +32230,10 @@ export type FormStepBlockFacetCreatedArgs = {
 
 
 export type FormStepBlockFacetDependConditionArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -29931,6 +32374,8 @@ export type FormStepBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FormStepBlockOutput = {
@@ -29938,6 +32383,7 @@ export type FormStepBlockOutput = {
   autocomplete: Maybe<FormStepBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FormStepBlockFacet>;
+  item: Maybe<FormStepBlock>;
   items: Maybe<Array<Maybe<FormStepBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -30016,6 +32462,7 @@ export type FoundationPdfFile = IContent & IData & {
   Thumbnail: Maybe<BlobModel>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -30223,6 +32670,10 @@ export type FoundationPdfFileFacetDisplayAsPreviewArgs = {
 
 
 export type FoundationPdfFileFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -30374,6 +32825,8 @@ export type FoundationPdfFileOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FoundationPdfFileOutput = {
@@ -30381,6 +32834,7 @@ export type FoundationPdfFileOutput = {
   autocomplete: Maybe<FoundationPdfFileAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<FoundationPdfFileFacet>;
+  item: Maybe<FoundationPdfFile>;
   items: Maybe<Array<Maybe<FoundationPdfFile>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -30474,6 +32928,7 @@ export type GenericBundle = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -30739,6 +33194,10 @@ export type GenericBundleFacetAssociationsTitleArgs = {
 
 
 export type GenericBundleFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -30828,6 +33287,10 @@ export type GenericBundleFacetLongDescriptionArgs = {
 
 
 export type GenericBundleFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -30992,6 +33455,8 @@ export type GenericBundleOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericBundleOutput = {
@@ -30999,6 +33464,7 @@ export type GenericBundleOutput = {
   autocomplete: Maybe<GenericBundleAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GenericBundleFacet>;
+  item: Maybe<GenericBundle>;
   items: Maybe<Array<Maybe<GenericBundle>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -31200,6 +33666,7 @@ export type GenericNode = IContent & IData & {
   Teaser: Maybe<Scalars['String']['output']>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -31428,6 +33895,10 @@ export type GenericNodeFacetAncestorsArgs = {
 
 
 export type GenericNodeFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -31525,6 +33996,10 @@ export type GenericNodeFacetLongNameArgs = {
 
 
 export type GenericNodeFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -31538,6 +34013,10 @@ export type GenericNodeFacetNameArgs = {
 
 
 export type GenericNodeFacetPartialPageSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -31684,6 +34163,8 @@ export type GenericNodeOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericNodeOutput = {
@@ -31691,6 +34172,7 @@ export type GenericNodeOutput = {
   autocomplete: Maybe<GenericNodeAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GenericNodeFacet>;
+  item: Maybe<GenericNode>;
   items: Maybe<Array<Maybe<GenericNode>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -31880,6 +34362,7 @@ export type GenericPackage = IContent & IData & {
   TrackInventory: Maybe<Scalars['Bool']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Weight: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -31988,7 +34471,6 @@ export type GenericPackageAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<GenericPackageSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -32021,12 +34503,6 @@ export type GenericPackageAutocompleteRouteSegmentArgs = {
 
 
 export type GenericPackageAutocompleteSeoUriArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type GenericPackageAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -32152,6 +34628,10 @@ export type GenericPackageFacetAssociationsTitleArgs = {
 
 
 export type GenericPackageFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32241,16 +34721,28 @@ export type GenericPackageFacetLongDescriptionArgs = {
 
 
 export type GenericPackageFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericPackageFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericPackageFacetMinQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32318,6 +34810,10 @@ export type GenericPackageFacetSeoUriArgs = {
 
 
 export type GenericPackageFacetShippingPackageIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32367,6 +34863,10 @@ export type GenericPackageFacetStopPublishArgs = {
 
 
 export type GenericPackageFacetTaxCategoryIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32388,6 +34888,10 @@ export type GenericPackageFacetUrlArgs = {
 
 
 export type GenericPackageFacetWeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32447,6 +34951,8 @@ export type GenericPackageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericPackageOutput = {
@@ -32454,6 +34960,7 @@ export type GenericPackageOutput = {
   autocomplete: Maybe<GenericPackageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GenericPackageFacet>;
+  item: Maybe<GenericPackage>;
   items: Maybe<Array<Maybe<GenericPackage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -32577,16 +35084,28 @@ export type GenericPackageShippingDimensionsFacet = {
 
 
 export type GenericPackageShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericPackageShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericPackageShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -32727,6 +35246,7 @@ export type GenericProduct = IContent & IData & {
   Url: Maybe<Scalars['String']['output']>;
   VariantsReference: Maybe<ContentModelReference>;
   Warranty: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -33092,6 +35612,10 @@ export type GenericProductFacetAssociationsTitleArgs = {
 
 
 export type GenericProductFacetBoostArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -33113,6 +35637,10 @@ export type GenericProductFacetBuryArgs = {
 
 
 export type GenericProductFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -33234,6 +35762,10 @@ export type GenericProductFacetManufacturerPartsWarrantyDescriptionArgs = {
 
 
 export type GenericProductFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -33486,6 +36018,8 @@ export type GenericProductOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericProductOutput = {
@@ -33493,6 +36027,7 @@ export type GenericProductOutput = {
   autocomplete: Maybe<GenericProductAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GenericProductFacet>;
+  item: Maybe<GenericProduct>;
   items: Maybe<Array<Maybe<GenericProduct>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -33729,6 +36264,7 @@ export type GenericVariant = IContent & IData & {
   VirtualProductMode: Maybe<Scalars['String']['output']>;
   VirtualProductRole: Maybe<Scalars['String']['output']>;
   Weight: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -33907,7 +36443,6 @@ export type GenericVariantAutocomplete = {
   ScriptFiles: Maybe<LinkItemNodeAutocomplete>;
   SeoInformation: Maybe<GenericVariantSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -33940,12 +36475,6 @@ export type GenericVariantAutocompleteRouteSegmentArgs = {
 
 
 export type GenericVariantAutocompleteSeoUriArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type GenericVariantAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -34078,6 +36607,10 @@ export type GenericVariantFacetAssociationsTitleArgs = {
 
 
 export type GenericVariantFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34167,16 +36700,28 @@ export type GenericVariantFacetIsCommonDraftArgs = {
 
 
 export type GenericVariantFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericVariantFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericVariantFacetMinQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34260,6 +36805,10 @@ export type GenericVariantFacetSeoUriArgs = {
 
 
 export type GenericVariantFacetShippingPackageIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34333,6 +36882,10 @@ export type GenericVariantFacetSubscriptionLengthArgs = {
 
 
 export type GenericVariantFacetTaxCategoryIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34378,6 +36931,10 @@ export type GenericVariantFacetVirtualProductRoleArgs = {
 
 
 export type GenericVariantFacetWeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34444,6 +37001,8 @@ export type GenericVariantOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GenericVariantOutput = {
@@ -34451,6 +37010,7 @@ export type GenericVariantOutput = {
   autocomplete: Maybe<GenericVariantAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GenericVariantFacet>;
+  item: Maybe<GenericVariant>;
   items: Maybe<Array<Maybe<GenericVariant>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -34574,16 +37134,28 @@ export type GenericVariantShippingDimensionsFacet = {
 
 
 export type GenericVariantShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericVariantShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type GenericVariantShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -34720,6 +37292,7 @@ export type GiftCardPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -35326,6 +37899,8 @@ export type GiftCardPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GiftCardPageOutput = {
@@ -35333,6 +37908,7 @@ export type GiftCardPageOutput = {
   autocomplete: Maybe<GiftCardPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GiftCardPageFacet>;
+  item: Maybe<GiftCardPage>;
   items: Maybe<Array<Maybe<GiftCardPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -35432,6 +38008,7 @@ export type GoogleMapsBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -35615,6 +38192,10 @@ export type GoogleMapsBlockFacetBackgroundColorArgs = {
 
 
 export type GoogleMapsBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -35640,6 +38221,10 @@ export type GoogleMapsBlockFacetCreatedArgs = {
 
 
 export type GoogleMapsBlockFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -35782,6 +38367,8 @@ export type GoogleMapsBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GoogleMapsBlockOutput = {
@@ -35789,6 +38376,7 @@ export type GoogleMapsBlockOutput = {
   autocomplete: Maybe<GoogleMapsBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GoogleMapsBlockFacet>;
+  item: Maybe<GoogleMapsBlock>;
   items: Maybe<Array<Maybe<GoogleMapsBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -35862,6 +38450,7 @@ export type GroupAdmissionBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -36157,6 +38746,8 @@ export type GroupAdmissionBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GroupAdmissionBlockOutput = {
@@ -36164,6 +38755,7 @@ export type GroupAdmissionBlockOutput = {
   autocomplete: Maybe<GroupAdmissionBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GroupAdmissionBlockFacet>;
+  item: Maybe<GroupAdmissionBlock>;
   items: Maybe<Array<Maybe<GroupAdmissionBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -36231,6 +38823,7 @@ export type GroupCreationBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -36510,6 +39103,8 @@ export type GroupCreationBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type GroupCreationBlockOutput = {
@@ -36517,6 +39112,7 @@ export type GroupCreationBlockOutput = {
   autocomplete: Maybe<GroupCreationBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<GroupCreationBlockFacet>;
+  item: Maybe<GroupCreationBlock>;
   items: Maybe<Array<Maybe<GroupCreationBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -36584,6 +39180,7 @@ export type HcaptchaElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -36786,6 +39383,10 @@ export type HcaptchaElementBlockFacetSavedArgs = {
 
 
 export type HcaptchaElementBlockFacetScoreThresholdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -36886,6 +39487,8 @@ export type HcaptchaElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type HcaptchaElementBlockOutput = {
@@ -36893,6 +39496,7 @@ export type HcaptchaElementBlockOutput = {
   autocomplete: Maybe<HcaptchaElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<HcaptchaElementBlockFacet>;
+  item: Maybe<HcaptchaElementBlock>;
   items: Maybe<Array<Maybe<HcaptchaElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -36971,6 +39575,7 @@ export type HealthChatbotBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -37146,6 +39751,10 @@ export type HealthChatbotBlockFacetBackgroundColorArgs = {
 
 
 export type HealthChatbotBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -37187,6 +39796,10 @@ export type HealthChatbotBlockFacetHeaderTextArgs = {
 
 
 export type HealthChatbotBlockFacetHeightInPixelsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -37321,6 +39934,8 @@ export type HealthChatbotBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type HealthChatbotBlockOutput = {
@@ -37328,6 +39943,7 @@ export type HealthChatbotBlockOutput = {
   autocomplete: Maybe<HealthChatbotBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<HealthChatbotBlockFacet>;
+  item: Maybe<HealthChatbotBlock>;
   items: Maybe<Array<Maybe<HealthChatbotBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -37409,6 +40025,7 @@ export type HeroBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -37570,6 +40187,7 @@ export type HeroBlockCallout = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -37771,6 +40389,10 @@ export type HeroBlockCalloutFacetCalloutContentAlignmentArgs = {
 
 
 export type HeroBlockCalloutFacetCalloutOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -37942,6 +40564,8 @@ export type HeroBlockCalloutOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type HeroBlockCalloutOutput = {
@@ -37949,6 +40573,7 @@ export type HeroBlockCalloutOutput = {
   autocomplete: Maybe<HeroBlockCalloutAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<HeroBlockCalloutFacet>;
+  item: Maybe<HeroBlockCallout>;
   items: Maybe<Array<Maybe<HeroBlockCallout>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -38049,6 +40674,10 @@ export type HeroBlockFacetBackgroundColorArgs = {
 
 
 export type HeroBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -38299,6 +40928,10 @@ export type HeroBlockHeroBlockCalloutFacetCalloutContentAlignmentArgs = {
 
 
 export type HeroBlockHeroBlockCalloutFacetCalloutOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -38393,6 +41026,8 @@ export type HeroBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type HeroBlockOutput = {
@@ -38400,6 +41035,7 @@ export type HeroBlockOutput = {
   autocomplete: Maybe<HeroBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<HeroBlockFacet>;
+  item: Maybe<HeroBlock>;
   items: Maybe<Array<Maybe<HeroBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -38511,6 +41147,7 @@ export type HomePage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -39133,6 +41770,8 @@ export type HomePageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type HomePageOutput = {
@@ -39140,6 +41779,7 @@ export type HomePageOutput = {
   autocomplete: Maybe<HomePageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<HomePageFacet>;
+  item: Maybe<HomePage>;
   items: Maybe<Array<Maybe<HomePage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -39290,6 +41930,7 @@ export type IContent = {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -39315,6 +41956,7 @@ export type IContent_LinkArgs = {
 };
 
 export type IData = {
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -39332,6 +41974,719 @@ export type IData_FulltextArgs = {
 
 export type IData_LinkArgs = {
   type: InputMaybe<LinkTypes>;
+};
+
+/** IconFeatures */
+export type IconFeatures = IContent & IData & {
+  __typename: 'IconFeatures';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  IconFeaturesSingle: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** IconFeatures */
+export type IconFeaturesIconFeaturesSingleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeatures */
+export type IconFeaturesNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeatures */
+export type IconFeatures_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeatures */
+export type IconFeatures_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type IconFeaturesAutocomplete = {
+  __typename: 'IconFeaturesAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type IconFeaturesAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type IconFeaturesFacet = {
+  __typename: 'IconFeaturesFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  IconFeaturesSingle: Maybe<ContentAreaItemModelSearchFacet>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type IconFeaturesFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type IconFeaturesOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  IconFeaturesSingle?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type IconFeaturesOutput = {
+  __typename: 'IconFeaturesOutput';
+  autocomplete: Maybe<IconFeaturesAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<IconFeaturesFacet>;
+  item: Maybe<IconFeatures>;
+  items: Maybe<Array<Maybe<IconFeatures>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type IconFeaturesOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingle = IContent & IData & {
+  __typename: 'IconFeaturesSingle';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureIcon: Maybe<ContentModelReference>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  Link: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingleFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingleLinkArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingleNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingleTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingle_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** IconFeaturesSingle */
+export type IconFeaturesSingle_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type IconFeaturesSingleAutocomplete = {
+  __typename: 'IconFeaturesSingleAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  FeatureIcon: Maybe<ContentModelReferenceAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type IconFeaturesSingleAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type IconFeaturesSingleAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type IconFeaturesSingleFacet = {
+  __typename: 'IconFeaturesSingleFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureIcon: Maybe<ContentModelReferenceFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  Link: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type IconFeaturesSingleFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesSingleFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesSingleFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesSingleFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesSingleFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IconFeaturesSingleFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type IconFeaturesSingleFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type IconFeaturesSingleOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureIcon?: InputMaybe<ContentModelReferenceOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type IconFeaturesSingleOutput = {
+  __typename: 'IconFeaturesSingleOutput';
+  autocomplete: Maybe<IconFeaturesSingleAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<IconFeaturesSingleFacet>;
+  item: Maybe<IconFeaturesSingle>;
+  items: Maybe<Array<Maybe<IconFeaturesSingle>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type IconFeaturesSingleOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type IconFeaturesSingleWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureIcon?: InputMaybe<ContentModelReferenceWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<IconFeaturesSingleWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<IconFeaturesSingleWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<IconFeaturesSingleWhereInput>>>;
+};
+
+export type IconFeaturesWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  IconFeaturesSingle?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<IconFeaturesWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<IconFeaturesWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<IconFeaturesWhereInput>>>;
 };
 
 export type ImageChoiceElementBlock = IContent & IData & {
@@ -39365,6 +42720,7 @@ export type ImageChoiceElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -39533,6 +42889,10 @@ export type ImageChoiceElementBlockFacetChangedArgs = {
 
 
 export type ImageChoiceElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -39705,6 +43065,8 @@ export type ImageChoiceElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ImageChoiceElementBlockOutput = {
@@ -39712,6 +43074,7 @@ export type ImageChoiceElementBlockOutput = {
   autocomplete: Maybe<ImageChoiceElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ImageChoiceElementBlockFacet>;
+  item: Maybe<ImageChoiceElementBlock>;
   items: Maybe<Array<Maybe<ImageChoiceElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -39813,6 +43176,7 @@ export type ImageMediaData = IContent & IData & {
   Thumbnail: Maybe<BlobModel>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -40288,21 +43652,37 @@ export type ImageMediaDataFacetNameArgs = {
 
 
 export type ImageMediaDataFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ImageMediaDataFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ImageMediaDataFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ImageMediaDataFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -40442,6 +43822,8 @@ export type ImageMediaDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ImageMediaDataOutput = {
@@ -40449,6 +43831,7 @@ export type ImageMediaDataOutput = {
   autocomplete: Maybe<ImageMediaDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ImageMediaDataFacet>;
+  item: Maybe<ImageMediaData>;
   items: Maybe<Array<Maybe<ImageMediaData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -40591,6 +43974,8 @@ export type IntFilterInput = {
   eq?: InputMaybe<Scalars['Int']['input']>;
   /** `exist` matches results that have this field. */
   exist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** `Factor` allows you to use a number value in a field to influence the `_score` directly. If used on a multi-valued field, then only the lowest value of the field is used in calculations. Default for `value` is `1`. Default for `modifier` is `NONE`. */
+  factor?: InputMaybe<NumberFactor>;
   /** `gt` retrieves results with matches that have a value which is `greater than` it. */
   gt?: InputMaybe<Scalars['Int']['input']>;
   /** `gte` retrieves results with matches that have a value which is `greater than or equal to` it. */
@@ -40662,6 +44047,7 @@ export type LandingPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -41276,6 +44662,8 @@ export type LandingPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LandingPageOutput = {
@@ -41283,6 +44671,7 @@ export type LandingPageOutput = {
   autocomplete: Maybe<LandingPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<LandingPageFacet>;
+  item: Maybe<LandingPage>;
   items: Maybe<Array<Maybe<LandingPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -41380,6 +44769,7 @@ export type LikeButtonBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -41540,6 +44930,10 @@ export type LikeButtonBlockFacetBackgroundColorArgs = {
 
 
 export type LikeButtonBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -41691,6 +45085,8 @@ export type LikeButtonBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LikeButtonBlockOutput = {
@@ -41698,6 +45094,7 @@ export type LikeButtonBlockOutput = {
   autocomplete: Maybe<LikeButtonBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<LikeButtonBlockFacet>;
+  item: Maybe<LikeButtonBlock>;
   items: Maybe<Array<Maybe<LikeButtonBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -41739,6 +45136,350 @@ export type LikeButtonBlockWhereInput = {
   _modified?: InputMaybe<DateFilterInput>;
   _not?: InputMaybe<Array<InputMaybe<LikeButtonBlockWhereInput>>>;
   _or?: InputMaybe<Array<InputMaybe<LikeButtonBlockWhereInput>>>;
+};
+
+/** Link Block */
+export type LinkBlock = IContent & IData & {
+  __typename: 'LinkBlock';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  Format: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Link Block */
+export type LinkBlockFormatArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Link Block */
+export type LinkBlockNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Link Block */
+export type LinkBlock_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Link Block */
+export type LinkBlock_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type LinkBlockAutocomplete = {
+  __typename: 'LinkBlockAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type LinkBlockAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type LinkBlockAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type LinkBlockFacet = {
+  __typename: 'LinkBlockFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  Format: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type LinkBlockFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type LinkBlockFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type LinkBlockFacetFormatArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type LinkBlockFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type LinkBlockFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type LinkBlockFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type LinkBlockFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type LinkBlockOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Format?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type LinkBlockOutput = {
+  __typename: 'LinkBlockOutput';
+  autocomplete: Maybe<LinkBlockAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<LinkBlockFacet>;
+  item: Maybe<LinkBlock>;
+  items: Maybe<Array<Maybe<LinkBlock>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type LinkBlockOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type LinkBlockWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  Format?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<LinkBlockWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<LinkBlockWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<LinkBlockWhereInput>>>;
 };
 
 export type LinkConfig = {
@@ -41846,6 +45587,13 @@ export type LinkItemNodeWhereInput = {
 };
 
 export enum LinkTypes {
+  /**
+   *
+   * | *Direction* | &nbsp; | *Field*     |
+   * | ----------: | ------ | :---------- |
+   * | *from*      |        | `ContentLink.GuidValue` |
+   * | *to*        |        | `ParentLink.GuidValue`   |
+   */
   Default = 'DEFAULT'
 }
 
@@ -41923,6 +45671,7 @@ export type LocationItemPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
   YearlyPassengers: Maybe<Scalars['Int']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -42259,6 +46008,10 @@ export type LocationItemPageFacetAuthorMetaDataArgs = {
 
 
 export type LocationItemPageFacetAvgTempArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -42380,11 +46133,19 @@ export type LocationItemPageFacetKeywordsArgs = {
 
 
 export type LocationItemPageFacetLatitudeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type LocationItemPageFacetLongitudeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -42584,6 +46345,10 @@ export type LocationItemPageFacetUrlArgs = {
 
 
 export type LocationItemPageFacetYearlyPassengersArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -42652,6 +46417,8 @@ export type LocationItemPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LocationItemPageOutput = {
@@ -42659,6 +46426,7 @@ export type LocationItemPageOutput = {
   autocomplete: Maybe<LocationItemPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<LocationItemPageFacet>;
+  item: Maybe<LocationItemPage>;
   items: Maybe<Array<Maybe<LocationItemPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -42792,6 +46560,7 @@ export type LocationListPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -43406,6 +47175,8 @@ export type LocationListPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LocationListPageOutput = {
@@ -43413,6 +47184,7 @@ export type LocationListPageOutput = {
   autocomplete: Maybe<LocationListPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<LocationListPageFacet>;
+  item: Maybe<LocationListPage>;
   items: Maybe<Array<Maybe<LocationListPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -43513,6 +47285,7 @@ export type MembershipAffiliationBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -43682,6 +47455,10 @@ export type MembershipAffiliationBlockFacetBackgroundColorArgs = {
 
 
 export type MembershipAffiliationBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -43739,6 +47516,10 @@ export type MembershipAffiliationBlockFacetNameArgs = {
 
 
 export type MembershipAffiliationBlockFacetNumberOfMembersArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -43857,6 +47638,8 @@ export type MembershipAffiliationBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type MembershipAffiliationBlockOutput = {
@@ -43864,6 +47647,7 @@ export type MembershipAffiliationBlockOutput = {
   autocomplete: Maybe<MembershipAffiliationBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<MembershipAffiliationBlockFacet>;
+  item: Maybe<MembershipAffiliationBlock>;
   items: Maybe<Array<Maybe<MembershipAffiliationBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -43944,6 +47728,7 @@ export type MembershipDisplayBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -44120,6 +47905,10 @@ export type MembershipDisplayBlockFacetBackgroundColorArgs = {
 
 
 export type MembershipDisplayBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -44185,6 +47974,10 @@ export type MembershipDisplayBlockFacetNameArgs = {
 
 
 export type MembershipDisplayBlockFacetNumberOfMembersArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -44304,6 +48097,8 @@ export type MembershipDisplayBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type MembershipDisplayBlockOutput = {
@@ -44311,6 +48106,7 @@ export type MembershipDisplayBlockOutput = {
   autocomplete: Maybe<MembershipDisplayBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<MembershipDisplayBlockFacet>;
+  item: Maybe<MembershipDisplayBlock>;
   items: Maybe<Array<Maybe<MembershipDisplayBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -44388,6 +48184,7 @@ export type MenuItemBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   TeaserText: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -44710,6 +48507,8 @@ export type MenuItemBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type MenuItemBlockOutput = {
@@ -44717,6 +48516,7 @@ export type MenuItemBlockOutput = {
   autocomplete: Maybe<MenuItemBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<MenuItemBlockFacet>;
+  item: Maybe<MenuItemBlock>;
   items: Maybe<Array<Maybe<MenuItemBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -44817,6 +48617,7 @@ export type ModalBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -45082,6 +48883,10 @@ export type ModalBlockFacetModalOpenButtonTextArgs = {
 
 
 export type ModalBlockFacetModalOpenButtonWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -45157,6 +48962,10 @@ export type ModalBlockFacetShortcutArgs = {
 
 
 export type ModalBlockFacetShowModalAfterXSecondsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -45178,6 +48987,10 @@ export type ModalBlockFacetShowModalOnPageLoadArgs = {
 
 
 export type ModalBlockFacetShowModalOnScrollPercentageArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -45268,6 +49081,8 @@ export type ModalBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ModalBlockOutput = {
@@ -45275,6 +49090,7 @@ export type ModalBlockOutput = {
   autocomplete: Maybe<ModalBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ModalBlockFacet>;
+  item: Maybe<ModalBlock>;
   items: Maybe<Array<Maybe<ModalBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -45356,6 +49172,7 @@ export type MonetaryReward = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   UseAmounts: Maybe<Scalars['Bool']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -45519,6 +49336,10 @@ export type MonetaryRewardFacetNameArgs = {
 
 
 export type MonetaryRewardFacetPercentageArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -45623,6 +49444,8 @@ export type MonetaryRewardOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type MonetaryRewardOutput = {
@@ -45630,6 +49453,7 @@ export type MonetaryRewardOutput = {
   autocomplete: Maybe<MonetaryRewardAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<MonetaryRewardFacet>;
+  item: Maybe<MonetaryReward>;
   items: Maybe<Array<Maybe<MonetaryReward>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -45702,6 +49526,7 @@ export type NavigationBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -45871,6 +49696,10 @@ export type NavigationBlockFacetBackgroundColorArgs = {
 
 
 export type NavigationBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -46032,6 +49861,8 @@ export type NavigationBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type NavigationBlockOutput = {
@@ -46039,6 +49870,7 @@ export type NavigationBlockOutput = {
   autocomplete: Maybe<NavigationBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<NavigationBlockFacet>;
+  item: Maybe<NavigationBlock>;
   items: Maybe<Array<Maybe<NavigationBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -46144,6 +49976,7 @@ export type NewProductsPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -46599,6 +50432,10 @@ export type NewProductsPageFacetNameArgs = {
 
 
 export type NewProductsPageFacetNumberOfProductsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -46620,6 +50457,10 @@ export type NewProductsPageFacetPageDescriptionArgs = {
 
 
 export type NewProductsPageFacetPageSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -46796,6 +50637,8 @@ export type NewProductsPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type NewProductsPageOutput = {
@@ -46803,6 +50646,7 @@ export type NewProductsPageOutput = {
   autocomplete: Maybe<NewProductsPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<NewProductsPageFacet>;
+  item: Maybe<NewProductsPage>;
   items: Maybe<Array<Maybe<NewProductsPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -46904,6 +50748,7 @@ export type NodeContent = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -47076,6 +50921,10 @@ export type NodeContentFacetAncestorsArgs = {
 
 
 export type NodeContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -47125,6 +50974,10 @@ export type NodeContentFacetIsCommonDraftArgs = {
 
 
 export type NodeContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -47241,6 +51094,8 @@ export type NodeContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type NodeContentOutput = {
@@ -47248,6 +51103,7 @@ export type NodeContentOutput = {
   autocomplete: Maybe<NodeContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<NodeContentFacet>;
+  item: Maybe<NodeContent>;
   items: Maybe<Array<Maybe<NodeContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -47397,6 +51253,7 @@ export type NumberElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -47554,6 +51411,10 @@ export type NumberElementBlockFacetAncestorsArgs = {
 
 
 export type NumberElementBlockFacetAutoCompleteArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -47565,6 +51426,10 @@ export type NumberElementBlockFacetChangedArgs = {
 
 
 export type NumberElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -47736,6 +51601,8 @@ export type NumberElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type NumberElementBlockOutput = {
@@ -47743,6 +51610,7 @@ export type NumberElementBlockOutput = {
   autocomplete: Maybe<NumberElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<NumberElementBlockFacet>;
+  item: Maybe<NumberElementBlock>;
   items: Maybe<Array<Maybe<NumberElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -47794,6 +51662,12 @@ export type NumberFacet = {
   name: Maybe<Scalars['String']['output']>;
 };
 
+/** Factor influences the score based of number values with a factor function */
+export type NumberFactor = {
+  modifier?: InputMaybe<FactorModifier>;
+  value?: InputMaybe<Scalars['Float']['input']>;
+};
+
 /** Filter product search blocks by field values */
 export type NumericFilterBlock = IContent & IData & {
   __typename: 'NumericFilterBlock';
@@ -47823,6 +51697,7 @@ export type NumericFilterBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -48002,6 +51877,10 @@ export type NumericFilterBlockFacetFieldOperatorArgs = {
 
 
 export type NumericFilterBlockFacetFieldValueArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -48115,6 +51994,8 @@ export type NumericFilterBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type NumericFilterBlockOutput = {
@@ -48122,6 +52003,7 @@ export type NumericFilterBlockOutput = {
   autocomplete: Maybe<NumericFilterBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<NumericFilterBlockFacet>;
+  item: Maybe<NumericFilterBlock>;
   items: Maybe<Array<Maybe<NumericFilterBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -48194,6 +52076,7 @@ export type OdpListConsentFormBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -48357,6 +52240,10 @@ export type OdpListConsentFormBlockFacetAncestorsArgs = {
 
 
 export type OdpListConsentFormBlockFacetAutoCompleteArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -48368,6 +52255,10 @@ export type OdpListConsentFormBlockFacetChangedArgs = {
 
 
 export type OdpListConsentFormBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -48548,6 +52439,8 @@ export type OdpListConsentFormBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OdpListConsentFormBlockOutput = {
@@ -48555,6 +52448,7 @@ export type OdpListConsentFormBlockOutput = {
   autocomplete: Maybe<OdpListConsentFormBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OdpListConsentFormBlockFacet>;
+  item: Maybe<OdpListConsentFormBlock>;
   items: Maybe<Array<Maybe<OdpListConsentFormBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -48626,6 +52520,7 @@ export type OdpListFormBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -48906,6 +52801,8 @@ export type OdpListFormBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OdpListFormBlockOutput = {
@@ -48913,6 +52810,7 @@ export type OdpListFormBlockOutput = {
   autocomplete: Maybe<OdpListFormBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OdpListFormBlockFacet>;
+  item: Maybe<OdpListFormBlock>;
   items: Maybe<Array<Maybe<OdpListFormBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -49018,6 +52916,7 @@ export type OrderConfirmationMailPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -49640,6 +53539,8 @@ export type OrderConfirmationMailPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderConfirmationMailPageOutput = {
@@ -49647,6 +53548,7 @@ export type OrderConfirmationMailPageOutput = {
   autocomplete: Maybe<OrderConfirmationMailPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderConfirmationMailPageFacet>;
+  item: Maybe<OrderConfirmationMailPage>;
   items: Maybe<Array<Maybe<OrderConfirmationMailPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -49771,6 +53673,7 @@ export type OrderConfirmationPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -50417,6 +54320,8 @@ export type OrderConfirmationPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderConfirmationPageOutput = {
@@ -50424,6 +54329,7 @@ export type OrderConfirmationPageOutput = {
   autocomplete: Maybe<OrderConfirmationPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderConfirmationPageFacet>;
+  item: Maybe<OrderConfirmationPage>;
   items: Maybe<Array<Maybe<OrderConfirmationPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -50547,6 +54453,7 @@ export type OrderDetailsPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -51153,6 +55060,8 @@ export type OrderDetailsPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderDetailsPageOutput = {
@@ -51160,6 +55069,7 @@ export type OrderDetailsPageOutput = {
   autocomplete: Maybe<OrderDetailsPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderDetailsPageFacet>;
+  item: Maybe<OrderDetailsPage>;
   items: Maybe<Array<Maybe<OrderDetailsPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -51256,6 +55166,7 @@ export type OrderHistoryBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -51416,6 +55327,10 @@ export type OrderHistoryBlockFacetBackgroundColorArgs = {
 
 
 export type OrderHistoryBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -51576,6 +55491,8 @@ export type OrderHistoryBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderHistoryBlockOutput = {
@@ -51583,6 +55500,7 @@ export type OrderHistoryBlockOutput = {
   autocomplete: Maybe<OrderHistoryBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderHistoryBlockFacet>;
+  item: Maybe<OrderHistoryBlock>;
   items: Maybe<Array<Maybe<OrderHistoryBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -51681,6 +55599,7 @@ export type OrderHistoryPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -52287,6 +56206,8 @@ export type OrderHistoryPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderHistoryPageOutput = {
@@ -52294,6 +56215,7 @@ export type OrderHistoryPageOutput = {
   autocomplete: Maybe<OrderHistoryPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderHistoryPageFacet>;
+  item: Maybe<OrderHistoryPage>;
   items: Maybe<Array<Maybe<OrderHistoryPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -52414,6 +56336,7 @@ export type OrderPadsPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -53020,6 +56943,8 @@ export type OrderPadsPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderPadsPageOutput = {
@@ -53027,6 +56952,7 @@ export type OrderPadsPageOutput = {
   autocomplete: Maybe<OrderPadsPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderPadsPageFacet>;
+  item: Maybe<OrderPadsPage>;
   items: Maybe<Array<Maybe<OrderPadsPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -53123,6 +57049,7 @@ export type OrderSearchBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -53283,6 +57210,10 @@ export type OrderSearchBlockFacetBackgroundColorArgs = {
 
 
 export type OrderSearchBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -53434,6 +57365,8 @@ export type OrderSearchBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrderSearchBlockOutput = {
@@ -53441,6 +57374,7 @@ export type OrderSearchBlockOutput = {
   autocomplete: Maybe<OrderSearchBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrderSearchBlockFacet>;
+  item: Maybe<OrderSearchBlock>;
   items: Maybe<Array<Maybe<OrderSearchBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -53538,6 +57472,7 @@ export type OrdersPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -54144,6 +58079,8 @@ export type OrdersPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrdersPageOutput = {
@@ -54151,6 +58088,7 @@ export type OrdersPageOutput = {
   autocomplete: Maybe<OrdersPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrdersPageFacet>;
+  item: Maybe<OrdersPage>;
   items: Maybe<Array<Maybe<OrdersPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -54271,6 +58209,7 @@ export type OrganizationPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -54877,6 +58816,8 @@ export type OrganizationPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type OrganizationPageOutput = {
@@ -54884,6 +58825,7 @@ export type OrganizationPageOutput = {
   autocomplete: Maybe<OrganizationPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<OrganizationPageFacet>;
+  item: Maybe<OrganizationPage>;
   items: Maybe<Array<Maybe<OrganizationPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -54950,6 +58892,406 @@ export type OrganizationPageWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<OrganizationPageWhereInput>>>;
 };
 
+/** OutageMap */
+export type OutageMap = IContent & IData & {
+  __typename: 'OutageMap';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  BackgroundImage: Maybe<ContentModelReference>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureImage: Maybe<ContentModelReference>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  ImageType: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  Link: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** OutageMap */
+export type OutageMapFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMapImageTypeArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMapLinkArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMapNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMapTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMap_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** OutageMap */
+export type OutageMap_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type OutageMapAutocomplete = {
+  __typename: 'OutageMapAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  BackgroundImage: Maybe<ContentModelReferenceAutocomplete>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  FeatureImage: Maybe<ContentModelReferenceAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type OutageMapAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type OutageMapAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type OutageMapFacet = {
+  __typename: 'OutageMapFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  BackgroundImage: Maybe<ContentModelReferenceFacet>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureImage: Maybe<ContentModelReferenceFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  ImageType: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  Link: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type OutageMapFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type OutageMapFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type OutageMapFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetImageTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type OutageMapFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type OutageMapFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type OutageMapFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type OutageMapFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type OutageMapOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  BackgroundImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  ImageType?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type OutageMapOutput = {
+  __typename: 'OutageMapOutput';
+  autocomplete: Maybe<OutageMapAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<OutageMapFacet>;
+  item: Maybe<OutageMap>;
+  items: Maybe<Array<Maybe<OutageMap>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type OutageMapOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type OutageMapWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  BackgroundImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  ImageType?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<OutageMapWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<OutageMapWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<OutageMapWhereInput>>>;
+};
+
 export type PackageContent = IContent & IData & {
   __typename: 'PackageContent';
   Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -54991,6 +59333,7 @@ export type PackageContent = IContent & IData & {
   TrackInventory: Maybe<Scalars['Bool']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Weight: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -55067,7 +59410,6 @@ export type PackageContentAutocomplete = {
   RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SeoInformation: Maybe<PackageContentSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -55100,12 +59442,6 @@ export type PackageContentAutocompleteRouteSegmentArgs = {
 
 
 export type PackageContentAutocompleteSeoUriArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type PackageContentAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -55210,6 +59546,10 @@ export type PackageContentFacetAncestorsArgs = {
 
 
 export type PackageContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55259,16 +59599,28 @@ export type PackageContentFacetIsCommonDraftArgs = {
 
 
 export type PackageContentFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type PackageContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type PackageContentFacetMinQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55312,6 +59664,10 @@ export type PackageContentFacetSeoUriArgs = {
 
 
 export type PackageContentFacetShippingPackageIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55353,6 +59709,10 @@ export type PackageContentFacetStopPublishArgs = {
 
 
 export type PackageContentFacetTaxCategoryIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55374,6 +59734,10 @@ export type PackageContentFacetUrlArgs = {
 
 
 export type PackageContentFacetWeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55420,6 +59784,8 @@ export type PackageContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PackageContentOutput = {
@@ -55427,6 +59793,7 @@ export type PackageContentOutput = {
   autocomplete: Maybe<PackageContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PackageContentFacet>;
+  item: Maybe<PackageContent>;
   items: Maybe<Array<Maybe<PackageContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -55550,16 +59917,28 @@ export type PackageContentShippingDimensionsFacet = {
 
 
 export type PackageContentShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type PackageContentShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type PackageContentShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55671,6 +60050,7 @@ export type PageListBlock = IContent & IData & {
   /** Display template to use for page list */
   Template: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -55895,6 +60275,10 @@ export type PageListBlockFacetBackgroundColorArgs = {
 
 
 export type PageListBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -55922,6 +60306,10 @@ export type PageListBlockFacetContentTypeArgs = {
 
 
 export type PageListBlockFacetCountArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -56067,6 +60455,10 @@ export type PageListBlockFacetSiteIdArgs = {
 
 
 export type PageListBlockFacetSortOrderArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -56150,6 +60542,8 @@ export type PageListBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PageListBlockOutput = {
@@ -56157,6 +60551,7 @@ export type PageListBlockOutput = {
   autocomplete: Maybe<PageListBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PageListBlockFacet>;
+  item: Maybe<PageListBlock>;
   items: Maybe<Array<Maybe<PageListBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -56242,6 +60637,7 @@ export type ParagraphTextElementBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -56393,6 +60789,10 @@ export type ParagraphTextElementBlockFacetChangedArgs = {
 
 
 export type ParagraphTextElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -56554,6 +60954,8 @@ export type ParagraphTextElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ParagraphTextElementBlockOutput = {
@@ -56561,6 +60963,7 @@ export type ParagraphTextElementBlockOutput = {
   autocomplete: Maybe<ParagraphTextElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ParagraphTextElementBlockFacet>;
+  item: Maybe<ParagraphTextElementBlock>;
   items: Maybe<Array<Maybe<ParagraphTextElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -56631,6 +61034,7 @@ export type PdfFile = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -56920,6 +61324,8 @@ export type PdfFileOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PdfFileOutput = {
@@ -56927,6 +61333,7 @@ export type PdfFileOutput = {
   autocomplete: Maybe<PdfFileAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PdfFileFacet>;
+  item: Maybe<PdfFile>;
   items: Maybe<Array<Maybe<PdfFile>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -57022,6 +61429,7 @@ export type PersonList = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -57628,6 +62036,8 @@ export type PersonListOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PersonListOutput = {
@@ -57635,6 +62045,7 @@ export type PersonListOutput = {
   autocomplete: Maybe<PersonListAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PersonListFacet>;
+  item: Maybe<PersonList>;
   items: Maybe<Array<Maybe<PersonList>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -57762,6 +62173,7 @@ export type PersonPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -58467,6 +62879,8 @@ export type PersonPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PersonPageOutput = {
@@ -58474,6 +62888,7 @@ export type PersonPageOutput = {
   autocomplete: Maybe<PersonPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PersonPageFacet>;
+  item: Maybe<PersonPage>;
   items: Maybe<Array<Maybe<PersonPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -58547,6 +62962,1137 @@ export type PersonPageWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<PersonPageWhereInput>>>;
 };
 
+/** PhotoFeatures */
+export type PhotoFeatures = IContent & IData & {
+  __typename: 'PhotoFeatures';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  Photos: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** PhotoFeatures */
+export type PhotoFeaturesNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeatures */
+export type PhotoFeaturesPhotosArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeatures */
+export type PhotoFeatures_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeatures */
+export type PhotoFeatures_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type PhotoFeaturesAutocomplete = {
+  __typename: 'PhotoFeaturesAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type PhotoFeaturesAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type PhotoFeaturesFacet = {
+  __typename: 'PhotoFeaturesFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  Photos: Maybe<ContentAreaItemModelSearchFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type PhotoFeaturesFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type PhotoFeaturesOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  Photos?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PhotoFeaturesOutput = {
+  __typename: 'PhotoFeaturesOutput';
+  autocomplete: Maybe<PhotoFeaturesAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<PhotoFeaturesFacet>;
+  item: Maybe<PhotoFeatures>;
+  items: Maybe<Array<Maybe<PhotoFeatures>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type PhotoFeaturesOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingle = IContent & IData & {
+  __typename: 'PhotoFeaturesSingle';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureImage: Maybe<ContentModelReference>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  ItemType: Maybe<Scalars['String']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  Link: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  Video: Maybe<LinkItemNode>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingleFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingleItemTypeArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingleLinkArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingleNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingleTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingle_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoFeaturesSingle */
+export type PhotoFeaturesSingle_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type PhotoFeaturesSingleAutocomplete = {
+  __typename: 'PhotoFeaturesSingleAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  FeatureImage: Maybe<ContentModelReferenceAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Video: Maybe<LinkItemNodeAutocomplete>;
+};
+
+
+export type PhotoFeaturesSingleAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoFeaturesSingleAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type PhotoFeaturesSingleFacet = {
+  __typename: 'PhotoFeaturesSingleFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureImage: Maybe<ContentModelReferenceFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  ItemType: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  Link: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+  Video: Maybe<LinkItemNodeFacet>;
+};
+
+
+export type PhotoFeaturesSingleFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesSingleFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesSingleFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetItemTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesSingleFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesSingleFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoFeaturesSingleFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoFeaturesSingleFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type PhotoFeaturesSingleOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  ItemType?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  Video?: InputMaybe<LinkItemNodeOrderByInput>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PhotoFeaturesSingleOutput = {
+  __typename: 'PhotoFeaturesSingleOutput';
+  autocomplete: Maybe<PhotoFeaturesSingleAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<PhotoFeaturesSingleFacet>;
+  item: Maybe<PhotoFeaturesSingle>;
+  items: Maybe<Array<Maybe<PhotoFeaturesSingle>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type PhotoFeaturesSingleOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PhotoFeaturesSingleWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  ItemType?: InputMaybe<SearchableStringFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  Video?: InputMaybe<LinkItemNodeWhereInput>;
+  _and?: InputMaybe<Array<InputMaybe<PhotoFeaturesSingleWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<PhotoFeaturesSingleWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<PhotoFeaturesSingleWhereInput>>>;
+};
+
+export type PhotoFeaturesWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  Photos?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<PhotoFeaturesWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<PhotoFeaturesWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<PhotoFeaturesWhereInput>>>;
+};
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeature = IContent & IData & {
+  __typename: 'PhotoVideoFeature';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  FeatureImage: Maybe<ContentModelReference>;
+  FeatureText: Maybe<Scalars['String']['output']>;
+  ImageType: Maybe<Scalars['String']['output']>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  Link: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Title: Maybe<Scalars['String']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeatureFeatureTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeatureImageTypeArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeatureLinkArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeatureNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeatureTitleArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeature_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** PhotoVideoFeature */
+export type PhotoVideoFeature_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type PhotoVideoFeatureAutocomplete = {
+  __typename: 'PhotoVideoFeatureAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  FeatureImage: Maybe<ContentModelReferenceAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type PhotoVideoFeatureAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type PhotoVideoFeatureAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type PhotoVideoFeatureFacet = {
+  __typename: 'PhotoVideoFeatureFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  FeatureImage: Maybe<ContentModelReferenceFacet>;
+  FeatureText: Maybe<Array<Maybe<StringFacet>>>;
+  ImageType: Maybe<Array<Maybe<StringFacet>>>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  Link: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Title: Maybe<Array<Maybe<StringFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type PhotoVideoFeatureFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoVideoFeatureFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoVideoFeatureFacetFeatureTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetImageTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoVideoFeatureFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoVideoFeatureFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type PhotoVideoFeatureFacetTitleArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type PhotoVideoFeatureFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type PhotoVideoFeatureOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  FeatureText?: InputMaybe<OrderBy>;
+  ImageType?: InputMaybe<OrderBy>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Title?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PhotoVideoFeatureOutput = {
+  __typename: 'PhotoVideoFeatureOutput';
+  autocomplete: Maybe<PhotoVideoFeatureAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<PhotoVideoFeatureFacet>;
+  item: Maybe<PhotoVideoFeature>;
+  items: Maybe<Array<Maybe<PhotoVideoFeature>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type PhotoVideoFeatureOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PhotoVideoFeatureWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  FeatureImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  FeatureText?: InputMaybe<SearchableStringFilterInput>;
+  ImageType?: InputMaybe<SearchableStringFilterInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  Link?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Title?: InputMaybe<SearchableStringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<PhotoVideoFeatureWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<PhotoVideoFeatureWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<PhotoVideoFeatureWhereInput>>>;
+};
+
 export type PredefinedHiddenElementBlock = IContent & IData & {
   __typename: 'PredefinedHiddenElementBlock';
   Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -58571,6 +64117,7 @@ export type PredefinedHiddenElementBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -58836,6 +64383,8 @@ export type PredefinedHiddenElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PredefinedHiddenElementBlockOutput = {
@@ -58843,6 +64392,7 @@ export type PredefinedHiddenElementBlockOutput = {
   autocomplete: Maybe<PredefinedHiddenElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PredefinedHiddenElementBlockFacet>;
+  item: Maybe<PredefinedHiddenElementBlock>;
   items: Maybe<Array<Maybe<PredefinedHiddenElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -58914,6 +64464,7 @@ export type ProductContent = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   VariantsReference: Maybe<ContentModelReference>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -59115,6 +64666,10 @@ export type ProductContentFacetAncestorsArgs = {
 
 
 export type ProductContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -59164,6 +64719,10 @@ export type ProductContentFacetIsCommonDraftArgs = {
 
 
 export type ProductContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -59283,6 +64842,8 @@ export type ProductContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductContentOutput = {
@@ -59290,6 +64851,7 @@ export type ProductContentOutput = {
   autocomplete: Maybe<ProductContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProductContentFacet>;
+  item: Maybe<ProductContent>;
   items: Maybe<Array<Maybe<ProductContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -59468,6 +65030,7 @@ export type ProductHeroBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -59615,6 +65178,7 @@ export type ProductHeroBlockCallout = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Text: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -59925,6 +65489,8 @@ export type ProductHeroBlockCalloutOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductHeroBlockCalloutOutput = {
@@ -59932,6 +65498,7 @@ export type ProductHeroBlockCalloutOutput = {
   autocomplete: Maybe<ProductHeroBlockCalloutAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProductHeroBlockCalloutFacet>;
+  item: Maybe<ProductHeroBlockCallout>;
   items: Maybe<Array<Maybe<ProductHeroBlockCallout>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -60025,6 +65592,10 @@ export type ProductHeroBlockFacetBackgroundColorArgs = {
 
 
 export type ProductHeroBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60186,6 +65757,7 @@ export type ProductHeroBlockImage = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -60349,6 +65921,10 @@ export type ProductHeroBlockImageFacetCreatedArgs = {
 
 
 export type ProductHeroBlockImageFacetImageHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60362,6 +65938,10 @@ export type ProductHeroBlockImageFacetImagePositionArgs = {
 
 
 export type ProductHeroBlockImageFacetImageWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60383,21 +65963,37 @@ export type ProductHeroBlockImageFacetNameArgs = {
 
 
 export type ProductHeroBlockImageFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockImageFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockImageFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockImageFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60500,6 +66096,8 @@ export type ProductHeroBlockImageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductHeroBlockImageOutput = {
@@ -60507,6 +66105,7 @@ export type ProductHeroBlockImageOutput = {
   autocomplete: Maybe<ProductHeroBlockImageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProductHeroBlockImageFacet>;
+  item: Maybe<ProductHeroBlockImage>;
   items: Maybe<Array<Maybe<ProductHeroBlockImage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -60586,6 +66185,8 @@ export type ProductHeroBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductHeroBlockOutput = {
@@ -60593,6 +66194,7 @@ export type ProductHeroBlockOutput = {
   autocomplete: Maybe<ProductHeroBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProductHeroBlockFacet>;
+  item: Maybe<ProductHeroBlock>;
   items: Maybe<Array<Maybe<ProductHeroBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -60734,6 +66336,10 @@ export type ProductHeroBlockProductHeroBlockImageFacet = {
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetImageHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60747,26 +66353,46 @@ export type ProductHeroBlockProductHeroBlockImageFacetImagePositionArgs = {
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetImageWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductHeroBlockProductHeroBlockImageFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -60881,6 +66507,7 @@ export type ProductSearchBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -61101,6 +66728,10 @@ export type ProductSearchBlockFacetBackgroundColorArgs = {
 
 
 export type ProductSearchBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -61158,6 +66789,10 @@ export type ProductSearchBlockFacetIsCommonDraftArgs = {
 
 
 export type ProductSearchBlockFacetItemsPerRowArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -61171,11 +66806,19 @@ export type ProductSearchBlockFacetMarginArgs = {
 
 
 export type ProductSearchBlockFacetMaxPriceArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type ProductSearchBlockFacetMinPriceArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -61205,6 +66848,10 @@ export type ProductSearchBlockFacetRelativePathArgs = {
 
 
 export type ProductSearchBlockFacetResultsPerPageArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -61324,6 +66971,8 @@ export type ProductSearchBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProductSearchBlockOutput = {
@@ -61331,6 +66980,7 @@ export type ProductSearchBlockOutput = {
   autocomplete: Maybe<ProductSearchBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProductSearchBlockFacet>;
+  item: Maybe<ProductSearchBlock>;
   items: Maybe<Array<Maybe<ProductSearchBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -61440,6 +67090,7 @@ export type ProfilePage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -62046,6 +67697,8 @@ export type ProfilePageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ProfilePageOutput = {
@@ -62053,6 +67706,7 @@ export type ProfilePageOutput = {
   autocomplete: Maybe<ProfilePageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ProfilePageFacet>;
+  item: Maybe<ProfilePage>;
   items: Maybe<Array<Maybe<ProfilePage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -62146,6 +67800,7 @@ export type PromotionSchedule = IContent & IData & {
   UseCampaignDate: Maybe<Scalars['Bool']['output']>;
   ValidFrom: Maybe<Scalars['Date']['output']>;
   ValidUntil: Maybe<Scalars['Date']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -62425,6 +68080,8 @@ export type PromotionScheduleOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PromotionScheduleOutput = {
@@ -62432,6 +68089,7 @@ export type PromotionScheduleOutput = {
   autocomplete: Maybe<PromotionScheduleAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PromotionScheduleFacet>;
+  item: Maybe<PromotionSchedule>;
   items: Maybe<Array<Maybe<PromotionSchedule>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -62498,6 +68156,7 @@ export type PurchaseAmount = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -62660,6 +68319,10 @@ export type PurchaseAmountFacetNameArgs = {
 
 
 export type PurchaseAmountFacetPartiallyFulfilledThresholdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -62755,6 +68418,8 @@ export type PurchaseAmountOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PurchaseAmountOutput = {
@@ -62762,6 +68427,7 @@ export type PurchaseAmountOutput = {
   autocomplete: Maybe<PurchaseAmountAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PurchaseAmountFacet>;
+  item: Maybe<PurchaseAmount>;
   items: Maybe<Array<Maybe<PurchaseAmount>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -62828,6 +68494,7 @@ export type PurchaseQuantity = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -63002,6 +68669,10 @@ export type PurchaseQuantityFacetNameArgs = {
 
 
 export type PurchaseQuantityFacetPartiallyFulfilledThresholdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -63015,6 +68686,10 @@ export type PurchaseQuantityFacetRelativePathArgs = {
 
 
 export type PurchaseQuantityFacetRequiredQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -63105,6 +68780,8 @@ export type PurchaseQuantityOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type PurchaseQuantityOutput = {
@@ -63112,6 +68789,7 @@ export type PurchaseQuantityOutput = {
   autocomplete: Maybe<PurchaseQuantityAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<PurchaseQuantityFacet>;
+  item: Maybe<PurchaseQuantity>;
   items: Maybe<Array<Maybe<PurchaseQuantity>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -63158,8 +68836,10 @@ export type Query = {
   __typename: 'Query';
   AddressBookPage: Maybe<AddressBookPageOutput>;
   AddressesElementBlock: Maybe<AddressesElementBlockOutput>;
+  Announcements: Maybe<AnnouncementsOutput>;
   AssetsDownloadLinksBlock: Maybe<AssetsDownloadLinksBlockOutput>;
   Associations: Maybe<AssociationsOutput>;
+  BannerBlock: Maybe<BannerBlockOutput>;
   BlogCommentBlock: Maybe<BlogCommentBlockOutput>;
   BlogItemPage: Maybe<BlogItemPageOutput>;
   BlogListPage: Maybe<BlogListPageOutput>;
@@ -63199,6 +68879,8 @@ export type Query = {
   DiscountItems: Maybe<DiscountItemsOutput>;
   DynamicProduct: Maybe<DynamicProductOutput>;
   DynamicVariant: Maybe<DynamicVariantOutput>;
+  EktronPage: Maybe<EktronPageOutput>;
+  ElectricandWater: Maybe<ElectricandWaterOutput>;
   ElevatedRoleBlock: Maybe<ElevatedRoleBlockOutput>;
   ExistsFilterBlock: Maybe<ExistsFilterBlockOutput>;
   FacebookBlock: Maybe<FacebookBlockOutput>;
@@ -63227,10 +68909,13 @@ export type Query = {
   HeroBlock: Maybe<HeroBlockOutput>;
   HeroBlockCallout: Maybe<HeroBlockCalloutOutput>;
   HomePage: Maybe<HomePageOutput>;
+  IconFeatures: Maybe<IconFeaturesOutput>;
+  IconFeaturesSingle: Maybe<IconFeaturesSingleOutput>;
   ImageChoiceElementBlock: Maybe<ImageChoiceElementBlockOutput>;
   ImageMediaData: Maybe<ImageMediaDataOutput>;
   LandingPage: Maybe<LandingPageOutput>;
   LikeButtonBlock: Maybe<LikeButtonBlockOutput>;
+  LinkBlock: Maybe<LinkBlockOutput>;
   LocationItemPage: Maybe<LocationItemPageOutput>;
   LocationListPage: Maybe<LocationListPageOutput>;
   MembershipAffiliationBlock: Maybe<MembershipAffiliationBlockOutput>;
@@ -63254,12 +68939,16 @@ export type Query = {
   OrderSearchBlock: Maybe<OrderSearchBlockOutput>;
   OrdersPage: Maybe<OrdersPageOutput>;
   OrganizationPage: Maybe<OrganizationPageOutput>;
+  OutageMap: Maybe<OutageMapOutput>;
   PackageContent: Maybe<PackageContentOutput>;
   PageListBlock: Maybe<PageListBlockOutput>;
   ParagraphTextElementBlock: Maybe<ParagraphTextElementBlockOutput>;
   PdfFile: Maybe<PdfFileOutput>;
   PersonList: Maybe<PersonListOutput>;
   PersonPage: Maybe<PersonPageOutput>;
+  PhotoFeatures: Maybe<PhotoFeaturesOutput>;
+  PhotoFeaturesSingle: Maybe<PhotoFeaturesSingleOutput>;
+  PhotoVideoFeature: Maybe<PhotoVideoFeatureOutput>;
   PredefinedHiddenElementBlock: Maybe<PredefinedHiddenElementBlockOutput>;
   ProductContent: Maybe<ProductContentOutput>;
   ProductHeroBlock: Maybe<ProductHeroBlockOutput>;
@@ -63281,6 +68970,8 @@ export type Query = {
   ResetButtonElementBlock: Maybe<ResetButtonElementBlockOutput>;
   ResetPasswordMailPage: Maybe<ResetPasswordMailPageOutput>;
   ResetPasswordPage: Maybe<ResetPasswordPageOutput>;
+  ResponsiveHomePage: Maybe<ResponsiveHomePageOutput>;
+  ResponsiveHomePageBannerBlock: Maybe<ResponsiveHomePageBannerBlockOutput>;
   RssReaderBlock: Maybe<RssReaderBlockOutput>;
   SalesPage: Maybe<SalesPageOutput>;
   SearchResultPage: Maybe<SearchResultPageOutput>;
@@ -63328,6 +69019,7 @@ export type QueryAddressBookPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AddressBookPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AddressBookPageWhereInput>;
 };
 
@@ -63339,7 +69031,20 @@ export type QueryAddressesElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AddressesElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AddressesElementBlockWhereInput>;
+};
+
+
+export type QueryAnnouncementsArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<AnnouncementsOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<AnnouncementsWhereInput>;
 };
 
 
@@ -63350,6 +69055,7 @@ export type QueryAssetsDownloadLinksBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AssetsDownloadLinksBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AssetsDownloadLinksBlockWhereInput>;
 };
 
@@ -63361,7 +69067,20 @@ export type QueryAssociationsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AssociationsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AssociationsWhereInput>;
+};
+
+
+export type QueryBannerBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<BannerBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<BannerBlockWhereInput>;
 };
 
 
@@ -63372,6 +69091,7 @@ export type QueryBlogCommentBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogCommentBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogCommentBlockWhereInput>;
 };
 
@@ -63383,6 +69103,7 @@ export type QueryBlogItemPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogItemPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogItemPageWhereInput>;
 };
 
@@ -63394,6 +69115,7 @@ export type QueryBlogListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogListPageWhereInput>;
 };
 
@@ -63405,6 +69127,7 @@ export type QueryBookmarksPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BookmarksPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BookmarksPageWhereInput>;
 };
 
@@ -63416,6 +69139,7 @@ export type QueryBootstrapCardBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BootstrapCardBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BootstrapCardBlockWhereInput>;
 };
 
@@ -63427,6 +69151,7 @@ export type QueryBreadcrumbBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BreadcrumbBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BreadcrumbBlockWhereInput>;
 };
 
@@ -63438,6 +69163,7 @@ export type QueryBudgetingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BudgetingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BudgetingPageWhereInput>;
 };
 
@@ -63449,6 +69175,7 @@ export type QueryBundleContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BundleContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BundleContentWhereInput>;
 };
 
@@ -63460,6 +69187,7 @@ export type QueryButtonBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ButtonBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ButtonBlockWhereInput>;
 };
 
@@ -63471,6 +69199,7 @@ export type QueryCalendarBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CalendarBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CalendarBlockWhereInput>;
 };
 
@@ -63482,6 +69211,7 @@ export type QueryCalendarEventPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CalendarEventPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CalendarEventPageWhereInput>;
 };
 
@@ -63493,6 +69223,7 @@ export type QueryCallToActionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CallToActionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CallToActionBlockWhereInput>;
 };
 
@@ -63504,6 +69235,7 @@ export type QueryCaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CaptchaElementBlockWhereInput>;
 };
 
@@ -63515,6 +69247,7 @@ export type QueryCarouselBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CarouselBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CarouselBlockWhereInput>;
 };
 
@@ -63526,6 +69259,7 @@ export type QueryCarouselControlsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CarouselControlsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CarouselControlsWhereInput>;
 };
 
@@ -63537,6 +69271,7 @@ export type QueryCartPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CartPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CartPageWhereInput>;
 };
 
@@ -63548,6 +69283,7 @@ export type QueryCatalogContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CatalogContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CatalogContentWhereInput>;
 };
 
@@ -63559,6 +69295,7 @@ export type QueryCategoriesArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CategoriesOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CategoriesWhereInput>;
 };
 
@@ -63570,6 +69307,7 @@ export type QueryCategoryBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CategoryBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CategoryBlockWhereInput>;
 };
 
@@ -63581,6 +69319,7 @@ export type QueryCheckoutPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CheckoutPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CheckoutPageWhereInput>;
 };
 
@@ -63592,6 +69331,7 @@ export type QueryChoiceElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ChoiceElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ChoiceElementBlockWhereInput>;
 };
 
@@ -63603,6 +69343,7 @@ export type QueryCodingFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CodingFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CodingFileWhereInput>;
 };
 
@@ -63614,6 +69355,7 @@ export type QueryCollectionPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CollectionPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CollectionPageWhereInput>;
 };
 
@@ -63625,6 +69367,7 @@ export type QueryCommentsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CommentsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CommentsBlockWhereInput>;
 };
 
@@ -63636,6 +69379,7 @@ export type QueryCommunityPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CommunityPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CommunityPageWhereInput>;
 };
 
@@ -63647,6 +69391,7 @@ export type QueryContainerBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ContainerBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ContainerBlockWhereInput>;
 };
 
@@ -63658,6 +69403,7 @@ export type QueryContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ContentWhereInput>;
 };
 
@@ -63669,6 +69415,7 @@ export type QueryCouponDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CouponDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CouponDataWhereInput>;
 };
 
@@ -63680,6 +69427,7 @@ export type QueryCreditCardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CreditCardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CreditCardPageWhereInput>;
 };
 
@@ -63691,6 +69439,7 @@ export type QueryCustomViewConfigurationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CustomViewConfigurationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CustomViewConfigurationBlockWhereInput>;
 };
 
@@ -63702,6 +69451,7 @@ export type QueryDamAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamAssetWhereInput>;
 };
 
@@ -63713,6 +69463,7 @@ export type QueryDamImageAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamImageAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamImageAssetWhereInput>;
 };
 
@@ -63724,6 +69475,7 @@ export type QueryDamVideoAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamVideoAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamVideoAssetWhereInput>;
 };
 
@@ -63735,6 +69487,7 @@ export type QueryDataArgs = {
   locale: InputMaybe<Array<InputMaybe<System_Locales>>>;
   orderBy: InputMaybe<DataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DataWhereInput>;
 };
 
@@ -63746,6 +69499,7 @@ export type QueryDateTimeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DateTimeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DateTimeElementBlockWhereInput>;
 };
 
@@ -63757,6 +69511,7 @@ export type QueryDateTimeRangeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DateTimeRangeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DateTimeRangeElementBlockWhereInput>;
 };
 
@@ -63768,6 +69523,7 @@ export type QueryDiscountItemsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DiscountItemsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DiscountItemsWhereInput>;
 };
 
@@ -63779,6 +69535,7 @@ export type QueryDynamicProductArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DynamicProductOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DynamicProductWhereInput>;
 };
 
@@ -63790,7 +69547,32 @@ export type QueryDynamicVariantArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DynamicVariantOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DynamicVariantWhereInput>;
+};
+
+
+export type QueryEktronPageArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<EktronPageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<EktronPageWhereInput>;
+};
+
+
+export type QueryElectricandWaterArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ElectricandWaterOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ElectricandWaterWhereInput>;
 };
 
 
@@ -63801,6 +69583,7 @@ export type QueryElevatedRoleBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ElevatedRoleBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ElevatedRoleBlockWhereInput>;
 };
 
@@ -63812,6 +69595,7 @@ export type QueryExistsFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ExistsFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ExistsFilterBlockWhereInput>;
 };
 
@@ -63823,6 +69607,7 @@ export type QueryFacebookBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FacebookBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FacebookBlockWhereInput>;
 };
 
@@ -63834,6 +69619,7 @@ export type QueryFeedBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FeedBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FeedBlockWhereInput>;
 };
 
@@ -63845,6 +69631,7 @@ export type QueryFileUploadElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FileUploadElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FileUploadElementBlockWhereInput>;
 };
 
@@ -63856,6 +69643,7 @@ export type QueryFilterActivitiesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterActivitiesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterActivitiesBlockWhereInput>;
 };
 
@@ -63867,6 +69655,7 @@ export type QueryFilterContinentsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterContinentsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterContinentsBlockWhereInput>;
 };
 
@@ -63878,6 +69667,7 @@ export type QueryFilterDistancesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterDistancesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterDistancesBlockWhereInput>;
 };
 
@@ -63889,6 +69679,7 @@ export type QueryFilterTemperaturesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterTemperaturesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterTemperaturesBlockWhereInput>;
 };
 
@@ -63900,6 +69691,7 @@ export type QueryFixedPricePurchaseQuantityArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FixedPricePurchaseQuantityOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FixedPricePurchaseQuantityWhereInput>;
 };
 
@@ -63911,6 +69703,7 @@ export type QueryFolderPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FolderPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FolderPageWhereInput>;
 };
 
@@ -63922,6 +69715,7 @@ export type QueryFormContainerBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FormContainerBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FormContainerBlockWhereInput>;
 };
 
@@ -63933,6 +69727,7 @@ export type QueryFormStepBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FormStepBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FormStepBlockWhereInput>;
 };
 
@@ -63944,6 +69739,7 @@ export type QueryFoundationPdfFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FoundationPdfFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FoundationPdfFileWhereInput>;
 };
 
@@ -63955,6 +69751,7 @@ export type QueryGenericBundleArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericBundleOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericBundleWhereInput>;
 };
 
@@ -63966,6 +69763,7 @@ export type QueryGenericNodeArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericNodeOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericNodeWhereInput>;
 };
 
@@ -63977,6 +69775,7 @@ export type QueryGenericPackageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericPackageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericPackageWhereInput>;
 };
 
@@ -63988,6 +69787,7 @@ export type QueryGenericProductArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericProductOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericProductWhereInput>;
 };
 
@@ -63999,6 +69799,7 @@ export type QueryGenericVariantArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericVariantOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericVariantWhereInput>;
 };
 
@@ -64010,6 +69811,7 @@ export type QueryGiftCardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GiftCardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GiftCardPageWhereInput>;
 };
 
@@ -64021,6 +69823,7 @@ export type QueryGoogleMapsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GoogleMapsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GoogleMapsBlockWhereInput>;
 };
 
@@ -64032,6 +69835,7 @@ export type QueryGroupAdmissionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GroupAdmissionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GroupAdmissionBlockWhereInput>;
 };
 
@@ -64043,6 +69847,7 @@ export type QueryGroupCreationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GroupCreationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GroupCreationBlockWhereInput>;
 };
 
@@ -64054,6 +69859,7 @@ export type QueryHcaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HcaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HcaptchaElementBlockWhereInput>;
 };
 
@@ -64065,6 +69871,7 @@ export type QueryHealthChatbotBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HealthChatbotBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HealthChatbotBlockWhereInput>;
 };
 
@@ -64076,6 +69883,7 @@ export type QueryHeroBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HeroBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HeroBlockWhereInput>;
 };
 
@@ -64087,6 +69895,7 @@ export type QueryHeroBlockCalloutArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HeroBlockCalloutOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HeroBlockCalloutWhereInput>;
 };
 
@@ -64098,7 +69907,32 @@ export type QueryHomePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HomePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HomePageWhereInput>;
+};
+
+
+export type QueryIconFeaturesArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<IconFeaturesOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<IconFeaturesWhereInput>;
+};
+
+
+export type QueryIconFeaturesSingleArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<IconFeaturesSingleOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<IconFeaturesSingleWhereInput>;
 };
 
 
@@ -64109,6 +69943,7 @@ export type QueryImageChoiceElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ImageChoiceElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ImageChoiceElementBlockWhereInput>;
 };
 
@@ -64120,6 +69955,7 @@ export type QueryImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ImageMediaDataWhereInput>;
 };
 
@@ -64131,6 +69967,7 @@ export type QueryLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LandingPageWhereInput>;
 };
 
@@ -64142,7 +69979,20 @@ export type QueryLikeButtonBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LikeButtonBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LikeButtonBlockWhereInput>;
+};
+
+
+export type QueryLinkBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<LinkBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<LinkBlockWhereInput>;
 };
 
 
@@ -64153,6 +70003,7 @@ export type QueryLocationItemPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LocationItemPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LocationItemPageWhereInput>;
 };
 
@@ -64164,6 +70015,7 @@ export type QueryLocationListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LocationListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LocationListPageWhereInput>;
 };
 
@@ -64175,6 +70027,7 @@ export type QueryMembershipAffiliationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MembershipAffiliationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MembershipAffiliationBlockWhereInput>;
 };
 
@@ -64186,6 +70039,7 @@ export type QueryMembershipDisplayBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MembershipDisplayBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MembershipDisplayBlockWhereInput>;
 };
 
@@ -64197,6 +70051,7 @@ export type QueryMenuItemBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MenuItemBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MenuItemBlockWhereInput>;
 };
 
@@ -64208,6 +70063,7 @@ export type QueryModalBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ModalBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ModalBlockWhereInput>;
 };
 
@@ -64219,6 +70075,7 @@ export type QueryMonetaryRewardArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MonetaryRewardOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MonetaryRewardWhereInput>;
 };
 
@@ -64230,6 +70087,7 @@ export type QueryNavigationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NavigationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NavigationBlockWhereInput>;
 };
 
@@ -64241,6 +70099,7 @@ export type QueryNewProductsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NewProductsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NewProductsPageWhereInput>;
 };
 
@@ -64252,6 +70111,7 @@ export type QueryNodeContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NodeContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NodeContentWhereInput>;
 };
 
@@ -64263,6 +70123,7 @@ export type QueryNumberElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NumberElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NumberElementBlockWhereInput>;
 };
 
@@ -64274,6 +70135,7 @@ export type QueryNumericFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NumericFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NumericFilterBlockWhereInput>;
 };
 
@@ -64285,6 +70147,7 @@ export type QueryOdpListConsentFormBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OdpListConsentFormBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OdpListConsentFormBlockWhereInput>;
 };
 
@@ -64296,6 +70159,7 @@ export type QueryOdpListFormBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OdpListFormBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OdpListFormBlockWhereInput>;
 };
 
@@ -64307,6 +70171,7 @@ export type QueryOrderConfirmationMailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderConfirmationMailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderConfirmationMailPageWhereInput>;
 };
 
@@ -64318,6 +70183,7 @@ export type QueryOrderConfirmationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderConfirmationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderConfirmationPageWhereInput>;
 };
 
@@ -64329,6 +70195,7 @@ export type QueryOrderDetailsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderDetailsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderDetailsPageWhereInput>;
 };
 
@@ -64340,6 +70207,7 @@ export type QueryOrderHistoryBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderHistoryBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderHistoryBlockWhereInput>;
 };
 
@@ -64351,6 +70219,7 @@ export type QueryOrderHistoryPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderHistoryPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderHistoryPageWhereInput>;
 };
 
@@ -64362,6 +70231,7 @@ export type QueryOrderPadsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderPadsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderPadsPageWhereInput>;
 };
 
@@ -64373,6 +70243,7 @@ export type QueryOrderSearchBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderSearchBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderSearchBlockWhereInput>;
 };
 
@@ -64384,6 +70255,7 @@ export type QueryOrdersPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrdersPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrdersPageWhereInput>;
 };
 
@@ -64395,7 +70267,20 @@ export type QueryOrganizationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrganizationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrganizationPageWhereInput>;
+};
+
+
+export type QueryOutageMapArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<OutageMapOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<OutageMapWhereInput>;
 };
 
 
@@ -64406,6 +70291,7 @@ export type QueryPackageContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PackageContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PackageContentWhereInput>;
 };
 
@@ -64417,6 +70303,7 @@ export type QueryPageListBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PageListBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PageListBlockWhereInput>;
 };
 
@@ -64428,6 +70315,7 @@ export type QueryParagraphTextElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ParagraphTextElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ParagraphTextElementBlockWhereInput>;
 };
 
@@ -64439,6 +70327,7 @@ export type QueryPdfFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PdfFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PdfFileWhereInput>;
 };
 
@@ -64450,6 +70339,7 @@ export type QueryPersonListArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PersonListOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PersonListWhereInput>;
 };
 
@@ -64461,7 +70351,44 @@ export type QueryPersonPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PersonPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PersonPageWhereInput>;
+};
+
+
+export type QueryPhotoFeaturesArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoFeaturesOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoFeaturesWhereInput>;
+};
+
+
+export type QueryPhotoFeaturesSingleArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoFeaturesSingleOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoFeaturesSingleWhereInput>;
+};
+
+
+export type QueryPhotoVideoFeatureArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoVideoFeatureOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoVideoFeatureWhereInput>;
 };
 
 
@@ -64472,6 +70399,7 @@ export type QueryPredefinedHiddenElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PredefinedHiddenElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PredefinedHiddenElementBlockWhereInput>;
 };
 
@@ -64483,6 +70411,7 @@ export type QueryProductContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductContentWhereInput>;
 };
 
@@ -64494,6 +70423,7 @@ export type QueryProductHeroBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockWhereInput>;
 };
 
@@ -64505,6 +70435,7 @@ export type QueryProductHeroBlockCalloutArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockCalloutOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockCalloutWhereInput>;
 };
 
@@ -64516,6 +70447,7 @@ export type QueryProductHeroBlockImageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockImageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockImageWhereInput>;
 };
 
@@ -64527,6 +70459,7 @@ export type QueryProductSearchBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductSearchBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductSearchBlockWhereInput>;
 };
 
@@ -64538,6 +70471,7 @@ export type QueryProfilePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProfilePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProfilePageWhereInput>;
 };
 
@@ -64549,6 +70483,7 @@ export type QueryPromotionScheduleArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PromotionScheduleOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PromotionScheduleWhereInput>;
 };
 
@@ -64560,6 +70495,7 @@ export type QueryPurchaseAmountArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PurchaseAmountOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PurchaseAmountWhereInput>;
 };
 
@@ -64571,6 +70507,7 @@ export type QueryPurchaseQuantityArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PurchaseQuantityOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PurchaseQuantityWhereInput>;
 };
 
@@ -64582,6 +70519,7 @@ export type QueryQuickOrderBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<QuickOrderBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<QuickOrderBlockWhereInput>;
 };
 
@@ -64593,6 +70531,7 @@ export type QueryQuickOrderPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<QuickOrderPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<QuickOrderPageWhereInput>;
 };
 
@@ -64604,6 +70543,7 @@ export type QueryRangeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RangeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RangeElementBlockWhereInput>;
 };
 
@@ -64615,6 +70555,7 @@ export type QueryRatingBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RatingBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RatingBlockWhereInput>;
 };
 
@@ -64626,6 +70567,7 @@ export type QueryRecaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RecaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RecaptchaElementBlockWhereInput>;
 };
 
@@ -64637,6 +70579,7 @@ export type QueryRedemptionLimitsDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RedemptionLimitsDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RedemptionLimitsDataWhereInput>;
 };
 
@@ -64648,6 +70591,7 @@ export type QueryRelationsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RelationsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RelationsWhereInput>;
 };
 
@@ -64659,6 +70603,7 @@ export type QueryReportingMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ReportingMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ReportingMediaDataWhereInput>;
 };
 
@@ -64670,6 +70615,7 @@ export type QueryResetButtonElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetButtonElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetButtonElementBlockWhereInput>;
 };
 
@@ -64681,6 +70627,7 @@ export type QueryResetPasswordMailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetPasswordMailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetPasswordMailPageWhereInput>;
 };
 
@@ -64692,7 +70639,32 @@ export type QueryResetPasswordPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetPasswordPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetPasswordPageWhereInput>;
+};
+
+
+export type QueryResponsiveHomePageArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ResponsiveHomePageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ResponsiveHomePageWhereInput>;
+};
+
+
+export type QueryResponsiveHomePageBannerBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ResponsiveHomePageBannerBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ResponsiveHomePageBannerBlockWhereInput>;
 };
 
 
@@ -64703,6 +70675,7 @@ export type QueryRssReaderBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RssReaderBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RssReaderBlockWhereInput>;
 };
 
@@ -64714,6 +70687,7 @@ export type QuerySalesPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SalesPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SalesPageWhereInput>;
 };
 
@@ -64725,6 +70699,7 @@ export type QuerySearchResultPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SearchResultPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SearchResultPageWhereInput>;
 };
 
@@ -64736,6 +70711,7 @@ export type QuerySelectionElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SelectionElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SelectionElementBlockWhereInput>;
 };
 
@@ -64747,6 +70723,7 @@ export type QuerySeoInformationArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SeoInformationOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SeoInformationWhereInput>;
 };
 
@@ -64758,6 +70735,7 @@ export type QuerySharedCartPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SharedCartPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SharedCartPageWhereInput>;
 };
 
@@ -64769,6 +70747,7 @@ export type QueryShippingDimensionsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ShippingDimensionsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ShippingDimensionsWhereInput>;
 };
 
@@ -64780,6 +70759,7 @@ export type QuerySiteDefinitionArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SiteDefinitionOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SiteDefinitionWhereInput>;
 };
 
@@ -64791,6 +70771,7 @@ export type QueryStandardFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StandardFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StandardFileWhereInput>;
 };
 
@@ -64802,6 +70783,7 @@ export type QueryStandardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StandardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StandardPageWhereInput>;
 };
 
@@ -64813,6 +70795,7 @@ export type QueryStorePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StorePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StorePageWhereInput>;
 };
 
@@ -64824,6 +70807,7 @@ export type QueryStringFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StringFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StringFilterBlockWhereInput>;
 };
 
@@ -64835,6 +70819,7 @@ export type QuerySubOrganizationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubOrganizationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubOrganizationPageWhereInput>;
 };
 
@@ -64846,6 +70831,7 @@ export type QuerySubmitButtonElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubmitButtonElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubmitButtonElementBlockWhereInput>;
 };
 
@@ -64857,6 +70843,7 @@ export type QuerySubscriptionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionBlockWhereInput>;
 };
 
@@ -64868,6 +70855,7 @@ export type QuerySubscriptionDetailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionDetailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionDetailPageWhereInput>;
 };
 
@@ -64879,6 +70867,7 @@ export type QuerySubscriptionHistoryPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionHistoryPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionHistoryPageWhereInput>;
 };
 
@@ -64890,6 +70879,7 @@ export type QueryTagPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TagPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TagPageWhereInput>;
 };
 
@@ -64901,6 +70891,7 @@ export type QueryTeaserBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TeaserBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TeaserBlockWhereInput>;
 };
 
@@ -64912,6 +70903,7 @@ export type QueryTextBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextBlockWhereInput>;
 };
 
@@ -64923,6 +70915,7 @@ export type QueryTextareaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextareaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextareaElementBlockWhereInput>;
 };
 
@@ -64934,6 +70927,7 @@ export type QueryTextboxElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextboxElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextboxElementBlockWhereInput>;
 };
 
@@ -64945,6 +70939,7 @@ export type QueryThreeColumnLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ThreeColumnLandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ThreeColumnLandingPageWhereInput>;
 };
 
@@ -64956,6 +70951,7 @@ export type QueryTwitterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TwitterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TwitterBlockWhereInput>;
 };
 
@@ -64967,6 +70963,7 @@ export type QueryTwoColumnLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TwoColumnLandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TwoColumnLandingPageWhereInput>;
 };
 
@@ -64978,6 +70975,7 @@ export type QueryUrlElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<UrlElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<UrlElementBlockWhereInput>;
 };
 
@@ -64989,6 +70987,7 @@ export type QueryUsersPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<UsersPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<UsersPageWhereInput>;
 };
 
@@ -65000,6 +70999,7 @@ export type QueryVariationContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VariationContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VariationContentWhereInput>;
 };
 
@@ -65011,6 +71011,7 @@ export type QueryVectorImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VectorImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VectorImageMediaDataWhereInput>;
 };
 
@@ -65022,6 +71023,7 @@ export type QueryVideoBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VideoBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VideoBlockWhereInput>;
 };
 
@@ -65033,6 +71035,7 @@ export type QueryVideoFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VideoFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VideoFileWhereInput>;
 };
 
@@ -65044,6 +71047,7 @@ export type QueryVimeoBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VimeoBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VimeoBlockWhereInput>;
 };
 
@@ -65055,6 +71059,7 @@ export type QueryVisitorDataHiddenElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VisitorDataHiddenElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VisitorDataHiddenElementBlockWhereInput>;
 };
 
@@ -65066,6 +71071,7 @@ export type QueryWebImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WebImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WebImageMediaDataWhereInput>;
 };
 
@@ -65077,6 +71083,7 @@ export type QueryWidgetBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WidgetBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WidgetBlockWhereInput>;
 };
 
@@ -65088,6 +71095,7 @@ export type QueryWishListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WishListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WishListPageWhereInput>;
 };
 
@@ -65099,6 +71107,7 @@ export type QueryYouTubeBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<YouTubeBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<YouTubeBlockWhereInput>;
 };
 
@@ -65106,8 +71115,10 @@ export type QueryRef = {
   __typename: 'QueryRef';
   AddressBookPage: Maybe<AddressBookPageOutput>;
   AddressesElementBlock: Maybe<AddressesElementBlockOutput>;
+  Announcements: Maybe<AnnouncementsOutput>;
   AssetsDownloadLinksBlock: Maybe<AssetsDownloadLinksBlockOutput>;
   Associations: Maybe<AssociationsOutput>;
+  BannerBlock: Maybe<BannerBlockOutput>;
   BlogCommentBlock: Maybe<BlogCommentBlockOutput>;
   BlogItemPage: Maybe<BlogItemPageOutput>;
   BlogListPage: Maybe<BlogListPageOutput>;
@@ -65147,6 +71158,8 @@ export type QueryRef = {
   DiscountItems: Maybe<DiscountItemsOutput>;
   DynamicProduct: Maybe<DynamicProductOutput>;
   DynamicVariant: Maybe<DynamicVariantOutput>;
+  EktronPage: Maybe<EktronPageOutput>;
+  ElectricandWater: Maybe<ElectricandWaterOutput>;
   ElevatedRoleBlock: Maybe<ElevatedRoleBlockOutput>;
   ExistsFilterBlock: Maybe<ExistsFilterBlockOutput>;
   FacebookBlock: Maybe<FacebookBlockOutput>;
@@ -65175,10 +71188,13 @@ export type QueryRef = {
   HeroBlock: Maybe<HeroBlockOutput>;
   HeroBlockCallout: Maybe<HeroBlockCalloutOutput>;
   HomePage: Maybe<HomePageOutput>;
+  IconFeatures: Maybe<IconFeaturesOutput>;
+  IconFeaturesSingle: Maybe<IconFeaturesSingleOutput>;
   ImageChoiceElementBlock: Maybe<ImageChoiceElementBlockOutput>;
   ImageMediaData: Maybe<ImageMediaDataOutput>;
   LandingPage: Maybe<LandingPageOutput>;
   LikeButtonBlock: Maybe<LikeButtonBlockOutput>;
+  LinkBlock: Maybe<LinkBlockOutput>;
   LocationItemPage: Maybe<LocationItemPageOutput>;
   LocationListPage: Maybe<LocationListPageOutput>;
   MembershipAffiliationBlock: Maybe<MembershipAffiliationBlockOutput>;
@@ -65202,12 +71218,16 @@ export type QueryRef = {
   OrderSearchBlock: Maybe<OrderSearchBlockOutput>;
   OrdersPage: Maybe<OrdersPageOutput>;
   OrganizationPage: Maybe<OrganizationPageOutput>;
+  OutageMap: Maybe<OutageMapOutput>;
   PackageContent: Maybe<PackageContentOutput>;
   PageListBlock: Maybe<PageListBlockOutput>;
   ParagraphTextElementBlock: Maybe<ParagraphTextElementBlockOutput>;
   PdfFile: Maybe<PdfFileOutput>;
   PersonList: Maybe<PersonListOutput>;
   PersonPage: Maybe<PersonPageOutput>;
+  PhotoFeatures: Maybe<PhotoFeaturesOutput>;
+  PhotoFeaturesSingle: Maybe<PhotoFeaturesSingleOutput>;
+  PhotoVideoFeature: Maybe<PhotoVideoFeatureOutput>;
   PredefinedHiddenElementBlock: Maybe<PredefinedHiddenElementBlockOutput>;
   ProductContent: Maybe<ProductContentOutput>;
   ProductHeroBlock: Maybe<ProductHeroBlockOutput>;
@@ -65229,6 +71249,8 @@ export type QueryRef = {
   ResetButtonElementBlock: Maybe<ResetButtonElementBlockOutput>;
   ResetPasswordMailPage: Maybe<ResetPasswordMailPageOutput>;
   ResetPasswordPage: Maybe<ResetPasswordPageOutput>;
+  ResponsiveHomePage: Maybe<ResponsiveHomePageOutput>;
+  ResponsiveHomePageBannerBlock: Maybe<ResponsiveHomePageBannerBlockOutput>;
   RssReaderBlock: Maybe<RssReaderBlockOutput>;
   SalesPage: Maybe<SalesPageOutput>;
   SearchResultPage: Maybe<SearchResultPageOutput>;
@@ -65276,6 +71298,7 @@ export type QueryRefAddressBookPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AddressBookPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AddressBookPageWhereInput>;
 };
 
@@ -65287,7 +71310,20 @@ export type QueryRefAddressesElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AddressesElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AddressesElementBlockWhereInput>;
+};
+
+
+export type QueryRefAnnouncementsArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<AnnouncementsOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<AnnouncementsWhereInput>;
 };
 
 
@@ -65298,6 +71334,7 @@ export type QueryRefAssetsDownloadLinksBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AssetsDownloadLinksBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AssetsDownloadLinksBlockWhereInput>;
 };
 
@@ -65309,7 +71346,20 @@ export type QueryRefAssociationsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<AssociationsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<AssociationsWhereInput>;
+};
+
+
+export type QueryRefBannerBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<BannerBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<BannerBlockWhereInput>;
 };
 
 
@@ -65320,6 +71370,7 @@ export type QueryRefBlogCommentBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogCommentBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogCommentBlockWhereInput>;
 };
 
@@ -65331,6 +71382,7 @@ export type QueryRefBlogItemPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogItemPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogItemPageWhereInput>;
 };
 
@@ -65342,6 +71394,7 @@ export type QueryRefBlogListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BlogListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BlogListPageWhereInput>;
 };
 
@@ -65353,6 +71406,7 @@ export type QueryRefBookmarksPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BookmarksPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BookmarksPageWhereInput>;
 };
 
@@ -65364,6 +71418,7 @@ export type QueryRefBootstrapCardBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BootstrapCardBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BootstrapCardBlockWhereInput>;
 };
 
@@ -65375,6 +71430,7 @@ export type QueryRefBreadcrumbBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BreadcrumbBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BreadcrumbBlockWhereInput>;
 };
 
@@ -65386,6 +71442,7 @@ export type QueryRefBudgetingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BudgetingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BudgetingPageWhereInput>;
 };
 
@@ -65397,6 +71454,7 @@ export type QueryRefBundleContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<BundleContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<BundleContentWhereInput>;
 };
 
@@ -65408,6 +71466,7 @@ export type QueryRefButtonBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ButtonBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ButtonBlockWhereInput>;
 };
 
@@ -65419,6 +71478,7 @@ export type QueryRefCalendarBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CalendarBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CalendarBlockWhereInput>;
 };
 
@@ -65430,6 +71490,7 @@ export type QueryRefCalendarEventPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CalendarEventPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CalendarEventPageWhereInput>;
 };
 
@@ -65441,6 +71502,7 @@ export type QueryRefCallToActionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CallToActionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CallToActionBlockWhereInput>;
 };
 
@@ -65452,6 +71514,7 @@ export type QueryRefCaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CaptchaElementBlockWhereInput>;
 };
 
@@ -65463,6 +71526,7 @@ export type QueryRefCarouselBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CarouselBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CarouselBlockWhereInput>;
 };
 
@@ -65474,6 +71538,7 @@ export type QueryRefCarouselControlsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CarouselControlsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CarouselControlsWhereInput>;
 };
 
@@ -65485,6 +71550,7 @@ export type QueryRefCartPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CartPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CartPageWhereInput>;
 };
 
@@ -65496,6 +71562,7 @@ export type QueryRefCatalogContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CatalogContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CatalogContentWhereInput>;
 };
 
@@ -65507,6 +71574,7 @@ export type QueryRefCategoriesArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CategoriesOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CategoriesWhereInput>;
 };
 
@@ -65518,6 +71586,7 @@ export type QueryRefCategoryBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CategoryBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CategoryBlockWhereInput>;
 };
 
@@ -65529,6 +71598,7 @@ export type QueryRefCheckoutPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CheckoutPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CheckoutPageWhereInput>;
 };
 
@@ -65540,6 +71610,7 @@ export type QueryRefChoiceElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ChoiceElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ChoiceElementBlockWhereInput>;
 };
 
@@ -65551,6 +71622,7 @@ export type QueryRefCodingFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CodingFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CodingFileWhereInput>;
 };
 
@@ -65562,6 +71634,7 @@ export type QueryRefCollectionPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CollectionPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CollectionPageWhereInput>;
 };
 
@@ -65573,6 +71646,7 @@ export type QueryRefCommentsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CommentsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CommentsBlockWhereInput>;
 };
 
@@ -65584,6 +71658,7 @@ export type QueryRefCommunityPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CommunityPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CommunityPageWhereInput>;
 };
 
@@ -65595,6 +71670,7 @@ export type QueryRefContainerBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ContainerBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ContainerBlockWhereInput>;
 };
 
@@ -65606,6 +71682,7 @@ export type QueryRefContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ContentWhereInput>;
 };
 
@@ -65617,6 +71694,7 @@ export type QueryRefCouponDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CouponDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CouponDataWhereInput>;
 };
 
@@ -65628,6 +71706,7 @@ export type QueryRefCreditCardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CreditCardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CreditCardPageWhereInput>;
 };
 
@@ -65639,6 +71718,7 @@ export type QueryRefCustomViewConfigurationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<CustomViewConfigurationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<CustomViewConfigurationBlockWhereInput>;
 };
 
@@ -65650,6 +71730,7 @@ export type QueryRefDamAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamAssetWhereInput>;
 };
 
@@ -65661,6 +71742,7 @@ export type QueryRefDamImageAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamImageAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamImageAssetWhereInput>;
 };
 
@@ -65672,6 +71754,7 @@ export type QueryRefDamVideoAssetArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DamVideoAssetOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DamVideoAssetWhereInput>;
 };
 
@@ -65683,6 +71766,7 @@ export type QueryRefDataArgs = {
   locale: InputMaybe<Array<InputMaybe<System_Locales>>>;
   orderBy: InputMaybe<DataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DataWhereInput>;
 };
 
@@ -65694,6 +71778,7 @@ export type QueryRefDateTimeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DateTimeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DateTimeElementBlockWhereInput>;
 };
 
@@ -65705,6 +71790,7 @@ export type QueryRefDateTimeRangeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DateTimeRangeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DateTimeRangeElementBlockWhereInput>;
 };
 
@@ -65716,6 +71802,7 @@ export type QueryRefDiscountItemsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DiscountItemsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DiscountItemsWhereInput>;
 };
 
@@ -65727,6 +71814,7 @@ export type QueryRefDynamicProductArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DynamicProductOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DynamicProductWhereInput>;
 };
 
@@ -65738,7 +71826,32 @@ export type QueryRefDynamicVariantArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<DynamicVariantOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<DynamicVariantWhereInput>;
+};
+
+
+export type QueryRefEktronPageArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<EktronPageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<EktronPageWhereInput>;
+};
+
+
+export type QueryRefElectricandWaterArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ElectricandWaterOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ElectricandWaterWhereInput>;
 };
 
 
@@ -65749,6 +71862,7 @@ export type QueryRefElevatedRoleBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ElevatedRoleBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ElevatedRoleBlockWhereInput>;
 };
 
@@ -65760,6 +71874,7 @@ export type QueryRefExistsFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ExistsFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ExistsFilterBlockWhereInput>;
 };
 
@@ -65771,6 +71886,7 @@ export type QueryRefFacebookBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FacebookBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FacebookBlockWhereInput>;
 };
 
@@ -65782,6 +71898,7 @@ export type QueryRefFeedBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FeedBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FeedBlockWhereInput>;
 };
 
@@ -65793,6 +71910,7 @@ export type QueryRefFileUploadElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FileUploadElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FileUploadElementBlockWhereInput>;
 };
 
@@ -65804,6 +71922,7 @@ export type QueryRefFilterActivitiesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterActivitiesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterActivitiesBlockWhereInput>;
 };
 
@@ -65815,6 +71934,7 @@ export type QueryRefFilterContinentsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterContinentsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterContinentsBlockWhereInput>;
 };
 
@@ -65826,6 +71946,7 @@ export type QueryRefFilterDistancesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterDistancesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterDistancesBlockWhereInput>;
 };
 
@@ -65837,6 +71958,7 @@ export type QueryRefFilterTemperaturesBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FilterTemperaturesBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FilterTemperaturesBlockWhereInput>;
 };
 
@@ -65848,6 +71970,7 @@ export type QueryRefFixedPricePurchaseQuantityArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FixedPricePurchaseQuantityOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FixedPricePurchaseQuantityWhereInput>;
 };
 
@@ -65859,6 +71982,7 @@ export type QueryRefFolderPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FolderPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FolderPageWhereInput>;
 };
 
@@ -65870,6 +71994,7 @@ export type QueryRefFormContainerBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FormContainerBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FormContainerBlockWhereInput>;
 };
 
@@ -65881,6 +72006,7 @@ export type QueryRefFormStepBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FormStepBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FormStepBlockWhereInput>;
 };
 
@@ -65892,6 +72018,7 @@ export type QueryRefFoundationPdfFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<FoundationPdfFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<FoundationPdfFileWhereInput>;
 };
 
@@ -65903,6 +72030,7 @@ export type QueryRefGenericBundleArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericBundleOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericBundleWhereInput>;
 };
 
@@ -65914,6 +72042,7 @@ export type QueryRefGenericNodeArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericNodeOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericNodeWhereInput>;
 };
 
@@ -65925,6 +72054,7 @@ export type QueryRefGenericPackageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericPackageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericPackageWhereInput>;
 };
 
@@ -65936,6 +72066,7 @@ export type QueryRefGenericProductArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericProductOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericProductWhereInput>;
 };
 
@@ -65947,6 +72078,7 @@ export type QueryRefGenericVariantArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GenericVariantOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GenericVariantWhereInput>;
 };
 
@@ -65958,6 +72090,7 @@ export type QueryRefGiftCardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GiftCardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GiftCardPageWhereInput>;
 };
 
@@ -65969,6 +72102,7 @@ export type QueryRefGoogleMapsBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GoogleMapsBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GoogleMapsBlockWhereInput>;
 };
 
@@ -65980,6 +72114,7 @@ export type QueryRefGroupAdmissionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GroupAdmissionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GroupAdmissionBlockWhereInput>;
 };
 
@@ -65991,6 +72126,7 @@ export type QueryRefGroupCreationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<GroupCreationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<GroupCreationBlockWhereInput>;
 };
 
@@ -66002,6 +72138,7 @@ export type QueryRefHcaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HcaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HcaptchaElementBlockWhereInput>;
 };
 
@@ -66013,6 +72150,7 @@ export type QueryRefHealthChatbotBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HealthChatbotBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HealthChatbotBlockWhereInput>;
 };
 
@@ -66024,6 +72162,7 @@ export type QueryRefHeroBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HeroBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HeroBlockWhereInput>;
 };
 
@@ -66035,6 +72174,7 @@ export type QueryRefHeroBlockCalloutArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HeroBlockCalloutOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HeroBlockCalloutWhereInput>;
 };
 
@@ -66046,7 +72186,32 @@ export type QueryRefHomePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<HomePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<HomePageWhereInput>;
+};
+
+
+export type QueryRefIconFeaturesArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<IconFeaturesOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<IconFeaturesWhereInput>;
+};
+
+
+export type QueryRefIconFeaturesSingleArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<IconFeaturesSingleOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<IconFeaturesSingleWhereInput>;
 };
 
 
@@ -66057,6 +72222,7 @@ export type QueryRefImageChoiceElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ImageChoiceElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ImageChoiceElementBlockWhereInput>;
 };
 
@@ -66068,6 +72234,7 @@ export type QueryRefImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ImageMediaDataWhereInput>;
 };
 
@@ -66079,6 +72246,7 @@ export type QueryRefLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LandingPageWhereInput>;
 };
 
@@ -66090,7 +72258,20 @@ export type QueryRefLikeButtonBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LikeButtonBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LikeButtonBlockWhereInput>;
+};
+
+
+export type QueryRefLinkBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<LinkBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<LinkBlockWhereInput>;
 };
 
 
@@ -66101,6 +72282,7 @@ export type QueryRefLocationItemPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LocationItemPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LocationItemPageWhereInput>;
 };
 
@@ -66112,6 +72294,7 @@ export type QueryRefLocationListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<LocationListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<LocationListPageWhereInput>;
 };
 
@@ -66123,6 +72306,7 @@ export type QueryRefMembershipAffiliationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MembershipAffiliationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MembershipAffiliationBlockWhereInput>;
 };
 
@@ -66134,6 +72318,7 @@ export type QueryRefMembershipDisplayBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MembershipDisplayBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MembershipDisplayBlockWhereInput>;
 };
 
@@ -66145,6 +72330,7 @@ export type QueryRefMenuItemBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MenuItemBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MenuItemBlockWhereInput>;
 };
 
@@ -66156,6 +72342,7 @@ export type QueryRefModalBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ModalBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ModalBlockWhereInput>;
 };
 
@@ -66167,6 +72354,7 @@ export type QueryRefMonetaryRewardArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<MonetaryRewardOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<MonetaryRewardWhereInput>;
 };
 
@@ -66178,6 +72366,7 @@ export type QueryRefNavigationBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NavigationBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NavigationBlockWhereInput>;
 };
 
@@ -66189,6 +72378,7 @@ export type QueryRefNewProductsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NewProductsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NewProductsPageWhereInput>;
 };
 
@@ -66200,6 +72390,7 @@ export type QueryRefNodeContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NodeContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NodeContentWhereInput>;
 };
 
@@ -66211,6 +72402,7 @@ export type QueryRefNumberElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NumberElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NumberElementBlockWhereInput>;
 };
 
@@ -66222,6 +72414,7 @@ export type QueryRefNumericFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<NumericFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<NumericFilterBlockWhereInput>;
 };
 
@@ -66233,6 +72426,7 @@ export type QueryRefOdpListConsentFormBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OdpListConsentFormBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OdpListConsentFormBlockWhereInput>;
 };
 
@@ -66244,6 +72438,7 @@ export type QueryRefOdpListFormBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OdpListFormBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OdpListFormBlockWhereInput>;
 };
 
@@ -66255,6 +72450,7 @@ export type QueryRefOrderConfirmationMailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderConfirmationMailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderConfirmationMailPageWhereInput>;
 };
 
@@ -66266,6 +72462,7 @@ export type QueryRefOrderConfirmationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderConfirmationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderConfirmationPageWhereInput>;
 };
 
@@ -66277,6 +72474,7 @@ export type QueryRefOrderDetailsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderDetailsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderDetailsPageWhereInput>;
 };
 
@@ -66288,6 +72486,7 @@ export type QueryRefOrderHistoryBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderHistoryBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderHistoryBlockWhereInput>;
 };
 
@@ -66299,6 +72498,7 @@ export type QueryRefOrderHistoryPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderHistoryPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderHistoryPageWhereInput>;
 };
 
@@ -66310,6 +72510,7 @@ export type QueryRefOrderPadsPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderPadsPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderPadsPageWhereInput>;
 };
 
@@ -66321,6 +72522,7 @@ export type QueryRefOrderSearchBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrderSearchBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrderSearchBlockWhereInput>;
 };
 
@@ -66332,6 +72534,7 @@ export type QueryRefOrdersPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrdersPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrdersPageWhereInput>;
 };
 
@@ -66343,7 +72546,20 @@ export type QueryRefOrganizationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<OrganizationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<OrganizationPageWhereInput>;
+};
+
+
+export type QueryRefOutageMapArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<OutageMapOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<OutageMapWhereInput>;
 };
 
 
@@ -66354,6 +72570,7 @@ export type QueryRefPackageContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PackageContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PackageContentWhereInput>;
 };
 
@@ -66365,6 +72582,7 @@ export type QueryRefPageListBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PageListBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PageListBlockWhereInput>;
 };
 
@@ -66376,6 +72594,7 @@ export type QueryRefParagraphTextElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ParagraphTextElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ParagraphTextElementBlockWhereInput>;
 };
 
@@ -66387,6 +72606,7 @@ export type QueryRefPdfFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PdfFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PdfFileWhereInput>;
 };
 
@@ -66398,6 +72618,7 @@ export type QueryRefPersonListArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PersonListOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PersonListWhereInput>;
 };
 
@@ -66409,7 +72630,44 @@ export type QueryRefPersonPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PersonPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PersonPageWhereInput>;
+};
+
+
+export type QueryRefPhotoFeaturesArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoFeaturesOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoFeaturesWhereInput>;
+};
+
+
+export type QueryRefPhotoFeaturesSingleArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoFeaturesSingleOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoFeaturesSingleWhereInput>;
+};
+
+
+export type QueryRefPhotoVideoFeatureArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<PhotoVideoFeatureOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<PhotoVideoFeatureWhereInput>;
 };
 
 
@@ -66420,6 +72678,7 @@ export type QueryRefPredefinedHiddenElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PredefinedHiddenElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PredefinedHiddenElementBlockWhereInput>;
 };
 
@@ -66431,6 +72690,7 @@ export type QueryRefProductContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductContentWhereInput>;
 };
 
@@ -66442,6 +72702,7 @@ export type QueryRefProductHeroBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockWhereInput>;
 };
 
@@ -66453,6 +72714,7 @@ export type QueryRefProductHeroBlockCalloutArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockCalloutOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockCalloutWhereInput>;
 };
 
@@ -66464,6 +72726,7 @@ export type QueryRefProductHeroBlockImageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductHeroBlockImageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductHeroBlockImageWhereInput>;
 };
 
@@ -66475,6 +72738,7 @@ export type QueryRefProductSearchBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProductSearchBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProductSearchBlockWhereInput>;
 };
 
@@ -66486,6 +72750,7 @@ export type QueryRefProfilePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ProfilePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ProfilePageWhereInput>;
 };
 
@@ -66497,6 +72762,7 @@ export type QueryRefPromotionScheduleArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PromotionScheduleOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PromotionScheduleWhereInput>;
 };
 
@@ -66508,6 +72774,7 @@ export type QueryRefPurchaseAmountArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PurchaseAmountOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PurchaseAmountWhereInput>;
 };
 
@@ -66519,6 +72786,7 @@ export type QueryRefPurchaseQuantityArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<PurchaseQuantityOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<PurchaseQuantityWhereInput>;
 };
 
@@ -66530,6 +72798,7 @@ export type QueryRefQuickOrderBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<QuickOrderBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<QuickOrderBlockWhereInput>;
 };
 
@@ -66541,6 +72810,7 @@ export type QueryRefQuickOrderPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<QuickOrderPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<QuickOrderPageWhereInput>;
 };
 
@@ -66552,6 +72822,7 @@ export type QueryRefRangeElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RangeElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RangeElementBlockWhereInput>;
 };
 
@@ -66563,6 +72834,7 @@ export type QueryRefRatingBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RatingBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RatingBlockWhereInput>;
 };
 
@@ -66574,6 +72846,7 @@ export type QueryRefRecaptchaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RecaptchaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RecaptchaElementBlockWhereInput>;
 };
 
@@ -66585,6 +72858,7 @@ export type QueryRefRedemptionLimitsDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RedemptionLimitsDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RedemptionLimitsDataWhereInput>;
 };
 
@@ -66596,6 +72870,7 @@ export type QueryRefRelationsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RelationsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RelationsWhereInput>;
 };
 
@@ -66607,6 +72882,7 @@ export type QueryRefReportingMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ReportingMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ReportingMediaDataWhereInput>;
 };
 
@@ -66618,6 +72894,7 @@ export type QueryRefResetButtonElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetButtonElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetButtonElementBlockWhereInput>;
 };
 
@@ -66629,6 +72906,7 @@ export type QueryRefResetPasswordMailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetPasswordMailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetPasswordMailPageWhereInput>;
 };
 
@@ -66640,7 +72918,32 @@ export type QueryRefResetPasswordPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ResetPasswordPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ResetPasswordPageWhereInput>;
+};
+
+
+export type QueryRefResponsiveHomePageArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ResponsiveHomePageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ResponsiveHomePageWhereInput>;
+};
+
+
+export type QueryRefResponsiveHomePageBannerBlockArgs = {
+  cursor: InputMaybe<Scalars['String']['input']>;
+  ids: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: Scalars['Int']['input'];
+  locale: InputMaybe<Array<InputMaybe<Locales>>>;
+  orderBy: InputMaybe<ResponsiveHomePageBannerBlockOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
+  where: InputMaybe<ResponsiveHomePageBannerBlockWhereInput>;
 };
 
 
@@ -66651,6 +72954,7 @@ export type QueryRefRssReaderBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<RssReaderBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<RssReaderBlockWhereInput>;
 };
 
@@ -66662,6 +72966,7 @@ export type QueryRefSalesPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SalesPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SalesPageWhereInput>;
 };
 
@@ -66673,6 +72978,7 @@ export type QueryRefSearchResultPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SearchResultPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SearchResultPageWhereInput>;
 };
 
@@ -66684,6 +72990,7 @@ export type QueryRefSelectionElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SelectionElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SelectionElementBlockWhereInput>;
 };
 
@@ -66695,6 +73002,7 @@ export type QueryRefSeoInformationArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SeoInformationOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SeoInformationWhereInput>;
 };
 
@@ -66706,6 +73014,7 @@ export type QueryRefSharedCartPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SharedCartPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SharedCartPageWhereInput>;
 };
 
@@ -66717,6 +73026,7 @@ export type QueryRefShippingDimensionsArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ShippingDimensionsOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ShippingDimensionsWhereInput>;
 };
 
@@ -66728,6 +73038,7 @@ export type QueryRefSiteDefinitionArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SiteDefinitionOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SiteDefinitionWhereInput>;
 };
 
@@ -66739,6 +73050,7 @@ export type QueryRefStandardFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StandardFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StandardFileWhereInput>;
 };
 
@@ -66750,6 +73062,7 @@ export type QueryRefStandardPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StandardPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StandardPageWhereInput>;
 };
 
@@ -66761,6 +73074,7 @@ export type QueryRefStorePageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StorePageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StorePageWhereInput>;
 };
 
@@ -66772,6 +73086,7 @@ export type QueryRefStringFilterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<StringFilterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<StringFilterBlockWhereInput>;
 };
 
@@ -66783,6 +73098,7 @@ export type QueryRefSubOrganizationPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubOrganizationPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubOrganizationPageWhereInput>;
 };
 
@@ -66794,6 +73110,7 @@ export type QueryRefSubmitButtonElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubmitButtonElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubmitButtonElementBlockWhereInput>;
 };
 
@@ -66805,6 +73122,7 @@ export type QueryRefSubscriptionBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionBlockWhereInput>;
 };
 
@@ -66816,6 +73134,7 @@ export type QueryRefSubscriptionDetailPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionDetailPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionDetailPageWhereInput>;
 };
 
@@ -66827,6 +73146,7 @@ export type QueryRefSubscriptionHistoryPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<SubscriptionHistoryPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<SubscriptionHistoryPageWhereInput>;
 };
 
@@ -66838,6 +73158,7 @@ export type QueryRefTagPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TagPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TagPageWhereInput>;
 };
 
@@ -66849,6 +73170,7 @@ export type QueryRefTeaserBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TeaserBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TeaserBlockWhereInput>;
 };
 
@@ -66860,6 +73182,7 @@ export type QueryRefTextBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextBlockWhereInput>;
 };
 
@@ -66871,6 +73194,7 @@ export type QueryRefTextareaElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextareaElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextareaElementBlockWhereInput>;
 };
 
@@ -66882,6 +73206,7 @@ export type QueryRefTextboxElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TextboxElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TextboxElementBlockWhereInput>;
 };
 
@@ -66893,6 +73218,7 @@ export type QueryRefThreeColumnLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<ThreeColumnLandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<ThreeColumnLandingPageWhereInput>;
 };
 
@@ -66904,6 +73230,7 @@ export type QueryRefTwitterBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TwitterBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TwitterBlockWhereInput>;
 };
 
@@ -66915,6 +73242,7 @@ export type QueryRefTwoColumnLandingPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<TwoColumnLandingPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<TwoColumnLandingPageWhereInput>;
 };
 
@@ -66926,6 +73254,7 @@ export type QueryRefUrlElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<UrlElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<UrlElementBlockWhereInput>;
 };
 
@@ -66937,6 +73266,7 @@ export type QueryRefUsersPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<UsersPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<UsersPageWhereInput>;
 };
 
@@ -66948,6 +73278,7 @@ export type QueryRefVariationContentArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VariationContentOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VariationContentWhereInput>;
 };
 
@@ -66959,6 +73290,7 @@ export type QueryRefVectorImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VectorImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VectorImageMediaDataWhereInput>;
 };
 
@@ -66970,6 +73302,7 @@ export type QueryRefVideoBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VideoBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VideoBlockWhereInput>;
 };
 
@@ -66981,6 +73314,7 @@ export type QueryRefVideoFileArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VideoFileOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VideoFileWhereInput>;
 };
 
@@ -66992,6 +73326,7 @@ export type QueryRefVimeoBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VimeoBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VimeoBlockWhereInput>;
 };
 
@@ -67003,6 +73338,7 @@ export type QueryRefVisitorDataHiddenElementBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<VisitorDataHiddenElementBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<VisitorDataHiddenElementBlockWhereInput>;
 };
 
@@ -67014,6 +73350,7 @@ export type QueryRefWebImageMediaDataArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WebImageMediaDataOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WebImageMediaDataWhereInput>;
 };
 
@@ -67025,6 +73362,7 @@ export type QueryRefWidgetBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WidgetBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WidgetBlockWhereInput>;
 };
 
@@ -67036,6 +73374,7 @@ export type QueryRefWishListPageArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<WishListPageOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<WishListPageWhereInput>;
 };
 
@@ -67047,6 +73386,7 @@ export type QueryRefYouTubeBlockArgs = {
   locale: InputMaybe<Array<InputMaybe<Locales>>>;
   orderBy: InputMaybe<YouTubeBlockOrderByInput>;
   skip?: Scalars['Int']['input'];
+  variation: InputMaybe<VariationInput>;
   where: InputMaybe<YouTubeBlockWhereInput>;
 };
 
@@ -67082,6 +73422,7 @@ export type QuickOrderBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -67256,6 +73597,10 @@ export type QuickOrderBlockFacetBackgroundColorArgs = {
 
 
 export type QuickOrderBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -67425,6 +73770,8 @@ export type QuickOrderBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type QuickOrderBlockOutput = {
@@ -67432,6 +73779,7 @@ export type QuickOrderBlockOutput = {
   autocomplete: Maybe<QuickOrderBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<QuickOrderBlockFacet>;
+  item: Maybe<QuickOrderBlock>;
   items: Maybe<Array<Maybe<QuickOrderBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -67531,6 +73879,7 @@ export type QuickOrderPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -68131,6 +74480,8 @@ export type QuickOrderPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type QuickOrderPageOutput = {
@@ -68138,6 +74489,7 @@ export type QuickOrderPageOutput = {
   autocomplete: Maybe<QuickOrderPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<QuickOrderPageFacet>;
+  item: Maybe<QuickOrderPage>;
   items: Maybe<Array<Maybe<QuickOrderPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -68236,6 +74588,7 @@ export type RangeElementBlock = IContent & IData & {
   Step: Maybe<Scalars['Int']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -68395,6 +74748,10 @@ export type RangeElementBlockFacetChangedArgs = {
 
 
 export type RangeElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -68438,11 +74795,19 @@ export type RangeElementBlockFacetLabelArgs = {
 
 
 export type RangeElementBlockFacetMaxArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type RangeElementBlockFacetMinArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -68524,6 +74889,10 @@ export type RangeElementBlockFacetStatusArgs = {
 
 
 export type RangeElementBlockFacetStepArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -68574,6 +74943,8 @@ export type RangeElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RangeElementBlockOutput = {
@@ -68581,6 +74952,7 @@ export type RangeElementBlockOutput = {
   autocomplete: Maybe<RangeElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RangeElementBlockFacet>;
+  item: Maybe<RangeElementBlock>;
   items: Maybe<Array<Maybe<RangeElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -68672,6 +75044,7 @@ export type RatingBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -68841,6 +75214,10 @@ export type RatingBlockFacetBackgroundColorArgs = {
 
 
 export type RatingBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -69019,6 +75396,8 @@ export type RatingBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RatingBlockOutput = {
@@ -69026,6 +75405,7 @@ export type RatingBlockOutput = {
   autocomplete: Maybe<RatingBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RatingBlockFacet>;
+  item: Maybe<RatingBlock>;
   items: Maybe<Array<Maybe<RatingBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -69099,6 +75479,7 @@ export type RecaptchaElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -69301,6 +75682,10 @@ export type RecaptchaElementBlockFacetSavedArgs = {
 
 
 export type RecaptchaElementBlockFacetScoreThresholdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -69401,6 +75786,8 @@ export type RecaptchaElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RecaptchaElementBlockOutput = {
@@ -69408,6 +75795,7 @@ export type RecaptchaElementBlockOutput = {
   autocomplete: Maybe<RecaptchaElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RecaptchaElementBlockFacet>;
+  item: Maybe<RecaptchaElementBlock>;
   items: Maybe<Array<Maybe<RecaptchaElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -69476,6 +75864,7 @@ export type RedemptionLimitsData = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -69640,16 +76029,28 @@ export type RedemptionLimitsDataFacetNameArgs = {
 
 
 export type RedemptionLimitsDataFacetPerCustomerArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type RedemptionLimitsDataFacetPerOrderFormArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type RedemptionLimitsDataFacetPerPromotionArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -69747,6 +76148,8 @@ export type RedemptionLimitsDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RedemptionLimitsDataOutput = {
@@ -69754,6 +76157,7 @@ export type RedemptionLimitsDataOutput = {
   autocomplete: Maybe<RedemptionLimitsDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RedemptionLimitsDataFacet>;
+  item: Maybe<RedemptionLimitsData>;
   items: Maybe<Array<Maybe<RedemptionLimitsData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -69818,6 +76222,7 @@ export type Relations = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -70068,6 +76473,8 @@ export type RelationsOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RelationsOutput = {
@@ -70075,6 +76482,7 @@ export type RelationsOutput = {
   autocomplete: Maybe<RelationsAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RelationsFacet>;
+  item: Maybe<Relations>;
   items: Maybe<Array<Maybe<Relations>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -70139,6 +76547,7 @@ export type ReportingMediaData = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -70424,6 +76833,8 @@ export type ReportingMediaDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ReportingMediaDataOutput = {
@@ -70431,6 +76842,7 @@ export type ReportingMediaDataOutput = {
   autocomplete: Maybe<ReportingMediaDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ReportingMediaDataFacet>;
+  item: Maybe<ReportingMediaData>;
   items: Maybe<Array<Maybe<ReportingMediaData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -70497,6 +76909,7 @@ export type ResetButtonElementBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -70777,6 +77190,8 @@ export type ResetButtonElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ResetButtonElementBlockOutput = {
@@ -70784,6 +77199,7 @@ export type ResetButtonElementBlockOutput = {
   autocomplete: Maybe<ResetButtonElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ResetButtonElementBlockFacet>;
+  item: Maybe<ResetButtonElementBlock>;
   items: Maybe<Array<Maybe<ResetButtonElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -70879,6 +77295,7 @@ export type ResetPasswordMailPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -71501,6 +77918,8 @@ export type ResetPasswordMailPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ResetPasswordMailPageOutput = {
@@ -71508,6 +77927,7 @@ export type ResetPasswordMailPageOutput = {
   autocomplete: Maybe<ResetPasswordMailPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ResetPasswordMailPageFacet>;
+  item: Maybe<ResetPasswordMailPage>;
   items: Maybe<Array<Maybe<ResetPasswordMailPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -71629,6 +78049,7 @@ export type ResetPasswordPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -72235,6 +78656,8 @@ export type ResetPasswordPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ResetPasswordPageOutput = {
@@ -72242,6 +78665,7 @@ export type ResetPasswordPageOutput = {
   autocomplete: Maybe<ResetPasswordPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ResetPasswordPageFacet>;
+  item: Maybe<ResetPasswordPage>;
   items: Maybe<Array<Maybe<ResetPasswordPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -72308,6 +78732,732 @@ export type ResetPasswordPageWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<ResetPasswordPageWhereInput>>>;
 };
 
+/** Responsive Home Page */
+export type ResponsiveHomePage = IContent & IData & {
+  __typename: 'ResponsiveHomePage';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MainContent: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Responsive Home Page */
+export type ResponsiveHomePageMainContentArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive Home Page */
+export type ResponsiveHomePageNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive Home Page */
+export type ResponsiveHomePage_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive Home Page */
+export type ResponsiveHomePage_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type ResponsiveHomePageAutocomplete = {
+  __typename: 'ResponsiveHomePageAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type ResponsiveHomePageAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlock = IContent & IData & {
+  __typename: 'ResponsiveHomePageBannerBlock';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  BackgroundColor: Maybe<Scalars['String']['output']>;
+  BannerImage: Maybe<ContentModelReference>;
+  CallToActionButton: Maybe<LinkItemNode>;
+  Category: Maybe<Array<Maybe<CategoryModel>>>;
+  Changed: Maybe<Scalars['Date']['output']>;
+  ContentLink: Maybe<ContentModelReference>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Created: Maybe<Scalars['Date']['output']>;
+  ExistingLanguages: Maybe<Array<Maybe<ContentLanguageModel>>>;
+  IsCommonDraft: Maybe<Scalars['Bool']['output']>;
+  Language: Maybe<ContentLanguageModel>;
+  MasterLanguage: Maybe<ContentLanguageModel>;
+  Name: Maybe<Scalars['String']['output']>;
+  ParentLink: Maybe<ContentModelReference>;
+  RelativePath: Maybe<Scalars['String']['output']>;
+  ResponsiveHeadlineText: Maybe<Scalars['String']['output']>;
+  ResponsiveTaglineText: Maybe<Scalars['String']['output']>;
+  RouteSegment: Maybe<Scalars['String']['output']>;
+  Saved: Maybe<Scalars['Date']['output']>;
+  Shortcut: Maybe<Scalars['String']['output']>;
+  SiteId: Maybe<Scalars['String']['output']>;
+  StartPublish: Maybe<Scalars['Date']['output']>;
+  Status: Maybe<Scalars['String']['output']>;
+  StopPublish: Maybe<Scalars['Date']['output']>;
+  Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
+  _children: Maybe<QueryRef>;
+  _deleted: Maybe<Scalars['Bool']['output']>;
+  _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  _id: Maybe<Scalars['String']['output']>;
+  _link: Maybe<QueryRef>;
+  _modified: Maybe<Scalars['Date']['output']>;
+  _score: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlockBackgroundColorArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlockNameArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlockResponsiveHeadlineTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlockResponsiveTaglineTextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlock_FulltextArgs = {
+  highlight: InputMaybe<HighlightOptions>;
+};
+
+
+/** Responsive home page banner */
+export type ResponsiveHomePageBannerBlock_LinkArgs = {
+  type: InputMaybe<LinkTypes>;
+};
+
+export type ResponsiveHomePageBannerBlockAutocomplete = {
+  __typename: 'ResponsiveHomePageBannerBlockAutocomplete';
+  Ancestors: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  BannerImage: Maybe<ContentModelReferenceAutocomplete>;
+  CallToActionButton: Maybe<LinkItemNodeAutocomplete>;
+  Category: Maybe<CategoryModelAutocomplete>;
+  ContentLink: Maybe<ContentModelReferenceAutocomplete>;
+  ContentType: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelAutocomplete>;
+  Language: Maybe<ContentLanguageModelAutocomplete>;
+  MasterLanguage: Maybe<ContentLanguageModelAutocomplete>;
+  ParentLink: Maybe<ContentModelReferenceAutocomplete>;
+  RelativePath: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  Url: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteAncestorsArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteContentTypeArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteRelativePathArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteRouteSegmentArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteShortcutArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteSiteIdArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteStatusArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+
+export type ResponsiveHomePageBannerBlockAutocompleteUrlArgs = {
+  limit?: Scalars['Int']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type ResponsiveHomePageBannerBlockFacet = {
+  __typename: 'ResponsiveHomePageBannerBlockFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  BackgroundColor: Maybe<Array<Maybe<StringFacet>>>;
+  BannerImage: Maybe<ContentModelReferenceFacet>;
+  CallToActionButton: Maybe<LinkItemNodeFacet>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  ResponsiveHeadlineText: Maybe<Array<Maybe<StringFacet>>>;
+  ResponsiveTaglineText: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetBackgroundColorArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetResponsiveHeadlineTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetResponsiveTaglineTextArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type ResponsiveHomePageBannerBlockOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  BackgroundColor?: InputMaybe<OrderBy>;
+  BannerImage?: InputMaybe<ContentModelReferenceOrderByInput>;
+  CallToActionButton?: InputMaybe<LinkItemNodeOrderByInput>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  ResponsiveHeadlineText?: InputMaybe<OrderBy>;
+  ResponsiveTaglineText?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ResponsiveHomePageBannerBlockOutput = {
+  __typename: 'ResponsiveHomePageBannerBlockOutput';
+  autocomplete: Maybe<ResponsiveHomePageBannerBlockAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<ResponsiveHomePageBannerBlockFacet>;
+  item: Maybe<ResponsiveHomePageBannerBlock>;
+  items: Maybe<Array<Maybe<ResponsiveHomePageBannerBlock>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type ResponsiveHomePageBannerBlockOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ResponsiveHomePageBannerBlockWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  BackgroundColor?: InputMaybe<SearchableStringFilterInput>;
+  BannerImage?: InputMaybe<ContentModelReferenceWhereInput>;
+  CallToActionButton?: InputMaybe<LinkItemNodeWhereInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  ResponsiveHeadlineText?: InputMaybe<SearchableStringFilterInput>;
+  ResponsiveTaglineText?: InputMaybe<SearchableStringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<ResponsiveHomePageBannerBlockWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<ResponsiveHomePageBannerBlockWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<ResponsiveHomePageBannerBlockWhereInput>>>;
+};
+
+export type ResponsiveHomePageFacet = {
+  __typename: 'ResponsiveHomePageFacet';
+  Ancestors: Maybe<Array<Maybe<StringFacet>>>;
+  Category: Maybe<CategoryModelFacet>;
+  Changed: Maybe<Array<Maybe<DateFacet>>>;
+  ContentLink: Maybe<ContentModelReferenceFacet>;
+  ContentType: Maybe<Array<Maybe<StringFacet>>>;
+  Created: Maybe<Array<Maybe<DateFacet>>>;
+  ExistingLanguages: Maybe<ContentLanguageModelFacet>;
+  IsCommonDraft: Maybe<Array<Maybe<StringFacet>>>;
+  Language: Maybe<ContentLanguageModelFacet>;
+  MainContent: Maybe<ContentAreaItemModelSearchFacet>;
+  MasterLanguage: Maybe<ContentLanguageModelFacet>;
+  Name: Maybe<Array<Maybe<StringFacet>>>;
+  ParentLink: Maybe<ContentModelReferenceFacet>;
+  RelativePath: Maybe<Array<Maybe<StringFacet>>>;
+  RouteSegment: Maybe<Array<Maybe<StringFacet>>>;
+  Saved: Maybe<Array<Maybe<DateFacet>>>;
+  Shortcut: Maybe<Array<Maybe<StringFacet>>>;
+  SiteId: Maybe<Array<Maybe<StringFacet>>>;
+  StartPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Status: Maybe<Array<Maybe<StringFacet>>>;
+  StopPublish: Maybe<Array<Maybe<DateFacet>>>;
+  Url: Maybe<Array<Maybe<StringFacet>>>;
+};
+
+
+export type ResponsiveHomePageFacetAncestorsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetChangedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageFacetContentTypeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetCreatedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageFacetIsCommonDraftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetNameArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetRelativePathArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetRouteSegmentArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetSavedArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageFacetShortcutArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetSiteIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetStartPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageFacetStatusArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+
+export type ResponsiveHomePageFacetStopPublishArgs = {
+  unit?: InputMaybe<DateFacetUnit>;
+  value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ResponsiveHomePageFacetUrlArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: Scalars['Int']['input'];
+  orderBy?: InputMaybe<OrderBy>;
+  orderType?: InputMaybe<OrderByFacetType>;
+};
+
+export type ResponsiveHomePageOrderByInput = {
+  Ancestors?: InputMaybe<OrderBy>;
+  Category?: InputMaybe<CategoryModelOrderByInput>;
+  Changed?: InputMaybe<OrderBy>;
+  ContentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  ContentType?: InputMaybe<OrderBy>;
+  Created?: InputMaybe<OrderBy>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelOrderByInput>;
+  IsCommonDraft?: InputMaybe<OrderBy>;
+  Language?: InputMaybe<ContentLanguageModelOrderByInput>;
+  MainContent?: InputMaybe<ContentAreaItemModelSearchOrderByInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelOrderByInput>;
+  Name?: InputMaybe<OrderBy>;
+  ParentLink?: InputMaybe<ContentModelReferenceOrderByInput>;
+  RelativePath?: InputMaybe<OrderBy>;
+  RouteSegment?: InputMaybe<OrderBy>;
+  Saved?: InputMaybe<OrderBy>;
+  Shortcut?: InputMaybe<OrderBy>;
+  SiteId?: InputMaybe<OrderBy>;
+  StartPublish?: InputMaybe<OrderBy>;
+  Status?: InputMaybe<OrderBy>;
+  StopPublish?: InputMaybe<OrderBy>;
+  Url?: InputMaybe<OrderBy>;
+  _minimumScore?: InputMaybe<Scalars['Float']['input']>;
+  _modified?: InputMaybe<OrderBy>;
+  _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ResponsiveHomePageOutput = {
+  __typename: 'ResponsiveHomePageOutput';
+  autocomplete: Maybe<ResponsiveHomePageAutocomplete>;
+  cursor: Maybe<Scalars['String']['output']>;
+  facets: Maybe<ResponsiveHomePageFacet>;
+  item: Maybe<ResponsiveHomePage>;
+  items: Maybe<Array<Maybe<ResponsiveHomePage>>>;
+  total: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type ResponsiveHomePageOutputTotalArgs = {
+  all: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ResponsiveHomePageWhereInput = {
+  Ancestors?: InputMaybe<StringFilterInput>;
+  Category?: InputMaybe<CategoryModelWhereInput>;
+  Changed?: InputMaybe<DateFilterInput>;
+  ContentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  ContentType?: InputMaybe<StringFilterInput>;
+  Created?: InputMaybe<DateFilterInput>;
+  ExistingLanguages?: InputMaybe<ContentLanguageModelWhereInput>;
+  IsCommonDraft?: InputMaybe<BoolFilterInput>;
+  Language?: InputMaybe<ContentLanguageModelWhereInput>;
+  MainContent?: InputMaybe<ContentAreaItemModelSearchWhereInput>;
+  MasterLanguage?: InputMaybe<ContentLanguageModelWhereInput>;
+  Name?: InputMaybe<SearchableStringFilterInput>;
+  ParentLink?: InputMaybe<ContentModelReferenceWhereInput>;
+  RelativePath?: InputMaybe<StringFilterInput>;
+  RouteSegment?: InputMaybe<StringFilterInput>;
+  Saved?: InputMaybe<DateFilterInput>;
+  Shortcut?: InputMaybe<StringFilterInput>;
+  SiteId?: InputMaybe<StringFilterInput>;
+  StartPublish?: InputMaybe<DateFilterInput>;
+  Status?: InputMaybe<StringFilterInput>;
+  StopPublish?: InputMaybe<DateFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  _and?: InputMaybe<Array<InputMaybe<ResponsiveHomePageWhereInput>>>;
+  _fulltext?: InputMaybe<SearchableStringFilterInput>;
+  _modified?: InputMaybe<DateFilterInput>;
+  _not?: InputMaybe<Array<InputMaybe<ResponsiveHomePageWhereInput>>>;
+  _or?: InputMaybe<Array<InputMaybe<ResponsiveHomePageWhereInput>>>;
+};
+
 /** Display content from a RSS feed */
 export type RssReaderBlock = IContent & IData & {
   __typename: 'RssReaderBlock';
@@ -72347,6 +79497,7 @@ export type RssReaderBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -72531,6 +79682,10 @@ export type RssReaderBlockFacetBackgroundColorArgs = {
 
 
 export type RssReaderBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -72596,6 +79751,10 @@ export type RssReaderBlockFacetMarginArgs = {
 
 
 export type RssReaderBlockFacetMaxCountArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -72724,6 +79883,8 @@ export type RssReaderBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type RssReaderBlockOutput = {
@@ -72731,6 +79892,7 @@ export type RssReaderBlockOutput = {
   autocomplete: Maybe<RssReaderBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<RssReaderBlockFacet>;
+  item: Maybe<RssReaderBlock>;
   items: Maybe<Array<Maybe<RssReaderBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -72839,6 +80001,7 @@ export type SalesPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -73294,6 +80457,10 @@ export type SalesPageFacetNameArgs = {
 
 
 export type SalesPageFacetNumberOfProductsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -73315,6 +80482,10 @@ export type SalesPageFacetPageDescriptionArgs = {
 
 
 export type SalesPageFacetPageSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -73491,6 +80662,8 @@ export type SalesPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SalesPageOutput = {
@@ -73498,6 +80671,7 @@ export type SalesPageOutput = {
   autocomplete: Maybe<SalesPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SalesPageFacet>;
+  item: Maybe<SalesPage>;
   items: Maybe<Array<Maybe<SalesPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -73627,6 +80801,7 @@ export type SearchResultPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -74251,6 +81426,8 @@ export type SearchResultPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SearchResultPageOutput = {
@@ -74258,6 +81435,7 @@ export type SearchResultPageOutput = {
   autocomplete: Maybe<SearchResultPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SearchResultPageFacet>;
+  item: Maybe<SearchResultPage>;
   items: Maybe<Array<Maybe<SearchResultPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -74385,6 +81563,7 @@ export type SelectionElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -74557,6 +81736,10 @@ export type SelectionElementBlockFacetAncestorsArgs = {
 
 
 export type SelectionElementBlockFacetAutoCompleteArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -74568,6 +81751,10 @@ export type SelectionElementBlockFacetChangedArgs = {
 
 
 export type SelectionElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -74749,6 +81936,8 @@ export type SelectionElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SelectionElementBlockOutput = {
@@ -74756,6 +81945,7 @@ export type SelectionElementBlockOutput = {
   autocomplete: Maybe<SelectionElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SelectionElementBlockFacet>;
+  item: Maybe<SelectionElementBlock>;
   items: Maybe<Array<Maybe<SelectionElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -74829,6 +82019,7 @@ export type SeoInformation = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -75124,6 +82315,8 @@ export type SeoInformationOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SeoInformationOutput = {
@@ -75131,6 +82324,7 @@ export type SeoInformationOutput = {
   autocomplete: Maybe<SeoInformationAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SeoInformationFacet>;
+  item: Maybe<SeoInformation>;
   items: Maybe<Array<Maybe<SeoInformation>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -75226,6 +82420,7 @@ export type SharedCartPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -75832,6 +83027,8 @@ export type SharedCartPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SharedCartPageOutput = {
@@ -75839,6 +83036,7 @@ export type SharedCartPageOutput = {
   autocomplete: Maybe<SharedCartPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SharedCartPageFacet>;
+  item: Maybe<SharedCartPage>;
   items: Maybe<Array<Maybe<SharedCartPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -75931,6 +83129,7 @@ export type ShippingDimensions = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Width: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -76079,6 +83278,10 @@ export type ShippingDimensionsFacetCreatedArgs = {
 
 
 export type ShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -76092,6 +83295,10 @@ export type ShippingDimensionsFacetIsCommonDraftArgs = {
 
 
 export type ShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -76171,6 +83378,10 @@ export type ShippingDimensionsFacetUrlArgs = {
 
 
 export type ShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -76202,6 +83413,8 @@ export type ShippingDimensionsOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ShippingDimensionsOutput = {
@@ -76209,6 +83422,7 @@ export type ShippingDimensionsOutput = {
   autocomplete: Maybe<ShippingDimensionsAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ShippingDimensionsFacet>;
+  item: Maybe<ShippingDimensions>;
   items: Maybe<Array<Maybe<ShippingDimensions>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -76261,6 +83475,7 @@ export type SiteDefinition = IData & {
   Languages: Maybe<Array<Maybe<SiteDefinitionLanguageModel>>>;
   Name: Maybe<Scalars['String']['output']>;
   Status: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -76493,6 +83708,8 @@ export type SiteDefinitionOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SiteDefinitionOutput = {
@@ -76500,6 +83717,7 @@ export type SiteDefinitionOutput = {
   autocomplete: Maybe<SiteDefinitionAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SiteDefinitionFacet>;
+  item: Maybe<SiteDefinition>;
   items: Maybe<Array<Maybe<SiteDefinition>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -76558,6 +83776,7 @@ export type StandardFile = IContent & IData & {
   Thumbnail: Maybe<BlobModel>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -76915,6 +84134,8 @@ export type StandardFileOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type StandardFileOutput = {
@@ -76922,6 +84143,7 @@ export type StandardFileOutput = {
   autocomplete: Maybe<StandardFileAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<StandardFileFacet>;
+  item: Maybe<StandardFile>;
   items: Maybe<Array<Maybe<StandardFile>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -77029,6 +84251,7 @@ export type StandardPage = IContent & IData & {
   /** Sets how much padding should be at the top of the standard content */
   TopPaddingMode: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -77351,6 +84574,10 @@ export type StandardPageFacetBackgroundColorArgs = {
 
 
 export type StandardPageFacetBackgroundOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -77699,6 +84926,8 @@ export type StandardPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type StandardPageOutput = {
@@ -77706,6 +84935,7 @@ export type StandardPageOutput = {
   autocomplete: Maybe<StandardPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<StandardPageFacet>;
+  item: Maybe<StandardPage>;
   items: Maybe<Array<Maybe<StandardPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -77832,6 +85062,7 @@ export type StorePage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -78438,6 +85669,8 @@ export type StorePageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type StorePageOutput = {
@@ -78445,6 +85678,7 @@ export type StorePageOutput = {
   autocomplete: Maybe<StorePageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<StorePageFacet>;
+  item: Maybe<StorePage>;
   items: Maybe<Array<Maybe<StorePage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -78545,6 +85779,7 @@ export type StringFilterBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -78830,6 +86065,8 @@ export type StringFilterBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type StringFilterBlockOutput = {
@@ -78837,6 +86074,7 @@ export type StringFilterBlockOutput = {
   autocomplete: Maybe<StringFilterBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<StringFilterBlockFacet>;
+  item: Maybe<StringFilterBlock>;
   items: Maybe<Array<Maybe<StringFilterBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -78956,6 +86194,7 @@ export type SubOrganizationPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -79562,6 +86801,8 @@ export type SubOrganizationPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SubOrganizationPageOutput = {
@@ -79569,6 +86810,7 @@ export type SubOrganizationPageOutput = {
   autocomplete: Maybe<SubOrganizationPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SubOrganizationPageFacet>;
+  item: Maybe<SubOrganizationPage>;
   items: Maybe<Array<Maybe<SubOrganizationPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -79665,6 +86907,7 @@ export type SubmitButtonElementBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -79832,6 +87075,10 @@ export type SubmitButtonElementBlockFacetChangedArgs = {
 
 
 export type SubmitButtonElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -80011,6 +87258,8 @@ export type SubmitButtonElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SubmitButtonElementBlockOutput = {
@@ -80018,6 +87267,7 @@ export type SubmitButtonElementBlockOutput = {
   autocomplete: Maybe<SubmitButtonElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SubmitButtonElementBlockFacet>;
+  item: Maybe<SubmitButtonElementBlock>;
   items: Maybe<Array<Maybe<SubmitButtonElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -80095,6 +87345,7 @@ export type SubscriptionBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -80263,6 +87514,10 @@ export type SubscriptionBlockFacetBackgroundColorArgs = {
 
 
 export type SubscriptionBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -80432,6 +87687,8 @@ export type SubscriptionBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SubscriptionBlockOutput = {
@@ -80439,6 +87696,7 @@ export type SubscriptionBlockOutput = {
   autocomplete: Maybe<SubscriptionBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SubscriptionBlockFacet>;
+  item: Maybe<SubscriptionBlock>;
   items: Maybe<Array<Maybe<SubscriptionBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -80538,6 +87796,7 @@ export type SubscriptionDetailPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -81144,6 +88403,8 @@ export type SubscriptionDetailPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SubscriptionDetailPageOutput = {
@@ -81151,6 +88412,7 @@ export type SubscriptionDetailPageOutput = {
   autocomplete: Maybe<SubscriptionDetailPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SubscriptionDetailPageFacet>;
+  item: Maybe<SubscriptionDetailPage>;
   items: Maybe<Array<Maybe<SubscriptionDetailPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -81271,6 +88533,7 @@ export type SubscriptionHistoryPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -81877,6 +89140,8 @@ export type SubscriptionHistoryPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type SubscriptionHistoryPageOutput = {
@@ -81884,6 +89149,7 @@ export type SubscriptionHistoryPageOutput = {
   autocomplete: Maybe<SubscriptionHistoryPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<SubscriptionHistoryPageFacet>;
+  item: Maybe<SubscriptionHistoryPage>;
   items: Maybe<Array<Maybe<SubscriptionHistoryPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -82015,6 +89281,7 @@ export type TagPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -82661,6 +89928,8 @@ export type TagPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TagPageOutput = {
@@ -82668,6 +89937,7 @@ export type TagPageOutput = {
   autocomplete: Maybe<TagPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TagPageFacet>;
+  item: Maybe<TagPage>;
   items: Maybe<Array<Maybe<TagPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -82787,6 +90057,7 @@ export type TeaserBlock = IContent & IData & {
   Text: Maybe<Scalars['String']['output']>;
   TextColor: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -83032,6 +90303,10 @@ export type TeaserBlockFacetBackgroundColorArgs = {
 
 
 export type TeaserBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83089,6 +90364,10 @@ export type TeaserBlockFacetHeadingColorArgs = {
 
 
 export type TeaserBlockFacetHeadingSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83110,6 +90389,10 @@ export type TeaserBlockFacetHeightArgs = {
 
 
 export type TeaserBlockFacetImageSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83131,11 +90414,19 @@ export type TeaserBlockFacetMarginArgs = {
 
 
 export type TeaserBlockFacetMaxImageHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type TeaserBlockFacetMinCardHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83179,6 +90470,10 @@ export type TeaserBlockFacetSavedArgs = {
 
 
 export type TeaserBlockFacetSecondImageSizeArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83307,6 +90602,8 @@ export type TeaserBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TeaserBlockOutput = {
@@ -83314,6 +90611,7 @@ export type TeaserBlockOutput = {
   autocomplete: Maybe<TeaserBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TeaserBlockFacet>;
+  item: Maybe<TeaserBlock>;
   items: Maybe<Array<Maybe<TeaserBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -83407,6 +90705,7 @@ export type TextBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -83574,6 +90873,10 @@ export type TextBlockFacetBackgroundColorArgs = {
 
 
 export type TextBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83734,6 +91037,8 @@ export type TextBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TextBlockOutput = {
@@ -83741,6 +91046,7 @@ export type TextBlockOutput = {
   autocomplete: Maybe<TextBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TextBlockFacet>;
+  item: Maybe<TextBlock>;
   items: Maybe<Array<Maybe<TextBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -83815,6 +91121,7 @@ export type TextareaElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -83972,6 +91279,10 @@ export type TextareaElementBlockFacetAncestorsArgs = {
 
 
 export type TextareaElementBlockFacetAutoCompleteArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -83983,6 +91294,10 @@ export type TextareaElementBlockFacetChangedArgs = {
 
 
 export type TextareaElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -84154,6 +91469,8 @@ export type TextareaElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TextareaElementBlockOutput = {
@@ -84161,6 +91478,7 @@ export type TextareaElementBlockOutput = {
   autocomplete: Maybe<TextareaElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TextareaElementBlockFacet>;
+  item: Maybe<TextareaElementBlock>;
   items: Maybe<Array<Maybe<TextareaElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -84237,6 +91555,7 @@ export type TextboxElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -84400,6 +91719,10 @@ export type TextboxElementBlockFacetAncestorsArgs = {
 
 
 export type TextboxElementBlockFacetAutoCompleteArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -84411,6 +91734,10 @@ export type TextboxElementBlockFacetChangedArgs = {
 
 
 export type TextboxElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -84591,6 +91918,8 @@ export type TextboxElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TextboxElementBlockOutput = {
@@ -84598,6 +91927,7 @@ export type TextboxElementBlockOutput = {
   autocomplete: Maybe<TextboxElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TextboxElementBlockFacet>;
+  item: Maybe<TextboxElementBlock>;
   items: Maybe<Array<Maybe<TextboxElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -84704,6 +92034,7 @@ export type ThreeColumnLandingPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -85013,6 +92344,10 @@ export type ThreeColumnLandingPageFacetAuthorMetaDataArgs = {
 
 
 export type ThreeColumnLandingPageFacetCenterColumnArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -85118,6 +92453,10 @@ export type ThreeColumnLandingPageFacetKeywordsArgs = {
 
 
 export type ThreeColumnLandingPageFacetLeftColumnArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -85187,6 +92526,10 @@ export type ThreeColumnLandingPageFacetRelativePathArgs = {
 
 
 export type ThreeColumnLandingPageFacetRightColumnArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -85355,6 +92698,8 @@ export type ThreeColumnLandingPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ThreeColumnLandingPageOutput = {
@@ -85362,6 +92707,7 @@ export type ThreeColumnLandingPageOutput = {
   autocomplete: Maybe<ThreeColumnLandingPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<ThreeColumnLandingPageFacet>;
+  item: Maybe<ThreeColumnLandingPage>;
   items: Maybe<Array<Maybe<ThreeColumnLandingPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -85466,6 +92812,7 @@ export type TwitterBlock = IContent & IData & {
   Status: Maybe<Scalars['String']['output']>;
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -85642,6 +92989,10 @@ export type TwitterBlockFacetBackgroundColorArgs = {
 
 
 export type TwitterBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -85691,6 +93042,10 @@ export type TwitterBlockFacetNameArgs = {
 
 
 export type TwitterBlockFacetNumberOfItemsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -85800,6 +93155,8 @@ export type TwitterBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TwitterBlockOutput = {
@@ -85807,6 +93164,7 @@ export type TwitterBlockOutput = {
   autocomplete: Maybe<TwitterBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TwitterBlockFacet>;
+  item: Maybe<TwitterBlock>;
   items: Maybe<Array<Maybe<TwitterBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -85910,6 +93268,7 @@ export type TwoColumnLandingPage = IContent & IData & {
   TeaserVideo: Maybe<ContentModelReference>;
   TopContentArea: Maybe<Array<Maybe<ContentAreaItemModelSearch>>>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -86311,6 +93670,10 @@ export type TwoColumnLandingPageFacetKeywordsArgs = {
 
 
 export type TwoColumnLandingPageFacetLeftColumnArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -86380,6 +93743,10 @@ export type TwoColumnLandingPageFacetRelativePathArgs = {
 
 
 export type TwoColumnLandingPageFacetRightColumnArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -86546,6 +93913,8 @@ export type TwoColumnLandingPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type TwoColumnLandingPageOutput = {
@@ -86553,6 +93922,7 @@ export type TwoColumnLandingPageOutput = {
   autocomplete: Maybe<TwoColumnLandingPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<TwoColumnLandingPageFacet>;
+  item: Maybe<TwoColumnLandingPage>;
   items: Maybe<Array<Maybe<TwoColumnLandingPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -86653,6 +94023,7 @@ export type UrlElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Validators: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -86821,6 +94192,10 @@ export type UrlElementBlockFacetChangedArgs = {
 
 
 export type UrlElementBlockFacetConditionCombinationArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -87000,6 +94375,8 @@ export type UrlElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type UrlElementBlockOutput = {
@@ -87007,6 +94384,7 @@ export type UrlElementBlockOutput = {
   autocomplete: Maybe<UrlElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<UrlElementBlockFacet>;
+  item: Maybe<UrlElementBlock>;
   items: Maybe<Array<Maybe<UrlElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -87106,6 +94484,7 @@ export type UsersPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -87712,6 +95091,8 @@ export type UsersPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type UsersPageOutput = {
@@ -87719,6 +95100,7 @@ export type UsersPageOutput = {
   autocomplete: Maybe<UsersPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<UsersPageFacet>;
+  item: Maybe<UsersPage>;
   items: Maybe<Array<Maybe<UsersPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -87825,6 +95207,7 @@ export type VariationContent = IContent & IData & {
   TrackInventory: Maybe<Scalars['Bool']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Weight: Maybe<Scalars['Float']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -87900,7 +95283,6 @@ export type VariationContentAutocomplete = {
   RouteSegment: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SeoInformation: Maybe<VariationContentSeoInformationAutocomplete>;
   SeoUri: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  ShippingDimensions: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Shortcut: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   SiteId: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Status: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -87933,12 +95315,6 @@ export type VariationContentAutocompleteRouteSegmentArgs = {
 
 
 export type VariationContentAutocompleteSeoUriArgs = {
-  limit?: Scalars['Int']['input'];
-  value: Scalars['String']['input'];
-};
-
-
-export type VariationContentAutocompleteShippingDimensionsArgs = {
   limit?: Scalars['Int']['input'];
   value: Scalars['String']['input'];
 };
@@ -88042,6 +95418,10 @@ export type VariationContentFacetAncestorsArgs = {
 
 
 export type VariationContentFacetCatalogIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88091,16 +95471,28 @@ export type VariationContentFacetIsCommonDraftArgs = {
 
 
 export type VariationContentFacetMaxQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VariationContentFacetMetaClassIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VariationContentFacetMinQuantityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88144,6 +95536,10 @@ export type VariationContentFacetSeoUriArgs = {
 
 
 export type VariationContentFacetShippingPackageIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88185,6 +95581,10 @@ export type VariationContentFacetStopPublishArgs = {
 
 
 export type VariationContentFacetTaxCategoryIdArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88206,6 +95606,10 @@ export type VariationContentFacetUrlArgs = {
 
 
 export type VariationContentFacetWeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88251,6 +95655,8 @@ export type VariationContentOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VariationContentOutput = {
@@ -88258,6 +95664,7 @@ export type VariationContentOutput = {
   autocomplete: Maybe<VariationContentAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VariationContentFacet>;
+  item: Maybe<VariationContent>;
   items: Maybe<Array<Maybe<VariationContent>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -88381,16 +95788,28 @@ export type VariationContentShippingDimensionsFacet = {
 
 
 export type VariationContentShippingDimensionsFacetHeightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VariationContentShippingDimensionsFacetLengthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VariationContentShippingDimensionsFacetWidthArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -88452,6 +95871,18 @@ export type VariationContentWhereInput = {
   _or?: InputMaybe<Array<InputMaybe<VariationContentWhereInput>>>;
 };
 
+export enum VariationIncludeMode {
+  All = 'ALL',
+  None = 'NONE',
+  Some = 'SOME'
+}
+
+export type VariationInput = {
+  include?: InputMaybe<VariationIncludeMode>;
+  includeOriginal?: InputMaybe<Scalars['Boolean']['input']>;
+  value?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 /** Used for svg image file type */
 export type VectorImageMediaData = IContent & IData & {
   __typename: 'VectorImageMediaData';
@@ -88507,6 +95938,7 @@ export type VectorImageMediaData = IContent & IData & {
   Thumbnail: Maybe<BlobModel>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -88982,21 +96414,37 @@ export type VectorImageMediaDataFacetNameArgs = {
 
 
 export type VectorImageMediaDataFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VectorImageMediaDataFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VectorImageMediaDataFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type VectorImageMediaDataFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -89136,6 +96584,8 @@ export type VectorImageMediaDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VectorImageMediaDataOutput = {
@@ -89143,6 +96593,7 @@ export type VectorImageMediaDataOutput = {
   autocomplete: Maybe<VectorImageMediaDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VectorImageMediaDataFacet>;
+  item: Maybe<VectorImageMediaData>;
   items: Maybe<Array<Maybe<VectorImageMediaData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -89241,6 +96692,7 @@ export type VideoBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   Video: Maybe<ContentModelReference>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -89403,6 +96855,10 @@ export type VideoBlockFacetBackgroundColorArgs = {
 
 
 export type VideoBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -89555,6 +97011,8 @@ export type VideoBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VideoBlockOutput = {
@@ -89562,6 +97020,7 @@ export type VideoBlockOutput = {
   autocomplete: Maybe<VideoBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VideoBlockFacet>;
+  item: Maybe<VideoBlock>;
   items: Maybe<Array<Maybe<VideoBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -89637,6 +97096,7 @@ export type VideoFile = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Thumbnail: Maybe<BlobModel>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -89965,6 +97425,8 @@ export type VideoFileOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VideoFileOutput = {
@@ -89972,6 +97434,7 @@ export type VideoFileOutput = {
   autocomplete: Maybe<VideoFileAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VideoFileFacet>;
+  item: Maybe<VideoFile>;
   items: Maybe<Array<Maybe<VideoFile>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -90053,6 +97516,7 @@ export type VimeoBlock = IContent & IData & {
   Url: Maybe<Scalars['String']['output']>;
   /** URL link to Vimeo video */
   VimeoVideoLink: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -90237,6 +97701,10 @@ export type VimeoBlockFacetBackgroundColorArgs = {
 
 
 export type VimeoBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -90416,6 +97884,8 @@ export type VimeoBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VimeoBlockOutput = {
@@ -90423,6 +97893,7 @@ export type VimeoBlockOutput = {
   autocomplete: Maybe<VimeoBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VimeoBlockFacet>;
+  item: Maybe<VimeoBlock>;
   items: Maybe<Array<Maybe<VimeoBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -90494,6 +97965,7 @@ export type VisitorDataHiddenElementBlock = IContent & IData & {
   StopPublish: Maybe<Scalars['Date']['output']>;
   Url: Maybe<Scalars['String']['output']>;
   VisitorDataSources: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -90759,6 +98231,8 @@ export type VisitorDataHiddenElementBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type VisitorDataHiddenElementBlockOutput = {
@@ -90766,6 +98240,7 @@ export type VisitorDataHiddenElementBlockOutput = {
   autocomplete: Maybe<VisitorDataHiddenElementBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<VisitorDataHiddenElementBlockFacet>;
+  item: Maybe<VisitorDataHiddenElementBlock>;
   items: Maybe<Array<Maybe<VisitorDataHiddenElementBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -90860,6 +98335,7 @@ export type WebImageMediaData = IContent & IData & {
   Thumbnail: Maybe<BlobModel>;
   Title: Maybe<Scalars['String']['output']>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -91335,21 +98811,37 @@ export type WebImageMediaDataFacetNameArgs = {
 
 
 export type WebImageMediaDataFacetPaddingBottomArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type WebImageMediaDataFacetPaddingLeftArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type WebImageMediaDataFacetPaddingRightArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
 
 export type WebImageMediaDataFacetPaddingTopArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -91489,6 +98981,8 @@ export type WebImageMediaDataOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WebImageMediaDataOutput = {
@@ -91496,6 +98990,7 @@ export type WebImageMediaDataOutput = {
   autocomplete: Maybe<WebImageMediaDataAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<WebImageMediaDataFacet>;
+  item: Maybe<WebImageMediaData>;
   items: Maybe<Array<Maybe<WebImageMediaData>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -91590,6 +99085,7 @@ export type WidgetBlock = IContent & IData & {
   Url: Maybe<Scalars['String']['output']>;
   Value: Maybe<Scalars['String']['output']>;
   WidgetType: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -91769,6 +99265,10 @@ export type WidgetBlockFacetNameArgs = {
 
 
 export type WidgetBlockFacetNumberOfRecommendationsArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -91882,6 +99382,8 @@ export type WidgetBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WidgetBlockOutput = {
@@ -91889,6 +99391,7 @@ export type WidgetBlockOutput = {
   autocomplete: Maybe<WidgetBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<WidgetBlockFacet>;
+  item: Maybe<WidgetBlock>;
   items: Maybe<Array<Maybe<WidgetBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -91984,6 +99487,7 @@ export type WishListPage = IContent & IData & {
   TeaserTextAlignment: Maybe<Scalars['String']['output']>;
   TeaserVideo: Maybe<ContentModelReference>;
   Url: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -92590,6 +100094,8 @@ export type WishListPageOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type WishListPageOutput = {
@@ -92597,6 +100103,7 @@ export type WishListPageOutput = {
   autocomplete: Maybe<WishListPageAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<WishListPageFacet>;
+  item: Maybe<WishListPage>;
   items: Maybe<Array<Maybe<WishListPage>>>;
   total: Maybe<Scalars['Int']['output']>;
 };
@@ -92698,6 +100205,7 @@ export type YouTubeBlock = IContent & IData & {
   Url: Maybe<Scalars['String']['output']>;
   /** URL link to YouTube video */
   YouTubeLink: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use `_link` field instead */
   _children: Maybe<QueryRef>;
   _deleted: Maybe<Scalars['Bool']['output']>;
   _fulltext: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -92879,6 +100387,10 @@ export type YouTubeBlockFacetBackgroundColorArgs = {
 
 
 export type YouTubeBlockFacetBlockOpacityArgs = {
+  filters: InputMaybe<Array<Scalars['String']['input']>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<OrderBy>;
+  orderType: InputMaybe<OrderByFacetType>;
   ranges: InputMaybe<Array<InputMaybe<RangeFacetsInput>>>;
 };
 
@@ -93057,6 +100569,8 @@ export type YouTubeBlockOrderByInput = {
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
   _modified?: InputMaybe<OrderBy>;
   _ranking?: InputMaybe<Ranking>;
+  /** The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled. */
+  _semanticWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type YouTubeBlockOutput = {
@@ -93064,6 +100578,7 @@ export type YouTubeBlockOutput = {
   autocomplete: Maybe<YouTubeBlockAutocomplete>;
   cursor: Maybe<Scalars['String']['output']>;
   facets: Maybe<YouTubeBlockFacet>;
+  item: Maybe<YouTubeBlock>;
   items: Maybe<Array<Maybe<YouTubeBlock>>>;
   total: Maybe<Scalars['Int']['output']>;
 };

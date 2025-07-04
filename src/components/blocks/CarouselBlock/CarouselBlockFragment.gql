@@ -1,0 +1,28 @@
+fragment CarouselBlock on CarouselBlock {
+  __typename
+  _id
+  CarouselItems {
+    ContentLink {
+      GuidValue
+      Id
+      __typename
+      Expanded {
+        ContentType
+        __typename
+        Name
+        ...HeroBlock
+        ...StandardPagePartial
+        ...TextBlock
+        ...CallToActionBlock
+      }
+    }
+  }
+  CarouselControls {
+    AutoPlay
+    Fade
+    Interval
+    ShowControls
+    ShowIndicators
+    Theme
+  }
+}
