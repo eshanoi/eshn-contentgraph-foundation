@@ -63,7 +63,10 @@ export default function ContentArea({
           );
         } else {
           return (
-            <div key={item.ContentLink?.GuidValue}>
+            <div
+              className={`block ${getDisplayClasses(item.DisplayOption)}`}
+              key={item.ContentLink?.GuidValue}
+            >
               Missing component: {content.__typename}{' '}
               <pre>{JSON.stringify(content, null, 2)}</pre>
             </div>
