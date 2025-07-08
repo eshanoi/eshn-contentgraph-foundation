@@ -52,7 +52,7 @@ export default function ContentArea({
         } else if (content.__typename?.endsWith('Page')) {
           return (
             <div
-              className={`block ${content.__typename.toLocaleLowerCase()} ${getDisplayClasses(item.DisplayOption)}`}
+              className={`block ${content.__typename.toLowerCase()} ${getDisplayClasses(item.DisplayOption)}`}
               key={item.ContentLink.GuidValue}
             >
               <PartialPage
