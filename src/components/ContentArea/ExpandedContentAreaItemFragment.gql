@@ -11,4 +11,5 @@ fragment ExpandedContentAreaItem on ContentAreaItemModelSearch {
       ...AllChildBlocks
     }
   }
+  DisplayOption
 }

@@ -9,6 +9,8 @@ fragment HeroBlock on HeroBlock {
   }
   BackgroundColor
   BlockOpacity
+  Margin
+  Padding
   Callout {
     CalloutPosition
     Padding

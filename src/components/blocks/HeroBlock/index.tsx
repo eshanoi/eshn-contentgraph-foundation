@@ -1,5 +1,5 @@
-import type { HeroBlockFragment } from './HeroBlockFragment.gql.g'
-import HeroBlockLink from './HeroBlockLink'
+import type { HeroBlockFragment } from './HeroBlockFragment.gql.g';
+import HeroBlockLink from './HeroBlockLink';
 
 const blockRatios: Record<string, number> = {
   '5:1': 20,
@@ -11,7 +11,7 @@ const blockRatios: Record<string, number> = {
   '1:1': 100,
   '2:3': 150,
   '9:16': 175,
-}
+};
 
 export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
   const {
@@ -22,22 +22,24 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
     BlockOpacity,
     Callout,
     Link,
-  } = block
+    Margin,
+    Padding,
+  } = block;
   const {
     CalloutPosition,
-    Padding,
-    Margin,
+    Padding: CalloutPadding,
+    Margin: CalloutMargin,
     CalloutTextColor,
     CalloutContentAlignment,
     CalloutContent,
     BackgroundColorBehindText,
-  } = Callout ?? {}
+  } = Callout ?? {};
 
-  const blockRatio = blockRatios[BlockRatio ?? ''] ?? 50
+  const blockRatio = blockRatios[BlockRatio ?? ''] ?? 50;
 
   return (
     <>
-      <div>
+      <div className={`${Margin} ${Padding}`}>
         <div
           className="hero-block"
           style={{
@@ -75,7 +77,7 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
             >
               {Link && !MainBackgroundVideo && <HeroBlockLink Link={Link} />}
               <div
-                className={`callout ${Padding ?? ''} ${Margin ?? ''}`}
+                className={`callout ${CalloutPadding ?? ''} ${CalloutMargin ?? ''}`}
                 style={{
                   color: (CalloutTextColor ?? undefined) as any,
                   textAlign: (CalloutContentAlignment ?? undefined) as any,
@@ -91,5 +93,5 @@ export default function HeroBlock({ block }: { block: HeroBlockFragment }) {
         </div>
       </div>
     </>
-  )
+  );
 }
