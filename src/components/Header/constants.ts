@@ -52,9 +52,9 @@ export const NAVIGATIONS: NavigationItem[] = [
       bannerSrc: '/images/clothing-navigation-banner.png',
     },
   },
-  { name: 'Inspiration', href: '/inspiration' },
-  { name: 'New', href: '/new' },
-  { name: 'Sale', href: '/sale' },
+  { name: 'Inspiration', href: '/guides/inspiration' },
+  { name: 'New', href: '/new-arrivals' },
+  { name: 'Sale', href: '/sale2' },
 ];
 
 export const LOGO_SRC = '/logo.svg';
