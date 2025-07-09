@@ -10,9 +10,6 @@
     "codegen": "graphql-codegen --require dotenv/config --config graphql.config.ts dotenv_config_path=.env.local",
     "codegen:watch": "graphql-codegen --require dotenv/config --config graphql.config.ts dotenv_config_path=.env.local --watch"
   },
-  "engines": {
-    "node": "20.x"
-  },
   "dependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
     "cookies-next": "^4.1.1",
