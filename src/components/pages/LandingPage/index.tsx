@@ -5,7 +5,6 @@ export default function LandingPage({ page }: { page: LandingPageFragment }) {
   const { MainBody, MainContentArea, TopContentArea, Margin, Padding } = page;
 
   return (
-    <>
       <div
         className={`landing-page row no-gutters ${Margin || ''} ${Padding || ''}`}
       >
