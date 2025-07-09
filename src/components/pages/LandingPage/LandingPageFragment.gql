@@ -1,0 +1,21 @@
+fragment LandingPage on LandingPage {
+  __typename
+  Name
+  MetaTitle
+  MetaContentType
+  PageDescription
+  Keywords
+  MainBody
+  MainContentArea {
+    ...ExpandedContentAreaItem
+  }
+  TopContentArea {
+    ...ExpandedContentAreaItem
+  }
+  HideSiteHeader
+  HideSiteFooter
+  TeaserColorTheme
+  Margin
+  Padding
+  Url
+}

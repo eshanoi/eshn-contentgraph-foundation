@@ -3,6 +3,7 @@ query Page($pathname: String!) {
     items {
       ...HomePage
       ...StandardPage
+      ...LandingPage
       # POI: When you define fragment for a new page type, use it here
     }
   }

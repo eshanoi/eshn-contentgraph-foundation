@@ -1,6 +1,7 @@
 import type React from 'react';
 import HomePage from './HomePage';
 import StandardPage from './StandardPage';
+import LandingPage from './LandingPage';
 
 export type Page = Parameters<
   (typeof registry)[keyof typeof registry]
@@ -13,6 +14,7 @@ export type PageComponent = ({ page }: PageComponentProps) => React.JSX.Element;
 const registry = {
   HomePage: HomePage,
   StandardPage,
+  LandingPage,
 } satisfies Record<string, any>;
 
 export function hasPageComponent(document: {

@@ -37,8 +37,11 @@ export async function generateMetadata({
     return {};
   }
 
+  const MetaTitle = 'MetaTitle' in doc ? doc.MetaTitle : null;
+  const Name = 'Name' in doc ? doc.Name : null;
+
   return {
-    title: 'MetaTitle' in doc ? doc.MetaTitle : null,
+    title: MetaTitle || Name || 'Mosey Fashion',
   };
 }
 
